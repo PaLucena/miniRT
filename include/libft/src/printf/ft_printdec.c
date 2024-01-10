@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printdec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:47:09 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/13 16:41:48 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:43:19 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_putnbr(int nb)
 	{
 		ft_putnbr(nb / 10);
 		ft_putnbr(nb % 10);
-	}		
+	}
 }
 
 static int	ft_dcount(long int nb)

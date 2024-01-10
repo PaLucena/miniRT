@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:50:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/13 16:41:27 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:43:04 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_start(char const *s1, char const *set)
 		}
 		if (j == ft_strlen(set))
 			return (i);
-			j = 0;
+		j = 0;
 	}
 	return (0);
 }
