@@ -4,7 +4,7 @@ CC = gcc -g
 FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 SRC_PATH = src/
-SRC = main.c
+SRC = main.c init.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
@@ -30,7 +30,7 @@ RESET   := \033[0m
 all: libft mlx $(NAME)
 
 $(NAME): $(OBJ)
-	 gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) -o $(NAME)
+	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) -o $(NAME)
 	@ echo "\n\t\t$(GREEN)$(BOLD)----$(NAME) compiled----\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
@@ -56,5 +56,9 @@ fclean: clean
 
 re: fclean all
 
+norme:
+	@ norminette src/
+	@ norminette include/libft/
+	@ norminette include/*.h
 
-.PHONY: all libft mlx clean fclean re
+.PHONY: all libft mlx clean fclean re norme
