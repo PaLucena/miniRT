@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/10 18:10:26 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:31:40 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
-	ft_parser(info);
-	mlx_loop(info->mlx_s.mlx);
+	//ft_parser(info);
+	//mlx_loop(info->mlx_s.mlx);
+	
+	char *str = "42.123";
+	if (ft_check_atod(str))
+	{
+		float n = ft_atod(str);
+		printf("%f\n", n);
+	}
+	else
+		printf("invalid\n");
 	return (0);
 }

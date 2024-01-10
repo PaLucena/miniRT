@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/10 17:27:32 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:32:23 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,6 @@ int				ft_line_len(char *str);
 /* my own functions */
 int				ft_strcmp(const char *s1, const char *s2);
 bool			ft_isspace(char c);
+bool			ft_check_atod(char *str);
+double			ft_atod(char *str);
 #endif

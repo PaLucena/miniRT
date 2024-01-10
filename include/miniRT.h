@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/10 18:18:19 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:58:54 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ typedef struct s_info
 {
 	char		*filename;
 	t_mlxset	mlx_s;
-	t_aset		aset; // FIXME: tiene que ser memoria dinamica
-	t_cset		cset; // FIXME: tiene que ser memoria dinamica
-	t_lset		lset; // FIXME: tiene que ser memoria dinamica
+	t_aset		*aset;
+	t_cset		*cset;
+	t_lset		*lset;
 	t_shape		*shapes_list;
 }	t_info;
 
@@ -111,4 +111,8 @@ t_info		*init_info(char *filename);
 
 //	parser.c
 void		ft_parser(t_info *info);
+
+//	saveamb.c
+void		par_save_amb(char *line, t_info *info);
+
 #endif
