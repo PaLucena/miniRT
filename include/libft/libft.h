@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/07 13:42:55 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:27:32 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdbool.h>
 # include <stdarg.h>
 
 typedef struct s_list
@@ -92,5 +93,5 @@ int				ft_line_len(char *str);
 
 /* my own functions */
 int				ft_strcmp(const char *s1, const char *s2);
-
+bool			ft_isspace(char c);
 #endif

@@ -16,7 +16,7 @@ SOURCE_PRINTF =		ft_printf.c ft_putchar.c ft_printchar.c ft_printstr.c ft_printp
 
 SOURCE_GNL =		get_next_line.c get_next_line_utils.c
 
-SOURCE_OWN =		ft_strcmp.c
+SOURCE_OWN =		ft_strcmp.c ft_isspace.c
 
 OBJ_PATH =			objs/
 OBJ_LIBFT_PATH =	$(OBJ_PATH)libft/
