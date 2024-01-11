@@ -4,7 +4,7 @@ CC = gcc -g
 FLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = src/
-SRC = main.c init.c parser.c saveamb.c savergb.c
+SRC = main.c init.c parser.c save_amb.c save_extras.c save_camera.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))

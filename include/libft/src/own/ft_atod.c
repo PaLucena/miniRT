@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:05:50 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 19:21:48 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:01:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ bool	ft_check_atod(char *str)
 	i = 0;
 	dot = 0;
 	post = false;
+	if (str[i] == '-')
+		i++;
 	while (str[i] && (ft_isdigit(str[i]) == 1 || str[i] == '.'))
 	{
 		if (str[i] == '.')
@@ -30,7 +32,7 @@ bool	ft_check_atod(char *str)
 			post = true;
 		i++;
 	}
-	if (!str[i] && dot == 1 && post)
+	if (!str[i] && dot <= 1 && (dot == 1 && post))
 		return (true);
 	return (false);
 }

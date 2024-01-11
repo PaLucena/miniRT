@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/11 19:22:48 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:58:11 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);

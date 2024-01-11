@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/11 19:15:09 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:48:58 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,13 @@ t_info	*init_info(char *filename);
 //	parser.c
 void	ft_parser(t_info *info);
 
-//	saveamb.c
+//	save_amb.c
 void	par_save_amb(char *line, t_info *info);
 
-//	savergb.c
+//	save_extras.c
 void	ft_save_rgb(t_color *color, char *str, t_info *info);
+void	ft_save_point(t_point *point, char *str, t_info *info);
 
+//	save_camera.c
+void	par_save_camera(char *line, t_info *info);
 #endif

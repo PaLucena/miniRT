@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 18:57:59 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:56:58 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*par_get_ident(char *line)
 	j = 0;
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
-	return (ft_substr(line, i, j - 1));
+	return (ft_substr(line, i, j));
 }
 
 static void	par_save_line(char *line, t_info *info)
@@ -31,12 +31,12 @@ static void	par_save_line(char *line, t_info *info)
 	char	*id;
 
 	id = par_get_ident(line);
-	printf("line: %s\n", line);
-	if (ft_strcmp(id, "A"))
+	printf("line: %s\n id: %s", line, id);
+	if (ft_strcmp(id, "A") == 0)
 		par_save_amb(line, info);
-/* 	else if (ft_strcmp(id, "C"))
-		par_save_camera();
-	else if (ft_strcmp(id, "L"))
+ 	else if (ft_strcmp(id, "C") == 0)
+		par_save_camera(line, info);
+/*	else if (ft_strcmp(id, "L"))
 		par_save_light();
 	else if (ft_strcmp(id, "sp"))
 		par_save_sphere();

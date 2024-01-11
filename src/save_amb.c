@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   saveamb.c                                          :+:      :+:    :+:   */
+/*   save_amb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:14:32 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 19:16:39 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:44:19 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ static int	aset_save_ratio(char *line, int start, t_aset *new, t_info *info)
 	if (ft_check_atod(str))
 		new->ratio = ft_atod(str);
 	else
+	{
+		free(str);
 		ft_print_error("Invalid Ambient Lightning ratio input", info);
+	}
+	free(str);
 	if (new->ratio < 0.0 && new->ratio > 1.0)
 		ft_print_error("Ambient Lightning ratio out of range", info);
 	printf("amb l ratio: %f\n", new->ratio);
@@ -43,8 +47,6 @@ static int	aset_save_rgb(char *line, int start, t_aset *new, t_info *info)
 	char	*str;
 
 	i = start;
-	(void)new;
-	(void)info;
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
