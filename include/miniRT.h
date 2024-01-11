@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/10 18:58:54 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:15:09 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,19 @@ typedef struct s_info
 	t_shape		*shapes_list;
 }	t_info;
 
-// main.c
-void		ft_print_error(char *str, t_info *info);
+//	main.c
+void	ft_print_error(char *str, t_info *info);
 
 //	init.c
-t_info		*init_info(char *filename);
+t_info	*init_info(char *filename);
 
 //	parser.c
-void		ft_parser(t_info *info);
+void	ft_parser(t_info *info);
 
 //	saveamb.c
-void		par_save_amb(char *line, t_info *info);
+void	par_save_amb(char *line, t_info *info);
+
+//	savergb.c
+void	ft_save_rgb(t_color *color, char *str, t_info *info);
 
 #endif

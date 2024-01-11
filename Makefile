@@ -1,10 +1,10 @@
 NAME = miniRT
 
 CC = gcc -g
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = src/
-SRC = main.c init.c # parser.c saveamb.c
+SRC = main.c init.c parser.c saveamb.c savergb.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))

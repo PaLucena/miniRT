@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/10 18:10:48 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:57:59 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static void	par_save_line(char *line, t_info *info)
 	char	*id;
 
 	id = par_get_ident(line);
+	printf("line: %s\n", line);
 	if (ft_strcmp(id, "A"))
-		par_save_amb();
-	else if (ft_strcmp(id, "C"))
+		par_save_amb(line, info);
+/* 	else if (ft_strcmp(id, "C"))
 		par_save_camera();
 	else if (ft_strcmp(id, "L"))
 		par_save_light();
@@ -42,7 +43,7 @@ static void	par_save_line(char *line, t_info *info)
 	else if (ft_strcmp(id, "pl"))
 		par_save_plane();
 	else if (ft_strcmp(id, "cy"))
-		par_save_cylinder();
+		par_save_cylinder(); */
 	else
 	{
 		free(id);
