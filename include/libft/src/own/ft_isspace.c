@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:11 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/10 17:31:08 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:51:57 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 bool	ft_isspace(char c)
 {
-	if (c >= 9 && c <= 13)
+	if ((c >= 9 && c <= 13) || c == 32)
 		return (true);
 	return (false);
 }
