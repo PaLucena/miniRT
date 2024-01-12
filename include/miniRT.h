@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:12:37 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct s_point
 	float	z;
 }	t_point;
 
+typedef struct s_vector
+{
+	float	i;
+	float	j;
+	float	k;
+}	t_vector;
+
 /**
  * @brief struct to save the properties of the shapes
  * 
@@ -46,11 +53,11 @@ typedef struct s_point
  */
 typedef struct s_properties
 {
-	t_point	center;
-	float	height;
-	float	rad;
-	t_color	color;
-	float	n_vector[3]; // FIXME: crear estructura para los vectores
+	t_point		center;
+	float		height;
+	float		rad;
+	t_color		color;
+	t_vector	n_vector;
 }	t_properties;
 
 typedef enum e_type
@@ -81,9 +88,9 @@ typedef struct s_aset
 
 typedef struct s_cset
 {
-	t_point	point;
-	int		fov;
-	// TODO: añadir vectores de orientación de los ejes
+	t_point		point;
+	int			fov;
+	t_vector	n_vector;
 }	t_cset;
 
 typedef struct s_lset
@@ -118,6 +125,7 @@ void	par_save_amb(char *line, t_info *info);
 //	save_extras.c
 void	ft_save_rgb(t_color *color, char *str, t_info *info);
 void	ft_save_point(t_point *point, char *str, t_info *info);
+void	ft_save_vector(t_vector *vector, char *str, t_info *info);
 
 //	save_camera.c
 void	par_save_camera(char *line, t_info *info);

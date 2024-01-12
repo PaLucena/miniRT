@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:27:52 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:41 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:13:23 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ static int	cset_save_vector(char *line, int start, t_cset *new, t_info *info)
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
-	(void)new;
-	(void)info;
-	//TODO: añadir vectores
+	ft_save_vector(&new->n_vector, str, info);
 	free(str);
 	return (i + j);
 }
