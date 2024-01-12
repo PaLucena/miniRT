@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   save_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:30:27 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 17:00:52 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:05:21 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static int	sp_save_pt(char *line, int start, t_properties *prop, t_info *info)
 {

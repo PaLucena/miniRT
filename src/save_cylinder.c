@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   save_cylinder.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:18:22 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 17:00:43 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:04:51 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static int	cy_save_pt(char *line, int start, t_properties *prop, t_info *info)
 {

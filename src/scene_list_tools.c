@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scene_list_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:38:18 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 13:43:59 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:42:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 t_shape	*shapes_newnode(t_type type)
 {
