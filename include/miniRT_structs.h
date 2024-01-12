@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 17:32:26 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:12:52 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_shape
 {
 	t_type			type;
 	t_properties	prop;
+	int				index;
 	struct s_shape	*next;
 }	t_shape;
 

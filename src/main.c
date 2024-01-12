@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:04:07 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:19:45 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_print_shapes(t_shape *root)
 	tmp = root;
 	while (tmp)
 	{
+		printf("INDEX: %i:", tmp->index);
 		if (tmp->type == CY)
 		{
 			printf("CYLINDER:\n");

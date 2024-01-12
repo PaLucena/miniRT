@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:05:35 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:18:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	par_save_camera(char *line, t_info *info);
 void	par_save_light(char *line, t_info *info);
 
 //	scene_list_tools.c
-t_shape	*shapes_newnode(t_type type);
+t_shape	*shapes_newnode(t_type type, int last_idx);
 void	shapes_addback(t_shape *root, t_shape *node);
+int		shapes_get_last_idx(t_shape *root);
 
 //	save_sphere.c
 void	par_save_sphere(char *line, t_info *info);
