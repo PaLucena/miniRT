@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 16:44:26 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:05:35 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ void	par_save_plane(char *line, t_info *info);
 
 //	save_cylinder.c
 void	par_save_cylinder(char *line, t_info *info);
+
+//	exit.c
+void	ft_exit_program(void *param);
+
+//	mlx_hooks.c
+void	ft_keyhook(void *param);
 
 #endif
