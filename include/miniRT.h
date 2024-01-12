@@ -6,13 +6,15 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 14:23:43 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:45:03 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# define WIDTH 1920
+# define HEIGHT 1080 
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -146,5 +148,11 @@ void	par_save_plane(char *line, t_info *info);
 
 //	save_cylinder.c
 void	par_save_cylinder(char *line, t_info *info);
+
+//	exit.c
+void	ft_exit_program(void *param);
+
+//	mlx_hooks.c
+void	ft_keyhook(void *param);
 
 #endif
