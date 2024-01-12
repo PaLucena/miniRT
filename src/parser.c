@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:43:57 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:02:37 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static void	par_extract_file(t_info *info, int fd)
 	{
 		if (par_useful_line(line))
 			par_save_line(line, info);
+		else
+			free(line);
 		line = get_next_line(fd);
 	}
 }

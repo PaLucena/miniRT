@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:14:32 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:22 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:00:19 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static int	aset_save_rgb(char *line, int start, t_aset *new, t_info *info)
 		j++;
 	str = ft_substr(line, i, j);
 	ft_save_rgb(&new->color, str, info);
+	free(str);
 	return (i + j);
 }
 

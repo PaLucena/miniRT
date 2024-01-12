@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 15:12:30 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:47:03 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-	//atexit(ft_leaks);
+	atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
 	ft_printparser(info);
-	//mlx_loop(info->mlx_s.mlx);
+	mlx_loop(info->mlx_s.mlx);
 	return (0);
 }
