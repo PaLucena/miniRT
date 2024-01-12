@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 19:56:58 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:04:48 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,49 @@ static char	*par_get_ident(char *line)
 	return (ft_substr(line, i, j));
 }
 
+static char	*par_clean_id(char *line)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	j = 0;
+	while (line[i + j] && !ft_isspace(line[i + j]))
+		j++;
+	str = ft_substr(line, i + j, ft_strlen(line) - i + j);
+	free (line);
+	return (str);
+}
+
 static void	par_save_line(char *line, t_info *info)
 {
 	char	*id;
 
 	id = par_get_ident(line);
-	printf("line: %s\n id: %s", line, id);
+	line = par_clean_id(line);
 	if (ft_strcmp(id, "A") == 0)
 		par_save_amb(line, info);
  	else if (ft_strcmp(id, "C") == 0)
 		par_save_camera(line, info);
-/*	else if (ft_strcmp(id, "L"))
-		par_save_light();
-	else if (ft_strcmp(id, "sp"))
-		par_save_sphere();
-	else if (ft_strcmp(id, "pl"))
-		par_save_plane();
-	else if (ft_strcmp(id, "cy"))
-		par_save_cylinder(); */
+	else if (ft_strcmp(id, "L") == 0)
+		par_save_light(line, info);
+	else if (ft_strcmp(id, "sp") == 0)
+		par_save_sphere(line, info);
+/*	else if (ft_strcmp(id, "pl") == 0)
+		par_save_plane(line, info);
+	else if (ft_strcmp(id, "cy") == 0)
+		par_save_cylinder(line, info); */
 	else
 	{
 		free(id);
+		free(line);
 		ft_print_error("Identifier not found", info);
 	}
 	free(id);
+	free(line);
 }
 
 static bool	par_useful_line(char *line)
@@ -75,10 +94,8 @@ static void	par_extract_file(t_info *info, int fd)
 	{
 		if (par_useful_line(line))
 			par_save_line(line, info);
-		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 }
 
 void	ft_parser(t_info *info)

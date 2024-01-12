@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   scene_list_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 17:26:11 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 13:08:41 by ealgar-c         ###   ########.fr       */
+/*   Created: 2024/01/12 13:38:18 by ealgar-c          #+#    #+#             */
+/*   Updated: 2024/01/12 13:43:59 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../include/miniRT.h"
 
-/**
- * @brief checks if the character received is a separator
- * 
- * @param c -> the character to check
- * @return true -> if the character is a separator
- * @return false -> if the character is not a separator
- */
-bool	ft_isspace(char c)
+t_shape	*shapes_newnode(t_type type)
 {
-	if (c == 9 || c == '\n' || c == 32)
-		return (true);
-	return (false);
+	t_shape	*new;
+
+	new = malloc(sizeof(t_shape));
+	new->type = type;
+	new->next = NULL;
+	return (new);
+}
+
+void	shapes_addback(t_shape *root, t_shape *node)
+{
+	t_shape	*tmp;
+
+	tmp = root;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
 }

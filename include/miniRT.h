@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/11 19:48:58 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:01:00 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_point
  * 
  * center: the point of the center (for cy and sp) and a point of a plane
  * height: only for cy
- * diameter: only for cy and sp
+ * rad: (diam / 2) only for cy and sp
  * color: rgb settings
  * n_vector: only for pl and cy
  */
@@ -48,7 +48,7 @@ typedef struct s_properties
 {
 	t_point	center;
 	float	height;
-	float	diameter;
+	float	rad;
 	t_color	color;
 	float	n_vector[3]; // FIXME: crear estructura para los vectores
 }	t_properties;
@@ -121,4 +121,15 @@ void	ft_save_point(t_point *point, char *str, t_info *info);
 
 //	save_camera.c
 void	par_save_camera(char *line, t_info *info);
+
+//	save_light.c
+void	par_save_light(char *line, t_info *info);
+
+//	scene_list_tools.c
+t_shape	*shapes_newnode(t_type type);
+void	shapes_addback(t_shape *root, t_shape *node);
+
+//	save_sphere.c
+void	par_save_sphere(char *line, t_info *info);
+
 #endif
