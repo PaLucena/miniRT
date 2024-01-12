@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:25:30 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:43:57 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ void	ft_parser(t_info *info)
 	int	fd;
 
 	fd = open(info->filename, O_RDONLY);
+	// TODO: check extension
 	if (fd < 0)
 		ft_print_error("file not found", info);
 	par_extract_file(info, fd);
+	// TODO: printer to check all is saved correctly
 }

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:18:22 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:28:33 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:11:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	par_save_cylinder(char *line, t_info *info)
 	int		i;
 	t_shape	*new;
 
-	new = shapes_newnode(PL);
+	new = shapes_newnode(CY);
 	i = cy_save_pt(line, 0, &new->prop, info);
 	i = cy_save_vec(line, i, &new->prop, info);
 	i = cy_save_rad(line, i, &new->prop, info);
