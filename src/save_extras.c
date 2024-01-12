@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:59:04 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 19:57:55 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:30:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void	pt_save(char *str, float *mem, t_info *info)
 		free(str);
 		ft_print_error("Wrong values", info);
 	}
+	free(str);
 }
 
 static bool	pt_charcheck(char c)

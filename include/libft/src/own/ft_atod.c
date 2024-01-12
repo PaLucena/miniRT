@@ -6,12 +6,21 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:05:50 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/11 20:01:33 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:38:20 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 #include <math.h>
+
+static bool	ft_aux(char c, int dot, bool post)
+{
+	if (!c && dot == 0)
+		return (true);
+	if (!c && dot == 1 && post)
+		return (true);
+	return (false);
+}
 
 bool	ft_check_atod(char *str)
 {
@@ -32,7 +41,7 @@ bool	ft_check_atod(char *str)
 			post = true;
 		i++;
 	}
-	if (!str[i] && dot <= 1 && (dot == 1 && post))
+	if (ft_aux(str[i], dot, post))
 		return (true);
 	return (false);
 }
