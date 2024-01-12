@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:05:35 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:33:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,14 @@ void	ft_exit_program(void *param);
 
 //	mlx_hooks.c
 void	ft_keyhook(void *param);
+
+//sphere.c
+t_inter	*inter_sp(t_info *info, double x, double y);
+
+//plane.c
+t_inter	*inter_pl(t_info *info, double x, double y);
+
+//cylinder.c
+t_inter	*inter_cy(t_info *info, double x, double y);
 
 #endif
