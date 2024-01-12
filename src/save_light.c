@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   save_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:43:10 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:27:01 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:42:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static int	lset_save_point(char *line, int start, t_lset *new, t_info *info)
 {

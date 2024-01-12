@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 15:12:30 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:41:25 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 void	ft_print_shapes(t_shape *root)
 {

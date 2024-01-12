@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   save_extras.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:59:04 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:03:43 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:42:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static void	col_save(char *str, int *mem, t_info *info)
 {
