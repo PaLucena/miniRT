@@ -1,6 +1,8 @@
+.*
+miniRT
+
 # Prerequisites
 *.d
-.*
 
 # Object files
 *.o
