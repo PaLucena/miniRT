@@ -10,7 +10,7 @@ SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
 
-INC = -I include/libft -I ./include -I ./include/MLX42/include/MLX42
+INC = -I include/libft -I ./include/MLX42/include/MLX42 -I ./include
 MLX = include/MLX42/libmlx42.a
 BREW = -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
 LIB = include/libft/libft.a
@@ -31,12 +31,12 @@ RESET   := \033[0m
 all: libft mlx $(NAME)
 
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) -o $(NAME)
-	@ echo "\n\t\t$(GREEN)$(BOLD)----$(NAME) compiled----\n$(RESET)"
+	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) -o $(NAME)
+	@ echo "$(GREEN)$(BOLD)$(NAME) compiled\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)
-	@ $(CC) $(FLAGS) -c $< -o $@ $(HEADERS) 
+	@ $(CC) $(FLAGS) -c $< -o $@ $(INC) 
 
 libft:
 	@ make -C include/libft
@@ -48,7 +48,7 @@ clean:
 	@ rm -rf $(OBJ_PATH)
 	@ make -C include/libft clean
 	@ make -C include/MLX42 clean
-	@ echo "\n\t\t\t$(RED)$(BOLD)Cleaning...\n$(RESET)"
+	@ echo "\n$(RED)$(BOLD)$(NAME) deleted\n$(RESET)"
 
 fclean: clean
 	@ rm -rf $(NAME)

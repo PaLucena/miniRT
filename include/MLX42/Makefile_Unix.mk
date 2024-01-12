@@ -6,7 +6,7 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/26 21:36:38 by W2Wizard          #+#    #+#              #
-#    Updated: 2023/08/26 18:19:41 by palucena         ###   ########.fr        #
+#    Updated: 2024/01/12 18:29:33 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RESET	:= \033[0m
 #//= Make Rules =//#
 $(NAME): $(OBJS)
 	@ar rc $@ $^
-	@echo "\n\t\t  $(GREEN)$(BOLD)----MLX42 compiled----$(BOLD)$(GREEN)\n"
+	@echo "$(GREEN)$(BOLD)MLX42 compiled$(BOLD)$(GREEN)\n"
 
 %.o: %.c $(HDRS)
 #	@echo "$(GREEN)$(BOLD)Compiling:$(RESET) $(notdir $<)"
