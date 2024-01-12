@@ -6,15 +6,15 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 16:45:03 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:47:32 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WIDTH 1920
-# define HEIGHT 1080 
+# define WIDTH 1920.00
+# define HEIGHT 1080.00
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -75,6 +75,12 @@ typedef struct s_shape
 	t_properties	prop;
 	struct s_shape	*next;
 }	t_shape;
+
+typedef struct s_inter
+{
+	int		index;
+	double	d;
+}	t_inter;
 
 typedef struct s_mlxset
 {
