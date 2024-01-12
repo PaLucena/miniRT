@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:27:52 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:13:23 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:27:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	cset_save_point(char *line, int start, t_cset *new, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
@@ -41,7 +40,6 @@ static int	cset_save_vector(char *line, int start, t_cset *new, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
@@ -60,7 +58,6 @@ static int	cset_save_fov(char *line, int start, t_cset *new, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);

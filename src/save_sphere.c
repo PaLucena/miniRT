@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:30:27 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:02:44 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:28:44 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	sp_save_pt(char *line, int start, t_properties *prop, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
@@ -41,7 +40,6 @@ static int	sp_save_rad(char *line, int start, t_properties *prop, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
@@ -55,7 +53,7 @@ static int	sp_save_rad(char *line, int start, t_properties *prop, t_info *info)
 	return (i + j);
 }
 
-static int	sp_save_rgb(char *line, int start, t_properties *prop, t_info *info)
+int	sp_save_rgb(char *line, int start, t_properties *prop, t_info *info)
 {
 	int		i;
 	int		j;
@@ -88,6 +86,5 @@ void	par_save_sphere(char *line, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	if (line[i])
-		ft_print_error("Unknown Light info", info);
-	printf("saved sphere");
+		ft_print_error("Unknown Sphere info", info);
 }

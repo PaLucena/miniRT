@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:04:48 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:25:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	par_save_line(char *line, t_info *info)
 		par_save_light(line, info);
 	else if (ft_strcmp(id, "sp") == 0)
 		par_save_sphere(line, info);
-/*	else if (ft_strcmp(id, "pl") == 0)
+	else if (ft_strcmp(id, "pl") == 0)
 		par_save_plane(line, info);
 	else if (ft_strcmp(id, "cy") == 0)
-		par_save_cylinder(line, info); */
+		par_save_cylinder(line, info);
 	else
 	{
 		free(id);

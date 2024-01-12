@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 14:12:37 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:23:43 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	par_save_amb(char *line, t_info *info);
 void	ft_save_rgb(t_color *color, char *str, t_info *info);
 void	ft_save_point(t_point *point, char *str, t_info *info);
 void	ft_save_vector(t_vector *vector, char *str, t_info *info);
+int		cy_save_hei(char *line, int start, t_properties *prop, t_info *info);
 
 //	save_camera.c
 void	par_save_camera(char *line, t_info *info);
@@ -139,5 +140,11 @@ void	shapes_addback(t_shape *root, t_shape *node);
 
 //	save_sphere.c
 void	par_save_sphere(char *line, t_info *info);
+
+//	save_plane.c
+void	par_save_plane(char *line, t_info *info);
+
+//	save_cylinder.c
+void	par_save_cylinder(char *line, t_info *info);
 
 #endif

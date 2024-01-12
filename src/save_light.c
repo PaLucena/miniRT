@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:43:10 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:31 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:27:01 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	lset_save_point(char *line, int start, t_lset *new, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
@@ -58,7 +57,6 @@ static int	lset_save_ratio(char *line, int start, t_lset *new, t_info *info)
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	j = 0;
-	printf("\n");
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
