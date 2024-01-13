@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:47:16 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:15:16 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 		}
 		tmp_shape = tmp_shape->next;
 	}
+	return (tmp_inter);
 }
 
 void	put_pixels(t_info *info)
@@ -58,6 +59,7 @@ void	put_pixels(t_info *info)
 			}
 			else
 				px_put_black();
+			free(inter_tmp);
 			y++;
 		}
 		x++;
