@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:33:05 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:02:31 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ void	ft_exit_program(void *param);
 void	ft_keyhook(void *param);
 
 //sphere.c
-t_inter	*inter_sp(t_info *info, double x, double y);
+t_inter	*inter_sp(t_info *info, double i, double j);
 
 //plane.c
-t_inter	*inter_pl(t_info *info, double x, double y);
+t_inter	*inter_pl(t_info *info, double i, double j);
 
 //cylinder.c
-t_inter	*inter_cy(t_info *info, double x, double y);
+t_inter	*inter_cy(t_info *info, double i, double j);
+
+//inter_utils.c
+double	ray_direction(t_info *info, double i, double j);
 
 #endif

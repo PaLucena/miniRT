@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:03:27 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/13 11:56:30 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define MINIRT_H
 
 # define WIDTH 1920
-# define HEIGHT 1080 
+# define HEIGHT 1080
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 17:32:26 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:24:46 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
-
-typedef struct s_point
-{
-	float	x;
-	float	y;
-	float	z;
-}	t_point;
 
 typedef struct s_vector
 {
@@ -77,6 +70,22 @@ typedef struct s_inter
 	int		index;
 	double	d;
 }	t_inter;
+
+/**
+ * @brief Coordenadas de un plano en la escena
+ * 
+ * l -> left
+ * r -> right
+ * t -> top
+ * b -> bottom
+ */
+typedef	struct s_plcoor
+{
+	double	l;
+	double	r;
+	double	t;
+	double	b;
+}	t_plcoor;
 
 typedef struct s_mlxset
 {
