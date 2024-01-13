@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_cylinder.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:18:22 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:04:51 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:17:27 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	par_save_cylinder(char *line, t_info *info)
 	int		i;
 	t_shape	*new;
 
-	new = shapes_newnode(CY);
+	new = shapes_newnode(CY, shapes_get_last_idx(info->shapes_list));
 	i = cy_save_pt(line, 0, &new->prop, info);
 	i = cy_save_vec(line, i, &new->prop, info);
 	i = cy_save_rad(line, i, &new->prop, info);

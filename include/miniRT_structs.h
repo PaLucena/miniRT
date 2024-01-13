@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/13 12:24:46 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/13 13:29:57 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_shape
 {
 	t_type			type;
 	t_properties	prop;
+	int				index;
 	struct s_shape	*next;
 }	t_shape;
 

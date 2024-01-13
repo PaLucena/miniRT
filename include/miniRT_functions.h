@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/13 12:02:31 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/13 13:29:34 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	par_save_camera(char *line, t_info *info);
 void	par_save_light(char *line, t_info *info);
 
 //	scene_list_tools.c
-t_shape	*shapes_newnode(t_type type);
+t_shape	*shapes_newnode(t_type type, int last_idx);
 void	shapes_addback(t_shape *root, t_shape *node);
+int		shapes_get_last_idx(t_shape *root);
 
 //	save_sphere.c
 void	par_save_sphere(char *line, t_info *info);

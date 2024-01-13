@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:05:57 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:05:11 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:17:22 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	par_save_plane(char *line, t_info *info)
 	int		i;
 	t_shape	*new;
 
-	new = shapes_newnode(PL);
+	new = shapes_newnode(PL, shapes_get_last_idx(info->shapes_list));
 	i = pl_save_pt(line, 0, &new->prop, info);
 	i = pl_save_vec(line, i, &new->prop, info);
 	i = pl_save_rgb(line, i, &new->prop, info);

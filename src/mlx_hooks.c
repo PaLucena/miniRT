@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:18:39 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 16:44:47 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:38:50 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	ft_keyhook(void *param)
 		ft_exit_program(param);
 	if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_LEFT))
 		khook_left(info);
-	else if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_UP))
+	if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_UP))
 		khook_up(info);
-	else if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_DOWN))
+	if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_DOWN))
 		khook_down(info);
-	else if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(info->mlx_s.mlx, MLX_KEY_RIGHT))
 		khook_right(info);
 	else
 		return ;
