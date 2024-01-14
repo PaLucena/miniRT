@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:30:27 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:14:41 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/14 21:43:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	sp_save_pt(char *line, int start, t_properties *prop, t_info *info)
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
-	ft_save_point(&prop->center, str, info);
+	ft_save_point(&prop->c, str, info);
 	free(str);
 	return (i + j);
 }

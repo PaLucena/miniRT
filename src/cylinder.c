@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/13 11:44:48 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/14 21:19:13 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_inter	*inter_cy(t_info *info, double i, double j)
+t_inter	*inter_cy(t_info *in, double i, double j)
 {
 	
 }
