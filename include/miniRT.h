@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 15:19:26 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:19:11 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WIDTH 1920.00
-# define HEIGHT 1080.00
-# define WIDTH_INT 1920
-# define HEIGHT_INT 1080
+# define WIDTH 1200.00
+# define HEIGHT 700.00
+# define WIDTH_INT 1200
+# define HEIGHT_INT 700
 
 # include <stdio.h>
 # include <stdlib.h>

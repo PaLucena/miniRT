@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 17:44:03 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:27:50 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,29 @@ void	put_pixels(t_info *info)
 	double	y;
 	t_inter	*inter_tmp;
 
-		y = 0;
+	y = 0;
 	image_plane_coords(info);
-	while (y < WIDTH)
+	while (y < HEIGHT)
 	{
-	x = 0;
-		while (x < HEIGHT)
+		x = 0;
+		while (x < WIDTH)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
+			//if (x == 0)
+			//	printf("(%f en %i)", inter_tmp->d, (int)y);
 			if (inter_tmp)
 			{
-				printf("(%f)", inter_tmp->d);
 				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(inter_tmp, info));
 			}
 			else
 			{
-				printf("()");
+				//printf("()");
 				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(NULL, info));
 			}
 			free(inter_tmp);
 			x++;
 		}
-		printf("\n");
+		//printf("\n\n");
 		y++;
 	}
 	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);

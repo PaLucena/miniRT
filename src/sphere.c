@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 15:09:23 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:27:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 	inter->d = quadratic_equation(abc.x, abc.y, abc.z);
 	if (inter->d == -1)
 		return (NULL);
+	printf("HELLO %f\n", inter->d);
 	inter->d *= sqrt(pow((p.x - sp->prop.c.x), 2) + pow((p.y - sp->prop.c.y), 2) + pow((p.z - sp->prop.c.z), 2));
 	inter->q.x = in->cset->point.x + inter->d * in->cset->n_vec.i;
 	inter->q.y = in->cset->point.y + inter->d * in->cset->n_vec.j;

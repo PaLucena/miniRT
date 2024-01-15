@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 17:36:24 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:42:52 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 t_vector	*normalize_vector(t_vector *v)
 {
 	t_vector	*v_norm;
+	double		tmp;
 	
 	v_norm = malloc(sizeof(t_vector));
-	v_norm->i = v->i / sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
-	v_norm->j = v->j / sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
-	v_norm->k = v->k / sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
+	v_norm->i = 0;
+	v_norm->j = 0;
+	v_norm->k = 0;
+	tmp = sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
+	if (tmp != 0)
+	{
+		v_norm->i = v->i / tmp;
+		v_norm->j = v->j / tmp;
+		v_norm->k = v->k / tmp;
+	}
 	return (v_norm);
 }
 
@@ -48,7 +56,7 @@ void	image_plane_coords(t_info *i)
 	free(v2_n);
 }
 
-t_vector	*ray_direction(t_info *in, double i, double j)
+/* t_vector	*ray_direction(t_info *in, double i, double j)
 {
 	t_vector	cp;
 	t_point		p;
@@ -60,4 +68,4 @@ t_vector	*ray_direction(t_info *in, double i, double j)
 	cp.j = p.y - in->cset->point.y;
 	cp.k = p.z - in->cset->point.z;
 	return (normalize_vector(&cp));
-}
+} */
