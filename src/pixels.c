@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/13 19:14:01 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:43:45 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 	while (tmp_shape)
 	{
 		if (tmp_shape->type == CY)
-			new_inter = inter_cy(info, x, y);
+			printf("No cylinder :'(\n"); //new_inter = inter_cy(info, x, y);
 		else if (tmp_shape->type == PL)
-			new_inter = inter_pl(info, x, y);
+			printf("No plane :'(\n"); //new_inter = inter_pl(info, x, y);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, x, y);
+			new_inter = inter_sp(info, tmp_shape, x, y);
 		if (new_inter)
 		{
 			if (!tmp_inter)
