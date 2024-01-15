@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/14 21:23:15 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:18:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		ft_print_error(char *str, t_info *info);
 
 //	init.c
 t_info		*init_info(char *filename);
+void		init_mlx(t_info	*info);
 
 //	parser.c
 void		ft_parser(t_info *info);
@@ -60,7 +61,7 @@ void		ft_exit_program(void *param);
 void		ft_keyhook(void *param);
 
 //sphere.c
-t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j);
+t_inter		*inter_sp(t_info *in, t_shape *sp, double i, double j);
 
 //plane.c
 t_inter		*inter_pl(t_info *in, double i, double j);
@@ -69,8 +70,11 @@ t_inter		*inter_pl(t_info *in, double i, double j);
 t_inter		*inter_cy(t_info *in, double i, double j);
 
 //inter_utils.c
-t_vector	*normalize_vector(t_vector *v);
+//t_vector	*normalize_vector(t_vector *v);
 void		image_plane_coords(t_info *i);
-t_vector	*ray_direction(t_info *info, double i, double j);
+//t_vector	*ray_direction(t_info *info, double i, double j);
+
+//	pixels.c
+void	put_pixels(t_info *info);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 12:43:45 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:44:03 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,72 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 	return (tmp_inter);
 }
 
+uint32_t	get_rgba(t_inter *inter, t_info *info)
+{
+	t_shape	*shape;
+	if (inter)
+	{
+		shape = info->shapes_list;
+		while (shape->index != inter->index)
+			shape = shape->next;
+		return (shape->prop.color.r << 24 | shape->prop.color.g << 16 | shape->prop.color.b << 8 | 255);
+	}
+	else
+		return (0 << 24 | 0 << 16 | 0 << 8 | 255);
+}
+
 void	put_pixels(t_info *info)
 {
 	double	x;
 	double	y;
 	t_inter	*inter_tmp;
 
-	x = 0.0;
-	y = 0.0;
-	while (x <= WIDTH)
+		y = 0;
+	image_plane_coords(info);
+	while (y < WIDTH)
 	{
-		while (y <= HEIGHT)
+	x = 0;
+		while (x < HEIGHT)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
 			if (inter_tmp)
 			{
-				px_put_coll();
+				printf("(%f)", inter_tmp->d);
+				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(inter_tmp, info));
 			}
 			else
-				px_put_black();
+			{
+				printf("()");
+				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(NULL, info));
+			}
 			free(inter_tmp);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}
+	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
+}
+
+/* void	put_pixels(t_info *info)
+{
+	int32_t	x;
+	int32_t	y;
+	//t_inter		*inter_tmp;
+
+	x = 0;
+	image_plane_coords(info);
+	while (x < WIDTH_INT)
+	{
+		y = 0;
+		while (y < HEIGHT_INT)
+		{
+			mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(0, 0, 255, 255));
 			y++;
 		}
 		x++;
+		printf("new x iter (%i)\n", x);
 	}
-}
+	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
+	printf("fuera del loop\n");
+} */

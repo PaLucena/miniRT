@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/14 21:42:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:24:42 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	ft_printparser(t_info *info)
 		info->lset->color.r, info->lset->color.g,
 		info->lset->color.b, info->lset->brightness);
 	ft_print_shapes(info->shapes_list);
-
 }
 
 void	ft_print_error(char *str, t_info *info)
@@ -93,12 +92,15 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-	atexit(ft_leaks);
+	// atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
+	printf("parsed\n");
 	ft_printparser(info);
+	init_mlx(info);
+	put_pixels(info);
 	mlx_loop(info->mlx_s.mlx);
 	return (0);
 }

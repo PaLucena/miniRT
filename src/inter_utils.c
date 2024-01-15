@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   inter_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/14 22:20:24 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:36:24 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-/* t_vector	*normalize_vector(t_vector *v)
+t_vector	*normalize_vector(t_vector *v)
 {
 	t_vector	*v_norm;
 	
@@ -21,7 +21,7 @@
 	v_norm->j = v->j / sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
 	v_norm->k = v->k / sqrt((v->i * v->i) + (v->j * v->j) + (v->k * v->k));
 	return (v_norm);
-} */
+}
 
 void	image_plane_coords(t_info *i)
 {
@@ -48,7 +48,7 @@ void	image_plane_coords(t_info *i)
 	free(v2_n);
 }
 
-/* t_vector	*ray_direction(t_info *in, double i, double j)
+t_vector	*ray_direction(t_info *in, double i, double j)
 {
 	t_vector	cp;
 	t_point		p;
@@ -60,4 +60,4 @@ void	image_plane_coords(t_info *i)
 	cp.j = p.y - in->cset->point.y;
 	cp.k = p.z - in->cset->point.z;
 	return (normalize_vector(&cp));
-} */
+}
