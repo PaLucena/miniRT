@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 18:10:20 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:12:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_shape
 typedef struct s_inter
 {
 	int		index;
-	t_point	q;
 	double	d;
 	t_point q;
 }	t_inter;

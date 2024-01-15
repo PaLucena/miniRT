@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 18:10:09 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:43:59 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,19 @@ void		image_plane_coords(t_info *i);
 //t_vector	*ray_direction(t_info *info, double i, double j);
 
 //	pixels.c
-void	put_pixels(t_info *info);
+void		put_pixels(t_info *info);
 
 //	light.c
-t_color	ft_phong(t_inter *inter, t_info *info);
+void		ft_phong(t_inter *inter, t_info *info, double x, double y);
+void		ft_darkness(t_info *info, double x, double y);
+int			ft_cl_clamp(double unclamped);
+
+//	light_diffuse.c
+t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
+
+//	vector_utils.c
+t_vector	v_mult(t_vector a, t_vector b);
+t_vector	v_sum(t_vector a, t_vector b);
+t_vector	v_unitary(t_vector a);
+t_vector	v_get_from2(t_point from, t_point to);
 #endif
