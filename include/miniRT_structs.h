@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/13 19:34:14 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:10:20 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ typedef struct s_vector
 /**
  * @brief struct to save the properties of the shapes
  * 
- * center: the point of the center (for cy and sp) and a point of a plane
+ * c: the point of the center (for cy and sp) and a point of a plane
  * height: only for cy
  * rad: (diam / 2) only for cy and sp
  * color: rgb settings
- * n_vector: only for pl and cy
+ * n_vec: only for pl and cy
  */
 typedef struct s_properties
 {
-	t_point		center;
+	t_point		c;
 	float		height;
 	float		rad;
 	t_color		color;
-	t_vector	n_vector;
+	t_vector	n_vec;
 }	t_properties;
 
 typedef enum e_type
@@ -72,13 +72,33 @@ typedef struct s_shape
 /**
  * @brief Intersección de rayo con figura.
  * 
+ * Index -> Indice de la figura
+ * d -> Distancia entre la camara y el punto de interseccion
+ * q -> Coordenadas del punto de interseccion
  */
 typedef struct s_inter
 {
 	int		index;
 	t_point	q;
 	double	d;
+	t_point q;
 }	t_inter;
+
+/**
+ * @brief Coordenadas de las esquinas del plano imagen
+ * 
+ * l -> left ('x' de la esquina superior izquierda del plano imagen)
+ * r -> right ('x' de la esquina superior derecha del plano imagen)
+ * t -> top ('y' de la esquina superior derecha del plano imagen)
+ * b -> bottom ('y' de la esquina inferior derecha del plano imagen)
+ */
+typedef	struct s_iplane
+{
+	double	l;
+	double	r;
+	double	t;
+	double	b;
+}	t_iplane;
 
 typedef struct s_mlxset
 {
@@ -96,7 +116,7 @@ typedef struct s_cset
 {
 	t_point		point;
 	int			fov;
-	t_vector	n_vector;
+	t_vector	n_vec;
 }	t_cset;
 
 typedef struct s_lset

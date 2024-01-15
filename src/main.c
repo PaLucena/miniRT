@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:19:45 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:24:42 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ void	ft_print_shapes(t_shape *root)
 		{
 			printf("CYLINDER:\n");
 			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.center.x, tmp->prop.center.y, tmp->prop.center.z);
+				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
 			printf("\theight: %f\n\tdiam: %f\n",
 				tmp->prop.height, tmp->prop.rad * 2.0);
 			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
 				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
 			printf("\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
-				tmp->prop.n_vector.i, tmp->prop.n_vector.j,
-				tmp->prop.n_vector.k);
+				tmp->prop.n_vec.i, tmp->prop.n_vec.j,
+				tmp->prop.n_vec.k);
 		}
 		else if (tmp->type == SP)
 		{
 			printf("SPHERE:\n");
 			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.center.x, tmp->prop.center.y, tmp->prop.center.z);
+				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
 			printf("\tdiam: %f\n", tmp->prop.rad * 2.0);
 			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
 				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
@@ -46,12 +46,12 @@ void	ft_print_shapes(t_shape *root)
 		{
 			printf("PLANE:\n");
 			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.center.x, tmp->prop.center.y, tmp->prop.center.z);
+				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
 			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
 				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
 			printf("\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
-				tmp->prop.n_vector.i, tmp->prop.n_vector.j,
-				tmp->prop.n_vector.k);
+				tmp->prop.n_vec.i, tmp->prop.n_vec.j,
+				tmp->prop.n_vec.k);
 		}
 		tmp = tmp->next;
 	}
@@ -64,14 +64,13 @@ void	ft_printparser(t_info *info)
 		info->aset->color.b);
 	printf("CSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tFOV: %i\n\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
 		info->cset->point.x, info->cset->point.y, info->cset->point.z,
-		info->cset->fov, info->cset->n_vector.i,
-		info->cset->n_vector.j, info->cset->n_vector.k);
+		info->cset->fov, info->cset->n_vec.i,
+		info->cset->n_vec.j, info->cset->n_vec.k);
 	printf("LSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n\tbrightness: %f\n",
 		info->lset->point.x, info->lset->point.y, info->lset->point.z,
 		info->lset->color.r, info->lset->color.g,
 		info->lset->color.b, info->lset->brightness);
 	ft_print_shapes(info->shapes_list);
-
 }
 
 void	ft_print_error(char *str, t_info *info)
@@ -93,12 +92,15 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-	atexit(ft_leaks);
+	// atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
+	printf("parsed\n");
 	ft_printparser(info);
+	init_mlx(info);
+	put_pixels(info);
 	mlx_loop(info->mlx_s.mlx);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:03:54 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:24:17 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_mlx(t_info	*info)
 {
-	info->mlx_s.mlx = mlx_init(WIDTH, HEIGHT, "miniRT", false);
-	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, WIDTH, HEIGHT);
+	info->mlx_s.mlx = mlx_init(WIDTH_INT, HEIGHT_INT, "miniRT", false);
+	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, WIDTH_INT, HEIGHT_INT);
 	mlx_close_hook(info->mlx_s.mlx, &ft_exit_program, (void *)info);
 	mlx_loop_hook(info->mlx_s.mlx, &ft_keyhook, (void *)info);
 }
@@ -30,6 +30,6 @@ t_info	*init_info(char *filename)
 	new->lset = NULL;
 	new->cset = NULL;
 	new->shapes_list = NULL;
-	init_mlx(new);
+	new->pl = malloc(sizeof(t_iplane));
 	return (new);
 }

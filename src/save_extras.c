@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_extras.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:59:04 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 16:42:56 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:50:44 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_save_rgb(t_color *color, char *str, t_info *info)
 	col_save(ft_substr(str, i + j, k), &color->b, info);
 }
 
-static void	pt_save(char *str, float *mem, t_info *info)
+static void	pt_save(char *str, double *mem, t_info *info)
 {
 	if (ft_check_atod(str))
 		*mem = ft_atod(str);

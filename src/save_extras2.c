@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   save_extras2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 16:42:56 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:51:25 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static void	vec_save(char *str, float *mem, t_info *info)
+static void	vec_save(char *str, double *mem, t_info *info)
 {
 	if (ft_check_atod(str))
 	{
