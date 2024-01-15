@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:37:20 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:35:59 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ t_inter	*inter_pl(t_info *info, double x, double y);
 //cylinder.c
 t_inter	*inter_cy(t_info *info, double x, double y);
 
+//	light.c
+t_color	ft_phong(t_inter *inter, t_info *info);
 #endif

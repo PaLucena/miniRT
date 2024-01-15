@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/12 18:12:52 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:34:14 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ typedef struct s_color
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_point;
 
 typedef struct s_vector
 {
-	float	i;
-	float	j;
-	float	k;
+	double	i;
+	double	j;
+	double	k;
 }	t_vector;
 
 /**
@@ -76,6 +76,7 @@ typedef struct s_shape
 typedef struct s_inter
 {
 	int		index;
+	t_point	q;
 	double	d;
 }	t_inter;
 
@@ -109,6 +110,7 @@ typedef struct s_info
 {
 	char		*filename;
 	t_mlxset	mlx_s;
+	t_iplane	*pl;
 	t_aset		*aset;
 	t_cset		*cset;
 	t_lset		*lset;
