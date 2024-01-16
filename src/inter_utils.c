@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 19:42:52 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:42:00 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,12 @@ t_vector	*normalize_vector(t_vector *v)
 
 void	image_plane_coords(t_info *i)
 {
-	t_vector	v1;
-	t_vector	v2;
-	t_vector	*v1_n;
-	t_vector	*v2_n;
-	double		fov_adj;
-
-	v1.i = 0;
-	v1.j = i->cset->n_vec.k;
-	v1.k = i->cset->n_vec.j * -1;
-	v1_n = normalize_vector(&v1);
-	v2.i = i->cset->n_vec.j * (-i->cset->n_vec.j) - pow(i->cset->n_vec.k, 2);
-	v2.j = (-i->cset->n_vec.i) * (-i->cset->n_vec.j);
-	v2.k = i->cset->n_vec.i * i->cset->n_vec.k;
-	v2_n = normalize_vector(&v2);
-	fov_adj = (WIDTH / 2) / (i->cset->fov / 2); // Magnitud (distancia) del vector normal cámara-plano imagen
-	i->pl->l = i->cset->point.x - fov_adj * v1_n->i + (HEIGHT / 2) * v2_n->i;
-	i->pl->r = i->cset->point.x + fov_adj * v1_n->i + (HEIGHT / 2) * v2_n->i;
-	i->pl->t = i->cset->point.y + fov_adj * v1_n->j + (HEIGHT / 2) * v2_n->j;
-	i->pl->b = i->cset->point.y + fov_adj * v1_n->j - (HEIGHT / 2) * v2_n->j;
-	free(v1_n);
-	free(v2_n);
+	i->pl->l = i->cset->point.x - WIDTH / 2;
+	i->pl->r = i->cset->point.x + WIDTH / 2;
+	i->pl->t = i->cset->point.y + HEIGHT / 2;
+	i->pl->b = i->cset->point.y - HEIGHT / 2;
+	printf("Extremos del plano en x -> %f  %f\n", i->pl->l, i->pl->r);
+	printf("Extremos del plano en y -> %f  %f\n", i->pl->t, i->pl->b);
 }
 
 /* t_vector	*ray_direction(t_info *in, double i, double j)

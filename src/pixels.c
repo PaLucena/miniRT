@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 20:27:50 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:51:38 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ void	put_pixels(t_info *info)
 			{
 				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(inter_tmp, info));
 			}
-			else
+			/* else
 			{
 				//printf("()");
 				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(NULL, info));
-			}
+			} */
 			free(inter_tmp);
 			x++;
 		}
