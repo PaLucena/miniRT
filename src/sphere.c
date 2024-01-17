@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/17 16:06:47 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:19:38 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 	abc.y = 2 * (d.i * cc.i + d.j * cc.j + d.k * cc.k);
 	abc.z = pow(v_mod(v_get_from2(sp->prop.c, in->cset->point)), 2) - pow(sp->prop.rad, 2);
 	inter->d = quadratic_equation(abc.x, abc.y, abc.z);
-	//	printf("Discriminante: %f\n", abc.y * abc.y - 4 * abc.x * abc.z);
 /* 	if (i == WIDTH / 2 && j == HEIGHT / 2 - 10)
 	{
 		printf("Camara: %f  %f  %f\n", in->cset->point.x, in->cset->point.y, in->cset->point.z);
@@ -109,9 +108,17 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 		free (inter);
 		return (NULL);
 	}
-	//inter->d *= sqrt(pow((p.x - sp->prop.c.x), 2) + pow((p.y - sp->prop.c.y), 2) + pow((p.z - sp->prop.c.z), 2));
-	inter->q.x = in->cset->point.x + inter->d * in->cset->n_vec.i;
-	inter->q.y = in->cset->point.y + inter->d * in->cset->n_vec.j;
-	inter->q.z = in->cset->point.z + inter->d * in->cset->n_vec.k;
+	cc = v_norm(cc);
+	//inter->d *= sqrt(pow((p.x - in->cset->point.x), 2) + pow((p.y - in->cset->point.y), 2) + pow((p.z - in->cset->point.z), 2));
+	inter->q.x = in->cset->point.x + inter->d * cc.i;
+	inter->q.y = in->cset->point.y + inter->d * cc.j;
+	inter->q.z = in->cset->point.z + inter->d * cc.k;
+	if (i == WIDTH / 2 && j == HEIGHT / 2)
+	{
+		printf("Punto ->%f %f %f\n", inter->q.x, inter->q.y, inter->q.z);
+		printf("Camara ->%f %f %f\n", in->cset->point.x, in->cset->point.y, in->cset->point.z);
+		printf("Distancia ->%f\n", inter->d);
+		printf("Vector ->%f %f %f\n", cc.i, cc.j, cc.k);
+	}
 	return (inter);
 }
