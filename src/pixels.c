@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/16 16:51:38 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:40:16 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 	tmp_inter = NULL;
 	while (tmp_shape)
 	{
+		//printf("Centro: %f %f %f\n", tmp_shape->prop.c.x, tmp_shape->prop.c.y, tmp_shape->prop.c.z);
 		if (tmp_shape->type == CY)
 			printf("No cylinder :'(\n"); //new_inter = inter_cy(info, x, y);
 		else if (tmp_shape->type == PL)

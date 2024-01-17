@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/17 14:26:36 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:06:47 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_vector	v_get_from2(t_point from, t_point to)
 	new.i = to.x - from.x;
 	new.j = to.y - from.y;
 	new.k = to.z - from.z;
+//	if (from.z == 0)
+//		printf("%f  %f  %f\n", new.i, new.j, new.k);
 	return (new);
 }
 
@@ -77,21 +79,20 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 	inter = malloc(sizeof(t_inter));
 	inter->index = sp->index;
 	p.x = in->pl->l + i;
-	p.y = in->pl->t - j;
+	p.y = in->pl->b + j;
 	p.z = (WIDTH / 2) / sin((in->cset->fov / 2) * (M_PI / 180)) + in->cset->point.z;
 /* 	if (in->cset->n_vec.k < 0)
 		p.z = ((WIDTH / 2) / sin((in->cset->fov / 2) * (M_PI / 180))) * (-1) + in->cset->point.z; */
 	d = v_norm(v_get_from2(in->cset->point, p));
-	if (i == WIDTH / 2 && j == HEIGHT / 2)
-	//	printf("Coordenadas del pixel central: %f %f %f\n", p.x, p.y, p.z);
 	cc = v_get_from2(in->cset->point, sp->prop.c);
-	printf("%f   con %f %f %f   en %f %f %f\n", sp->prop.c.x, sp->prop.c.y, sp->prop.c.z, cc.k, p.x, p.y, p.z);
+//	cc.k = -5;
+	//printf("%f - %f = %f\n", sp->prop.c.z, in->cset->point.z, cc.k);
 	abc.x = pow(v_mod(d), 2);
 	abc.y = 2 * (d.i * cc.i + d.j * cc.j + d.k * cc.k);
 	abc.z = pow(v_mod(v_get_from2(sp->prop.c, in->cset->point)), 2) - pow(sp->prop.rad, 2);
 	inter->d = quadratic_equation(abc.x, abc.y, abc.z);
 	//	printf("Discriminante: %f\n", abc.y * abc.y - 4 * abc.x * abc.z);
-	if (i == WIDTH / 2 && j == HEIGHT / 2 - 10)
+/* 	if (i == WIDTH / 2 && j == HEIGHT / 2 - 10)
 	{
 		printf("Camara: %f  %f  %f\n", in->cset->point.x, in->cset->point.y, in->cset->point.z);
 		printf("Pixel: %f  %f  %f\n", p.x, p.y, p.z);
@@ -100,7 +101,7 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 		printf("ABC: %f  %f  %f\n", abc.x, abc.y, abc.z);
 		printf("Distancia a colision en el centro del plano: %f\n", inter->d);
 	//	printf("Centro de la esfera: %f %f %f\n", inter->q.x, inter->q.y, inter->q.z);
-	}
+	} */
 	if (inter->d < 0)
 	{
 /* 		if (i == WIDTH / 2 && j == (HEIGHT / 2) - 5)
