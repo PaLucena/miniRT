@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:21:38 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 19:40:51 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:36:27 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,10 @@ t_vector	v_get_from2(t_point from, t_point to)
 	new.i = to.y - from.y;
 	new.i = to.z - from.z;
 	return (new);
+}
+
+
+double	v_mod(t_vector v)
+{
+	return (sqrt((v.i * v.i) + (v.j * v.j) + (v.k * v.k)));
 }

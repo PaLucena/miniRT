@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/18 15:35:36 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:39:12 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ void	put_pixels(t_info *info)
 		while (x < WIDTH)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
-			//if (x == 0)
-			//	printf("(%f en %i)", inter_tmp->d, (int)y);
 			if (inter_tmp)
+			{
+				printf("pixel\n");
 				ft_phong(inter_tmp, info, x, y);
+			}
 			else
 				ft_darkness(info, x, y);
 			free(inter_tmp);

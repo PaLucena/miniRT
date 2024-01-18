@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 15:34:17 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:36:50 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ t_vector	v_mult(t_vector a, t_vector b);
 t_vector	v_sum(t_vector a, t_vector b);
 t_vector	v_unitary(t_vector a);
 t_vector	v_get_from2(t_point from, t_point to);
+double		v_mod(t_vector v);
 #endif

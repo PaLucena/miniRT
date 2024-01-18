@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 19:48:55 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:38:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	ft_phong(t_inter *inter, t_info *info, double x, double y)
 {
 	t_shape	*shape;
 	t_color	amb;
-	t_color	diff;
+	// t_color	diff;
 
 	shape = info->shapes_list;
 	while (shape->index != inter->index)
 		shape = shape->next;
 	amb = ph_iamb(info, shape->prop.color);
-	diff = ph_idiffuse(amb, info, shape, *inter);
-	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(diff));
+	// diff = ph_idiffuse(amb, info, shape, *inter);
+	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(amb));
 }
 
 void	ft_darkness(t_info *info, double x, double y)
