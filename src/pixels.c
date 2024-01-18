@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 19:01:11 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:35:36 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 	tmp_inter = NULL;
 	while (tmp_shape)
 	{
+		//printf("Centro: %f %f %f\n", tmp_shape->prop.c.x, tmp_shape->prop.c.y, tmp_shape->prop.c.z);
 		if (tmp_shape->type == CY)
 			printf("No cylinder :'(\n"); //new_inter = inter_cy(info, x, y);
 		else if (tmp_shape->type == PL)
@@ -46,14 +47,16 @@ void	put_pixels(t_info *info)
 	double	y;
 	t_inter	*inter_tmp;
 
-		y = 0;
+	y = 0;
 	image_plane_coords(info);
 	while (y < HEIGHT)
 	{
-	x = 0;
+		x = 0;
 		while (x < WIDTH)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
+			//if (x == 0)
+			//	printf("(%f en %i)", inter_tmp->d, (int)y);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, x, y);
 			else

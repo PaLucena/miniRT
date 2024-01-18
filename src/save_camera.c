@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:27:52 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/14 18:55:07 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:17:30 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	cset_save_fov(char *line, int start, t_cset *new, t_info *info)
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
-	new->fov = ft_atoi(str);
+	new->fov = ft_atod(str);
 	free(str);
 	if (new->fov < 0 || new->fov > 180)
 		ft_print_error("Camera fov outside parameters", info);

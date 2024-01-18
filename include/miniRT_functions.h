@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/15 19:43:59 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:34:17 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_inter		*inter_pl(t_info *in, double i, double j);
 t_inter		*inter_cy(t_info *in, double i, double j);
 
 //inter_utils.c
-//t_vector	*normalize_vector(t_vector *v);
+t_vector	v_norm(t_vector v);
 void		image_plane_coords(t_info *i);
 //t_vector	*ray_direction(t_info *info, double i, double j);
 
