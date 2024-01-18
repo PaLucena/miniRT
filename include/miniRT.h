@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/16 14:45:49 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:27:30 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define HEIGHT_INT 1000
 
 # include <stdio.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/errno.h>
