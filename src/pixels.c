@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/17 14:40:16 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:09:02 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-t_inter	*get_closest_collision(double x, double y, t_info *info)
+t_inter	*get_closest_collision(t_pixel px, t_info *info)
 {
 	t_inter	*tmp_inter;
 	t_inter	*new_inter;
@@ -22,13 +22,12 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 	tmp_inter = NULL;
 	while (tmp_shape)
 	{
-		//printf("Centro: %f %f %f\n", tmp_shape->prop.c.x, tmp_shape->prop.c.y, tmp_shape->prop.c.z);
 		if (tmp_shape->type == CY)
-			printf("No cylinder :'(\n"); //new_inter = inter_cy(info, x, y);
+			new_inter = inter_cy(info, tmp_shape, px);
 		else if (tmp_shape->type == PL)
-			printf("No plane :'(\n"); //new_inter = inter_pl(info, x, y);
+			new_inter = inter_pl(info, tmp_shape, px);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, tmp_shape, x, y);
+			new_inter = inter_sp(info, tmp_shape, px);
 		if (new_inter)
 		{
 			if (!tmp_inter)
@@ -44,12 +43,19 @@ t_inter	*get_closest_collision(double x, double y, t_info *info)
 uint32_t	get_rgba(t_inter *inter, t_info *info)
 {
 	t_shape	*shape;
+	int		r;
+	int		g;
+	int		b;
+
 	if (inter)
 	{
 		shape = info->shapes_list;
 		while (shape->index != inter->index)
 			shape = shape->next;
-		return (shape->prop.color.r << 24 | shape->prop.color.g << 16 | shape->prop.color.b << 8 | 255);
+		r = shape->prop.color.r;
+		g = shape->prop.color.g;
+		b = shape->prop.color.b;
+		return (r << 24 | g << 16 | b << 8 | 255);
 	}
 	else
 		return (0 << 24 | 0 << 16 | 0 << 8 | 255);
@@ -57,57 +63,26 @@ uint32_t	get_rgba(t_inter *inter, t_info *info)
 
 void	put_pixels(t_info *info)
 {
-	double	x;
-	double	y;
+	t_pixel	px;
 	t_inter	*inter_tmp;
 
-	y = 0;
+	px.j = 0;
 	image_plane_coords(info);
-	while (y < HEIGHT)
+	while (px.j < HEIGHT)
 	{
-		x = 0;
-		while (x < WIDTH)
+		px.i = 0;
+		while (px.i < WIDTH)
 		{
-			inter_tmp = get_closest_collision(x, y, info);
-			//if (x == 0)
-			//	printf("(%f en %i)", inter_tmp->d, (int)y);
+			px.p = plane_point_coords(info, px.i, px.j);
+			px.d = v_norm(v_get_from2(info->cset->point, px.p));
+			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
-			{
-				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(inter_tmp, info));
-			}
-			/* else
-			{
-				//printf("()");
-				mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(NULL, info));
-			} */
+				mlx_put_pixel(info->mlx_s.win, px.i, px.j,
+					get_rgba(inter_tmp, info));
 			free(inter_tmp);
-			x++;
+			px.i++;
 		}
-		//printf("\n\n");
-		y++;
+		px.j++;
 	}
 	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
 }
-
-/* void	put_pixels(t_info *info)
-{
-	int32_t	x;
-	int32_t	y;
-	//t_inter		*inter_tmp;
-
-	x = 0;
-	image_plane_coords(info);
-	while (x < WIDTH_INT)
-	{
-		y = 0;
-		while (y < HEIGHT_INT)
-		{
-			mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(0, 0, 255, 255));
-			y++;
-		}
-		x++;
-		printf("new x iter (%i)\n", x);
-	}
-	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
-	printf("fuera del loop\n");
-} */

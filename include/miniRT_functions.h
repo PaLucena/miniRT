@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 17:59:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:26:36 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void		ft_exit_program(void *param);
 //	mlx_hooks.c
 void		ft_keyhook(void *param);
 
-//sphere.c
-t_inter		*inter_sp(t_info *in, t_shape *sp, double i, double j);
+//inter_sphere.c
+t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
 
-//plane.c
-t_inter		*inter_pl(t_info *in, double i, double j);
+//inter_plane.c
+t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
 
-//cylinder.c
-t_inter		*inter_cy(t_info *in, double i, double j);
+//inter_cylinder.c
+t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
 double		quadratic_equation(double a, double b, double c);
@@ -75,6 +75,7 @@ t_vector	v_unitary(t_vector a);
 double		v_mod(t_vector v);
 t_vector	v_get_from2(t_point from, t_point to);
 t_vector	v_norm(t_vector v);
+t_point		plane_point_coords(t_info *in, double i, double j);
 void		image_plane_coords(t_info *i);
 
 //	pixels.c

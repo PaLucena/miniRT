@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 18:16:46 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:57:34 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,19 @@ t_vector	v_norm(t_vector v)
 		v_norm.k = v.k / tmp;
 	}
 	return (v_norm);
+}
+
+t_point	plane_point_coords(t_info *in, double i, double j)
+{
+	t_point	p;
+
+	p.x = in->pl->l + i;
+	p.y = in->pl->b + j;
+	p.z = (WIDTH / 2) / sin((in->cset->fov / 2)
+			* (M_PI / 180)) + in->cset->point.z;
+	if (in->cset->n_vec.k > 0)
+		p.z *= -1;
+	return (p);
 }
 
 void	image_plane_coords(t_info *i)

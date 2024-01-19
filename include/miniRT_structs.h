@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/16 17:56:54 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:52:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,22 @@ typedef struct s_inter
 	double	d;
 	t_point q;
 }	t_inter;
+
+/**
+ * @brief Info about a single pixel in the screen
+ * 
+ * i -> X coordenate of the pixel inside the image plane
+ * j -> Y coordenate of the pixel inside the image plane
+ * p -> Coords (x, y, z) of the pixel in the scene
+ * d -> Normalized camera-pixel vector (direction)
+ */
+typedef struct s_pixel
+{
+	double		i;
+	double		j;
+	t_point		p;
+	t_vector	d;
+}	t_pixel;
 
 /**
  * @brief Coordenadas de las esquinas del plano imagen

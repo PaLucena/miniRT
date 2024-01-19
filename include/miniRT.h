@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 17:27:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 09:59:54 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # define WIDTH 1400.00
 # define HEIGHT 1000.00
-# define WIDTH_INT 1400
-# define HEIGHT_INT 1000
 
 # include <stdio.h>
 # include <stdbool.h>
