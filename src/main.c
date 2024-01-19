@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 13:50:44 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:12:37 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	ft_print_shapes(t_shape *root)
+/* void	ft_print_shapes(t_shape *root)
 {
 	t_shape	*tmp;
 
@@ -71,7 +71,7 @@ void	ft_printparser(t_info *info)
 		info->lset->color.r, info->lset->color.g,
 		info->lset->color.b, info->lset->brightness);
 	ft_print_shapes(info->shapes_list);
-}
+} */
 
 void	ft_print_error(char *str, t_info *info)
 {
@@ -96,8 +96,6 @@ int	main(int ac, char **av)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
-	ft_printparser(info);
-	printf("parsed\n\n");
 	init_mlx(info);
 	put_pixels(info);
 	mlx_loop(info->mlx_s.mlx);
