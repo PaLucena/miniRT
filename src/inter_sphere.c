@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 11:48:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:29:15 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,9 @@ t_point	calculate_abc(t_info *in, t_shape *sp, t_vector d, t_vector cc)
 
 	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
 	abc.x = pow(v_mod(d), 2);
-	abc.y = 2 * (d.i * cc.i + d.j * cc.j + d.k * cc.k);
+	abc.y = 2 * v_dot_product(d, cc);
 	abc.z = pow(tmp, 2) - pow(sp->prop.rad, 2);
 	return (abc);
-}
-
-t_point	inter_point_coords(t_info *in, t_inter *inter, t_vector cc)
-{
-	t_point	q;
-
-	q.x = in->cset->point.x + inter->d * cc.i;
-	q.y = in->cset->point.y + inter->d * cc.j;
-	q.z = in->cset->point.z + inter->d * cc.k;
-	return (q);
 }
 
 t_inter	*inter_sp(t_info *in, t_shape *sp, t_pixel px)

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:21:38 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 13:23:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:06 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,4 @@ t_vector	v_get_from2(t_point from, t_point to)
 	new.j = to.y - from.y;
 	new.k = to.z - from.z;
 	return (new);
-}
-
-t_vector	v_norm(t_vector v)
-{
-	t_vector	v_norm;
-	double		tmp;
-
-	v_norm.i = 0;
-	v_norm.j = 0;
-	v_norm.k = 0;
-	tmp = v_mod(v);
-	if (tmp != 0)
-	{
-		v_norm.i = v.i / tmp;
-		v_norm.j = v.j / tmp;
-		v_norm.k = v.k / tmp;
-	}
-	return (v_norm);
-}
-
-double	v_mod(t_vector v)
-{
-	return (sqrt((v.i * v.i) + (v.j * v.j) + (v.k * v.k)));
 }
