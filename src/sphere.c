@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 15:37:27 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:31:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, double i, double j)
 	inter->index = sp->index;
 	p.x = in->pl->l + i;
 	p.y = in->pl->b + j;
-	p.z = (WIDTH / 2) / sin((in->cset->fov / 2) * (M_PI / 180)) + in->cset->point.z;
+	p.z = (in->width / 2) / sin((in->cset->fov / 2) * (M_PI / 180)) + in->cset->point.z;
 	d = v_norm(v_get_from2(in->cset->point, p));
 	cc = v_get_from2(in->cset->point, sp->prop.c);
 	abc.x = pow(v_mod(d), 2);

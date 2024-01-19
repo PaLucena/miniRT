@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/17 12:22:07 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:26:45 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ t_vector	v_norm(t_vector v)
 
 void	image_plane_coords(t_info *i)
 {
-	i->pl->l = i->cset->point.x - WIDTH / 2;
-	i->pl->r = i->cset->point.x + WIDTH / 2;
-	i->pl->t = i->cset->point.y + HEIGHT / 2;
-	i->pl->b = i->cset->point.y - HEIGHT / 2;
+	i->pl->l = i->cset->point.x - i->width / 2;
+	i->pl->r = i->cset->point.x + i->width / 2;
+	i->pl->t = i->cset->point.y + i->height / 2;
+	i->pl->b = i->cset->point.y - i->height / 2;
 }
 
 /* t_vector	*ray_direction(t_info *in, double i, double j)

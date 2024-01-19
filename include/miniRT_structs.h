@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 11:06:39 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:31:06 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ typedef struct s_info
 	t_cset		*cset;
 	t_lset		*lset;
 	t_shape		*shapes_list;
+	int32_t		width;
+	int32_t		height;
 }	t_info;
 
 #endif

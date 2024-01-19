@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/18 16:28:20 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:46:18 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,12 @@ void	put_pixels(t_info *info)
 
 	y = 0;
 	image_plane_coords(info);
-	while (y < HEIGHT)
+	while (y < info->height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < info->width)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
-			if (x == WIDTH / 2 && y == HEIGHT /2)
-				printf("coll in the middle of the camera is %f,%f,%f\n", inter_tmp->q.x, inter_tmp->q.y, inter_tmp->q.z);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, x, y);
 			else
@@ -68,26 +66,3 @@ void	put_pixels(t_info *info)
 	}
 	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
 }
-
-/* void	put_pixels(t_info *info)
-{
-	int32_t	x;
-	int32_t	y;
-	//t_inter		*inter_tmp;
-
-	x = 0;
-	image_plane_coords(info);
-	while (x < WIDTH_INT)
-	{
-		y = 0;
-		while (y < HEIGHT_INT)
-		{
-			mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(0, 0, 255, 255));
-			y++;
-		}
-		x++;
-		printf("new x iter (%i)\n", x);
-	}
-	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
-	printf("fuera del loop\n");
-} */

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/18 16:50:17 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:38:10 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_phong(t_inter *inter, t_info *info, double x, double y)
 	while (shape->index != inter->index)
 		shape = shape->next;
 	amb = ph_iamb(info, shape->prop.color);
-	printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);
+	//printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);
 	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien
 	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(diff));
 }

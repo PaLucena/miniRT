@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:50 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:30:12 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_exit_program(void *param);
 
 //	mlx_hooks.c
 void		ft_keyhook(void *param);
+void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //sphere.c
 t_inter		*inter_sp(t_info *in, t_shape *sp, double i, double j);
