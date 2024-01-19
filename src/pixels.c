@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 14:44:02 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:18:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info)
 			else if (new_inter->d < tmp_inter->d)
 				tmp_inter = new_inter;
 		}
-		if (px.i == info->width / 2 && px.j == info->height / 2)
-				printf("Choca con %d en %f\n", new_inter->index, new_inter->d);
 		tmp_shape = tmp_shape->next;
 	}
 	return (tmp_inter);
