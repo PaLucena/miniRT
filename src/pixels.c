@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/18 15:39:12 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:28:20 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ void	put_pixels(t_info *info)
 		while (x < WIDTH)
 		{
 			inter_tmp = get_closest_collision(x, y, info);
+			if (x == WIDTH / 2 && y == HEIGHT /2)
+				printf("coll in the middle of the camera is %f,%f,%f\n", inter_tmp->q.x, inter_tmp->q.y, inter_tmp->q.z);
 			if (inter_tmp)
-			{
-				printf("pixel\n");
 				ft_phong(inter_tmp, info, x, y);
-			}
 			else
 				ft_darkness(info, x, y);
 			free(inter_tmp);
