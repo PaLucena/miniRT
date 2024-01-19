@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 13:15:01 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:21:51 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,6 @@ double	quadratic_equation(double a, double b, double c)
 	if ((a1 >= 0 && a2 >= 0 && a1 < a2) || a1 >= 0)
 		return (a1);
 	return (a2);
-}
-
-t_vector	v_unitary(t_vector a)
-{
-	t_vector	new;
-	double		mod;
-
-	mod = sqrt((pow(a.i, 2)) + (pow(a.j, 2)) + (pow(a.k, 2)));
-	new.i = a.i / mod;
-	new.j = a.j / mod;
-	new.k = a.k / mod;
-	return (new);
-}
-
-double	v_mod(t_vector v)
-{
-	return (sqrt((v.i * v.i) + (v.j * v.j) + (v.k * v.k)));
-}
-
-t_vector	v_get_from2(t_point from, t_point to)
-{
-	t_vector	new;
-
-	new.i = to.x - from.x;
-	new.j = to.y - from.y;
-	new.k = to.z - from.z;
-	return (new);
-}
-
-t_vector	v_norm(t_vector v)
-{
-	t_vector	v_norm;
-	double		tmp;
-
-	v_norm.i = 0;
-	v_norm.j = 0;
-	v_norm.k = 0;
-	tmp = sqrt((v.i * v.i) + (v.j * v.j) + (v.k * v.k));
-	if (tmp != 0)
-	{
-		v_norm.i = v.i / tmp;
-		v_norm.j = v.j / tmp;
-		v_norm.k = v.k / tmp;
-	}
-	return (v_norm);
 }
 
 t_point	plane_point_coords(t_info *in, double i, double j)
