@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 SRC_PATH = src/
 SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera.c save_light.c\
 	scene_list_tools.c save_sphere.c save_cylinder.c save_plane.c exit.c mlx_hooks.c sphere.c pixels.c \
-	inter_utils.c light.c light_diffuse.c vector_utils.c
+	inter_utils.c light.c light_diffuse.c vector_utils.c mlx_hooks2.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
