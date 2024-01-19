@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 18:04:21 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:50:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,16 @@ static void	par_extract_file(t_info *info, int fd)
 void	ft_parser(t_info *info)
 {
 	int	fd;
+	char	*ext;
 
 	fd = open(info->filename, O_RDONLY);
-	// TODO: check extension
+	ext = ft_substr(info->filename, ft_strlen(info->filename) - 3, 3);
+	if (ft_strcmp(ext, ".rt") != 0)
+	{
+		free(ext);
+		ft_print_error("invalid file extension", info);
+	}
+	free(ext);
 	if (fd < 0)
 		ft_print_error("file not found", info);
 	par_extract_file(info, fd);
