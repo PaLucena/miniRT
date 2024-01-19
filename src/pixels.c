@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 12:16:42 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:52:40 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,6 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info)
 	return (tmp_inter);
 }
 
-uint32_t	get_rgba(t_inter *inter, t_info *info)
-{
-	t_shape	*shape;
-	int		r;
-	int		g;
-	int		b;
-
-	if (inter)
-	{
-		shape = info->shapes_list;
-		while (shape->index != inter->index)
-			shape = shape->next;
-		r = shape->prop.color.r;
-		g = shape->prop.color.g;
-		b = shape->prop.color.b;
-		return (r << 24 | g << 16 | b << 8 | 255);
-	}
-	else
-		return (0 << 24 | 0 << 16 | 0 << 8 | 255);
-}
-
 void	put_pixels(t_info *info)
 {
 	t_pixel	px;
@@ -68,17 +47,18 @@ void	put_pixels(t_info *info)
 
 	px.j = 0;
 	image_plane_coords(info);
-	while (px.j < HEIGHT)
+	while (px.j < info->height)
 	{
 		px.i = 0;
-		while (px.i < WIDTH)
+		while (px.i < info->width)
 		{
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = v_norm(v_get_from2(info->cset->point, px.p));
 			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
-				mlx_put_pixel(info->mlx_s.win, px.i, px.j,
-					get_rgba(inter_tmp, info));
+				ft_phong(inter_tmp, info, px.i, px.j);
+			else
+				ft_darkness(info, px.i, px.j);
 			free(inter_tmp);
 			px.i++;
 		}

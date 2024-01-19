@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 11:26:36 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:43:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_exit_program(void *param);
 
 //	mlx_hooks.c
 void		ft_keyhook(void *param);
+void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
 t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
@@ -79,6 +80,20 @@ t_point		plane_point_coords(t_info *in, double i, double j);
 void		image_plane_coords(t_info *i);
 
 //	pixels.c
-void	put_pixels(t_info *info);
+void		put_pixels(t_info *info);
 
+//	light.c
+void		ft_phong(t_inter *inter, t_info *info, double x, double y);
+void		ft_darkness(t_info *info, double x, double y);
+int			ft_cl_clamp(double unclamped);
+
+//	light_diffuse.c
+t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
+
+//	vector_utils.c
+t_vector	v_mult(t_vector a, t_vector b);
+t_vector	v_sum(t_vector a, t_vector b);
+t_vector	v_unitary(t_vector a);
+t_vector	v_get_from2(t_point from, t_point to);
+double		v_mod(t_vector v);
 #endif

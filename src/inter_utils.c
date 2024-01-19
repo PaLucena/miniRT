@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 11:57:34 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:50:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ t_point	plane_point_coords(t_info *in, double i, double j)
 
 void	image_plane_coords(t_info *i)
 {
-	i->pl->l = i->cset->point.x - WIDTH / 2;
-	i->pl->r = i->cset->point.x + WIDTH / 2;
-	i->pl->t = i->cset->point.y + HEIGHT / 2;
-	i->pl->b = i->cset->point.y - HEIGHT / 2;
+	i->pl->l = i->cset->point.x - i->width / 2;
+	i->pl->r = i->cset->point.x + i->width / 2;
+	i->pl->t = i->cset->point.y + i->height / 2;
+	i->pl->b = i->cset->point.y - i->height / 2;
 }

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 11:52:05 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:47:09 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ typedef struct s_info
 	t_cset		*cset;
 	t_lset		*lset;
 	t_shape		*shapes_list;
+	int32_t		width;
+	int32_t		height;
 }	t_info;
 
 #endif
