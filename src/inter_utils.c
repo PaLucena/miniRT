@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 12:50:14 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:15:01 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_point	plane_point_coords(t_info *in, double i, double j)
 
 	p.x = in->pl->l + i;
 	p.y = in->pl->b + j;
-	p.z = (WIDTH / 2) / sin((in->cset->fov / 2)
+	p.z = (in->width / 2) / sin((in->cset->fov / 2)
 			* (M_PI / 180)) + in->cset->point.z;
 	if (in->cset->n_vec.k > 0)
 		p.z *= -1;
