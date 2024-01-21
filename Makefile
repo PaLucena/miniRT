@@ -1,7 +1,7 @@
 NAME = miniRT
 
 CC = gcc -g
-FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror # -g -fsanitize=address
 
 SRC_PATH = src/
 SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera.c save_light.c\
