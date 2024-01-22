@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:05:50 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/12 12:38:20 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:12:49 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,15 @@ double	ft_atod(char *str)
 	int		i;
 	double	res;
 	double	n;
+	bool	neg;
 
 	i = 0;
+	neg = false;
+	if (str[i] == '-')
+	{
+		str = ft_substr(str, 1, ft_strlen(str) - 1);
+		neg = true;
+	}
 	while (str[i] != '.')
 		i++;
 	save = ft_substr(str, 0, i);
@@ -63,5 +70,7 @@ double	ft_atod(char *str)
 	res = ft_atoi(save) / pow(10, ft_strlen(save));
 	res += n;
 	free(save);
+	if (neg)
+		return (free(str), res * -1);
 	return (res);
 }
