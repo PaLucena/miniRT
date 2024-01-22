@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:19:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 15:18:45 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:23:36 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ double	v_mod(t_vector v)
 double	v_dot_product(t_vector v1, t_vector v2)
 {
 	return (v1.i * v2.i + v1.j * v2.j + v1.k * v2.k);
+}
+
+t_vector	v_esc_mult(t_vector orig, double escalar)
+{
+	t_vector	new;
+
+	new.i = orig.i * escalar;
+	new.j = orig.j * escalar;
+	new.k = orig.k * escalar;
+	return (new);
 }

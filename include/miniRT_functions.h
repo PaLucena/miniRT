@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 12:04:34 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:20:12 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ t_vector	v_get_from2(t_point from, t_point to);
 t_vector	v_norm(t_vector v);
 double		v_mod(t_vector v);
 double		v_dot_product(t_vector v1, t_vector v2);
+t_vector	v_esc_mult(t_vector orig, double escalar);
 
 #endif
