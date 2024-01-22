@@ -6,19 +6,19 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:13:38 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_point	calculate_abc(t_info *in, t_shape *sp, t_vector d, t_vector cc)
+t_point	calculate_abc(t_info *in, t_shape *cy)
 {
 	t_point	abc;
 	double	tmp;
 
 	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
-	abc.x = pow(v_mod(d), 2);
+	abc.x = pow() + pow () + pow();
 	abc.y = 2 * (d.i * cc.i + d.j * cc.j + d.k * cc.k);
 	abc.z = pow(tmp, 2) - pow(sp->prop.rad, 2);
 	return (abc);
