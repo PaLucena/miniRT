@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 09:41:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:41:00 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ t_inter	*inter_pl(t_info *in, t_shape *pl, t_pixel px)
 	inter->d = (top / bot);
 	inter->q = inter_point_coords(in, inter, px.d);
 	inter->d *= (-1);
+	if (px.i == in->width / 2 && px.j == in->height / 2)
+	{
+		printf("punto: %f %f %f\n", pl->prop.c.x, pl->prop.c.y, pl->prop.c.z);
+		printf("top: %f, bot: %f \n", top, bot);
+	}
 	return (inter);
 }
 

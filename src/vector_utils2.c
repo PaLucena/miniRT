@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:19:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 15:23:36 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:09:46 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,18 @@ t_vector	v_esc_mult(t_vector orig, double escalar)
 {
 	t_vector	new;
 
-	new.i = orig.i * escalar;
-	new.j = orig.j * escalar;
-	new.k = orig.k * escalar;
+	if (orig.i != 0)
+		new.i = orig.i * escalar;
+	else
+		new.i = orig.i;
+	if (orig.j != 0)
+		new.j = orig.j * escalar;
+	else
+		new.j = orig.j;
+	if (orig.k != 0)
+		new.k = orig.k * escalar;
+	else
+		new.k = orig.k;
+
 	return (new);
 }
