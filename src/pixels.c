@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 15:30:37 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:59:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	put_pixels(t_info *info)
 	t_inter	*inter_tmp;
 
 	px.j = 0;
-	image_plane_coords(info);
 	while (px.j < info->height)
 	{
 		px.i = 0;
@@ -56,7 +55,7 @@ void	put_pixels(t_info *info)
 			px.d = v_norm(v_get_from2(info->cset->point, px.p));
 			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
-				ft_phong(inter_tmp, info, px.i, px.j);
+				ft_phong(inter_tmp, info, px);
 			else
 				ft_darkness(info, px.i, px.j);
 			free(inter_tmp);

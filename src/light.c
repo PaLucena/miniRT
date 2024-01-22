@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 12:29:09 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:58:28 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ int	ft_cl_clamp(double unclamped)
 	return (amb_color);
 }
 
-void	ft_phong(t_inter *inter, t_info *info, double x, double y)
+/* void	pablo_phong(t_info *in, t_inter *inter, t_shape *sh, t_pixel px)
+{
+	
+} */
+
+void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
 	t_shape	*shape;
 	t_color	amb;
@@ -48,10 +53,11 @@ void	ft_phong(t_inter *inter, t_info *info, double x, double y)
 	shape = info->shapes_list;
 	while (shape->index != inter->index)
 		shape = shape->next;
+	//pablo_phong(info, inter, shape, px);
 	amb = ph_iamb(info, shape->prop.color);
 	//printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);
 	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien
-	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(shape->prop.color));
+	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(shape->prop.color));
 }
 
 void	ft_darkness(t_info *info, double x, double y)

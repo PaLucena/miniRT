@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 12:04:50 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:54:16 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ typedef struct s_shape
 }	t_shape;
 
 /**
- * @brief Intersección de rayo con figura.
+ * @brief Shape-ray intersection
  * 
- * Index -> Indice de la figura
- * d -> Distancia entre la camara y el punto de interseccion
- * q -> Coordenadas del punto de interseccion
+ * Index -> Index of the shape
+ * d -> Distance between the camera and the intersection point
+ * q -> Intersection point coordinates
  */
 typedef struct s_inter
 {

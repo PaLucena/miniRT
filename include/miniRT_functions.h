@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 15:20:12 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:58:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc);
 void		put_pixels(t_info *info);
 
 //	light.c
-void		ft_phong(t_inter *inter, t_info *info, double x, double y);
+void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
 void		ft_darkness(t_info *info, double x, double y);
 int			ft_cl_clamp(double unclamped);
 
