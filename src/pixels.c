@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 12:52:40 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:04:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	put_pixels(t_info *info)
 	t_inter	*inter_tmp;
 
 	px.j = 0;
-	image_plane_coords(info);
 	while (px.j < info->height)
 	{
 		px.i = 0;
