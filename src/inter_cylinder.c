@@ -6,42 +6,47 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/21 20:13:38 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:11:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_point	calculate_abc(t_info *in, t_shape *cy)
+t_inter	*cy_topcover_inter(t_info *info, t_shape *cy, t_pixel px)
 {
-	t_point	abc;
-	double	tmp;
+	t_shape	*cover_c;
+	t_inter	*plane_inter;
 
-	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
-	abc.x = pow() + pow () + pow();
-	abc.y = 2 * (d.i * cc.i + d.j * cc.j + d.k * cc.k);
-	abc.z = pow(tmp, 2) - pow(sp->prop.rad, 2);
-	return (abc);
-}
-
-t_point	inter_point_coords(t_info *in, t_inter *inter, t_vector cc)
-{
-	t_point	q;
-
-	q.x = in->cset->point.x + inter->d * cc.i;
-	q.y = in->cset->point.y + inter->d * cc.j;
-	q.z = in->cset->point.z + inter->d * cc.k;
-	return (q);
+	cover_c = malloc(sizeof(t_shape));
+	cover_c->prop.c.x = (cy->prop.c.x + (cy->prop.n_vec.i
+				* cy->prop.height / 2));
+	cover_c->prop.c.y = (cy->prop.c.y + (cy->prop.n_vec.j
+				* cy->prop.height / 2));
+	cover_c->prop.c.z = (cy->prop.c.z + (cy->prop.n_vec.k
+				* cy->prop.height / 2));
+	cover_c->index = 0;
+	cover_c->prop.n_vec = cy->prop.n_vec;
+	plane_inter	= inter_pl(info, cover_c, px);
+	if (v_mod(v_get_from2(info->cset->point, plane_inter->q)) < cy->prop.rad)
+	{
+		free (plane_inter);
+		return (cover_c);
+	}
+	free (plane_inter);
+	free (cover_c);
+	return (NULL);
 }
 
 t_inter	*inter_cy(t_info *in, t_shape *cy, t_pixel px)
 {
-	t_inter		*inter;
-	t_vector	cc;
-	t_point		abc;
+	t_inter		*inter_body;
+	t_inter		*inter_top;
+	t_inter		*inter_bot;
 
-	inter = malloc(sizeof(t_inter));
-	inter->index = sp->index;
+	inter_body = cy_body_inter();
+	inter_body = cy_topcover_inter();
+	inter_body = cy_botcover_inter();
+	inter->index = cy->index;
 	cc = v_get_from2(in->cset->point, sp->prop.c);
 	abc = calculate_abc(in, sp, px.d, cc);
 	inter->d = quadratic_equation(abc.x, abc.y, abc.z);

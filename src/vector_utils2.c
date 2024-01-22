@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:19:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:10 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:18:45 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
