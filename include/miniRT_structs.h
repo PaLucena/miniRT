@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 12:47:09 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:04:50 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,22 +99,6 @@ typedef struct s_pixel
 	t_vector	d;
 }	t_pixel;
 
-/**
- * @brief Coordenadas de las esquinas del plano imagen
- * 
- * l -> left ('x' de la esquina superior izquierda del plano imagen)
- * r -> right ('x' de la esquina superior derecha del plano imagen)
- * t -> top ('y' de la esquina superior derecha del plano imagen)
- * b -> bottom ('y' de la esquina inferior derecha del plano imagen)
- */
-typedef	struct s_iplane
-{
-	double	l;
-	double	r;
-	double	t;
-	double	b;
-}	t_iplane;
-
 typedef struct s_mlxset
 {
 	mlx_t		*mlx;
@@ -145,7 +129,6 @@ typedef struct s_info
 {
 	char		*filename;
 	t_mlxset	mlx_s;
-	t_iplane	*pl;
 	t_aset		*aset;
 	t_cset		*cset;
 	t_lset		*lset;

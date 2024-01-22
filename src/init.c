@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 12:49:20 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:53:33 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_info	*init_info(char *filename)
 	new->lset = NULL;
 	new->cset = NULL;
 	new->shapes_list = NULL;
-	new->pl = malloc(sizeof(t_iplane));
+//	new->pl = malloc(sizeof(t_iplane));
 	new->width = 1400;
 	new->height = 1000;
 	return (new);
