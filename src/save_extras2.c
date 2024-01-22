@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/15 12:51:25 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:35:10 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ static void	vec_save(char *str, double *mem, t_info *info)
 	if (ft_check_atod(str))
 	{
 		*mem = ft_atod(str);
-		free(str);
 		if (ft_atod(str) < -1.0 || ft_atod(str) > 1.0)
+		{
+			free(str);
 			ft_print_error("Wrong values", info);
+		}
+		free (str);
 	}
 	else
 	{
