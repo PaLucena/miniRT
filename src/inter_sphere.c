@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 11:01:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:32:44 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_inter	*inter_sp(t_info *in, t_shape *sp, t_pixel px)
 	{
 		free (inter);
 		return (NULL);
-	}
-	cc = v_norm(cc);
-	inter->q = inter_point_coords(in, inter, cc);
+	} 
+	inter->q = inter_point_coords(in, inter, px.d);
+	inter->q.y *= -1;
 	return (inter);
 }

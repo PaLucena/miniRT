@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 09:41:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:13:20 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_inter	*inter_pl(t_info *in, t_shape *pl, t_pixel px)
 	bot = v_dot_product(px.d, pl->prop.n_vec);
 	inter->d = (top / bot);
 	inter->q = inter_point_coords(in, inter, px.d);
+	inter->q.x *= -1;
 	inter->d *= (-1);
 	return (inter);
 }

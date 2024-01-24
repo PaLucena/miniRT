@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 15:58:14 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:28:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		par_save_cylinder(char *line, t_info *info);
 void		ft_exit_program(void *param);
 
 //	mlx_hooks.c
+void		khook_debug(struct mlx_key_data keydata, void *param);
 void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
@@ -76,6 +77,7 @@ t_point		plane_point_coords(t_info *in, double i, double j);
 t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc);
 
 //	pixels.c
+t_inter		*get_closest_collision(t_pixel px, t_info *info);
 void		put_pixels(t_info *info);
 
 //	light.c
@@ -84,7 +86,8 @@ void		ft_darkness(t_info *info, double x, double y);
 int			ft_cl_clamp(double unclamped);
 
 //	light_diffuse.c
-t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
+t_color		diffuse_light(t_info *in, t_inter *inter, t_shape *sh);
+//t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
 
 //	vector_utils.c
 t_vector	v_mult(t_vector a, t_vector b);

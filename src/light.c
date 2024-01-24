@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 18:17:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:58:59 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,47 +39,23 @@ int	ft_cl_clamp(double unclamped)
 	return (amb_color);
 } */
 
-t_color	c_add_diff(t_shape *sh, double diff)
-{
-	t_color	result;
-
-	result.r = sh->prop.color.r * diff;
-	result.g = sh->prop.color.g * diff;
-	result.b = sh->prop.color.b * diff;
-	return (result);
-}
-
-double	diffuse_light(t_info *in, t_inter *inter, t_shape *sh)
-{
-	t_vector	v;
-	t_vector	n;
-	double		facing_ratio;
-
-	v = v_norm(v_get_from2(inter->q, in->lset->point));
-	n = v_norm(v_get_from2(inter->q, sh->prop.c));
-	facing_ratio = v_dot_product(v, n);
-	if (facing_ratio > 0)
-		return (facing_ratio);
-	return (0);
-}
-
 void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
-	t_color	result;
 	t_shape	*shape;
+	t_color	result;
 	/* t_color	amb;
 	t_color	diff; */
 
 	shape = info->shapes_list;
+	//printf("KLK: %d %d %d %d \n", shape->index, shape->prop.color.r, shape->prop.color.g, shape->prop.color.b);
 	while (shape->index != inter->index)
 		shape = shape->next;
-	double	diff = diffuse_light(info, inter, shape);
-	printf("%f ", diff);
-	result = c_add_diff(shape, diff);
+	result = diffuse_light(info, inter, shape);
+		//printf("%f ", diff);
 /* 	amb = ph_iamb(info, shape->prop.color);
 	//printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);
 	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien */
-	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(shape->prop.color));
+	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
 }
 
 void	ft_darkness(t_info *info, double x, double y)

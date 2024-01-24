@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 11:53:33 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:32:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_mlx(t_info	*info)
 	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, info->width, info->height);
 	mlx_close_hook(info->mlx_s.mlx, &ft_exit_program, (void *)info);
 	mlx_loop_hook(info->mlx_s.mlx, &ft_keyhook, (void *)info);
+	mlx_key_hook(info->mlx_s.mlx, &khook_debug, info);
 	mlx_resize_hook(info->mlx_s.mlx, &ft_resizehook, (void *)info);
 }
 
