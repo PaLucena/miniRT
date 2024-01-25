@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/24 16:20:04 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:28:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ t_point	plane_point_coords(t_info *in, double i, double j)
 	return (p);
 }
 
-t_point	inter_point_coords(t_info *in, t_inter *inter, t_vector cc)
+t_point	inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type)
 {
 	t_point	q;
 
 	q.x = in->cset->point.x + inter->d * cc.i;
 	q.y = in->cset->point.y + inter->d * cc.j;
-	q.z = in->cset->point.z - inter->d * cc.k;
+	q.z = in->cset->point.z + inter->d * cc.k;
+	if (type == SP)
+		q.z = in->cset->point.z - inter->d * cc.k;
 	return (q);
 }
