@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:18:39 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/25 16:33:35 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:54:38 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	khook_debug(struct mlx_key_data keydata, void *param)
 		px.d = v_norm(v_get_from2(info->cset->point, px.p));
 		t_inter	*inter = get_closest_collision(px, info);
 		t_shape	*sh = info->shapes_list;
-		while (sh->index != inter->index)
+		while (sh && sh->index != inter->index)
 			sh = sh->next;
 		t_color	color = diffuse_light(info, inter, sh);
 		if (sh->type == SP)

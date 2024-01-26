@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/25 16:28:56 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/26 14:37:49 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,3 @@ t_inter	*inter_pl(t_info *in, t_shape *pl, t_pixel px)
 	inter->d *= (-1);
 	return (inter);
 }
-
-// d -> ?
-// p0 -> pl->prop.c
-// p -> inter->q?
-// n -> pl->prop.n_vec
-// l0 -> in->cset->point
-// l -> px.d

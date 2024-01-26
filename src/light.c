@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/24 14:58:59 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/26 14:38:10 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,62 @@ int	ft_cl_clamp(double unclamped)
 	return (amb_color);
 } */
 
+double	shadow_cy(t_info *info, t_shape *shape, t_vector ray)
+{
+	return (-1);
+}
+
+
+double	shadow_pl(t_info *info, t_shape *shape, t_vector ray)
+{
+	//TODO: esto
+	t_inter	*inter;
+	double	top;
+	double	bot;
+
+	if (!plane_hit(in, pl, px))
+		return (NULL);
+	inter = malloc(sizeof(t_inter));
+	inter->index = pl->index;
+	top = v_dot_product(v_get_from2(in->cset->point, pl->prop.c),
+			pl->prop.n_vec);
+	bot = v_dot_product(px.d, pl->prop.n_vec);
+	inter->d = (top / bot);
+	inter->q = inter_point_coords(in, inter, px.d, pl->type);
+	inter->q.x *= -1;
+	inter->d *= (-1);
+}
+
+double	shadow_sp(t_info *info, t_shape *shape, t_vector ray)
+{
+	//TODO: esto
+}
+
+bool	shadow_search(t_info *info, t_point q)
+{
+	t_shape		*tmp_shape;
+	t_vector	ray;
+	double		d;
+
+	tmp_shape = info->shapes_list;
+	ray = v_norm(v_get_from2(info->lset->point, q));
+	d = v_mod(v_get_from2(info->lset->point, q));
+	while (tmp_shape)
+	{
+		if (tmp_shape->type == CY && 0 < shadow_cy(info, tmp_shape, ray) &&
+				shadow_cy(info, tmp_shape, ray) < d)
+			return (true);
+		else if (tmp_shape->type == PL && 0 < shadow_pl(info, tmp_shape, ray) &&
+				shadow_pl(info, tmp_shape, ray) < d)
+			return (true);
+		else if (tmp_shape->type == SP && 0 < shadow_sp(info, tmp_shape, ray) &&
+				shadow_sp(info, tmp_shape, ray) < d)
+			return (true);
+		tmp_shape = tmp_shape->next;
+	}
+	return (false);
+}
+
 void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
 	t_shape	*shape;
@@ -51,6 +107,7 @@ void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 	while (shape->index != inter->index)
 		shape = shape->next;
 	result = diffuse_light(info, inter, shape);
+	shadow_search(info, inter->q);
 		//printf("%f ", diff);
 /* 	amb = ph_iamb(info, shape->prop.color);
 	//printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);

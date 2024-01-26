@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/25 16:28:45 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/26 14:25:26 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_point	calculate_abc(t_info *in, t_shape *sp, t_vector d, t_vector cc)
 	t_point	abc;
 	double	tmp;
 
-	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
 	abc.x = pow(v_mod(d), 2);
 	abc.y = 2 * v_dot_product(d, cc);
+	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
 	abc.z = pow(tmp, 2) - pow(sp->prop.rad, 2);
 	return (abc);
 }
