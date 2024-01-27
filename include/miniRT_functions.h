@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/25 16:28:03 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/27 14:46:58 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
+double		distance_sp(t_info *info, t_shape *sp, t_vector ray);
 t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
 
 //inter_plane.c
+double		distance_pl(t_info *info, t_shape *pl, t_vector ray);
 t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
 
 //inter_cylinder.c
+double		distance_cy(t_info *info, t_shape *cy, t_vector ray);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
