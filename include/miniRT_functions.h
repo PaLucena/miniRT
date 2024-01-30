@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/27 14:46:58 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:05:01 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
 //	pixels.c
 t_inter		*get_closest_collision(t_pixel px, t_info *info);
 void		put_pixels(t_info *info);
+void		raytrace(t_info *info);
 
 //	light.c
 void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
@@ -103,5 +104,9 @@ t_vector	v_norm(t_vector v);
 double		v_mod(t_vector v);
 double		v_dot_product(t_vector v1, t_vector v2);
 t_vector	v_esc_mult(t_vector orig, double escalar);
+t_vector	v_cross_product(t_vector v1, t_vector v2);
+
+//	camera.c
+void		set_camera(t_info *i);
 
 #endif

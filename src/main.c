@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/24 10:19:32 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:51:30 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	main(int ac, char **av)
 	info = init_info(av[1]);
 	ft_parser(info);
 	init_mlx(info);
-	put_pixels(info);
+	raytrace(info);
 	mlx_loop(info->mlx_s.mlx);
 	return (0);
 }

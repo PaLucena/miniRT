@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/24 12:31:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:55:04 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ void	put_pixels(t_info *info)
 		px.j++;
 	}
 	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
+}
+
+void	raytrace(t_info *info)
+{
+	set_camera(info->cset);
+	put_pixels(info);
 }

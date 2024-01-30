@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:19:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 15:20:19 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:03:22 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,15 @@ t_vector	v_esc_mult(t_vector orig, double escalar)
 	new.j = orig.j * escalar;
 	new.k = orig.k * escalar;
 	return (new);
+}
+
+
+t_vector	v_cross_product(t_vector v1, t_vector v2)
+{
+	t_vector	result;
+
+	result.i = v1.j * v2.k - v1.k * v2.j;
+	result.j = v1.k * v2.i - v1.i * v2.k;
+	result.k = v1.i * v2.j - v1.j * v2.i;
+	return (result);
 }
