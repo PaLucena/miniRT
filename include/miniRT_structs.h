@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/30 13:48:24 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:03:02 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,17 @@ typedef struct s_aset
 	t_color	color;
 }	t_aset;
 
+typedef struct s_matrix
+{
+	double	m[4][4];
+}	t_matrix;
+
 typedef struct s_cset
 {
 	t_point		point;
 	int			fov;
 	t_vector	n_vec;
-	char		matrix[4][4];
+	t_matrix	m;
 }	t_cset;
 
 typedef struct s_lset

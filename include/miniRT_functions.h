@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/30 15:05:01 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:39:25 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
-double		distance_sp(t_info *info, t_shape *sp, t_vector ray);
+double		distance_sp(t_info *info, t_shape *sp, t_vector ray, t_pixel px);
 t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
 
 //inter_plane.c
@@ -82,7 +82,6 @@ t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
 //	pixels.c
 t_inter		*get_closest_collision(t_pixel px, t_info *info);
 void		put_pixels(t_info *info);
-void		raytrace(t_info *info);
 
 //	light.c
 void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
@@ -98,15 +97,21 @@ t_vector	v_mult(t_vector a, t_vector b);
 t_vector	v_sum(t_vector a, t_vector b);
 t_vector	v_unitary(t_vector a);
 t_vector	v_get_from2(t_point from, t_point to);
+t_vector	v_esc_mult(t_vector orig, double escalar);
 
 //	vector_utils2.c
 t_vector	v_norm(t_vector v);
 double		v_mod(t_vector v);
 double		v_dot_product(t_vector v1, t_vector v2);
-t_vector	v_esc_mult(t_vector orig, double escalar);
 t_vector	v_cross_product(t_vector v1, t_vector v2);
+t_vector	v_matrix_product(t_point v, t_matrix m);
 
 //	camera.c
-void		set_camera(t_info *i);
+void		set_camera(t_cset *c);
+t_vector	camera_ray_direction(t_info *in, t_pixel px);
+
+//	vector_point.c
+t_point		v_to_p(t_vector v);
+//t_vector	p_to_v(t_point p);
 
 #endif

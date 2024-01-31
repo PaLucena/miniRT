@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/30 13:51:30 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:51:26 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ void	ft_print_error(char *str, t_info *info)
 	exit(1);
 }
 
-void	ft_leaks(void)
+/* void	ft_leaks(void)
 {
 	system("leaks -q miniRT");
-}
+} */
 
 int	main(int ac, char **av)
 {
@@ -97,7 +97,7 @@ int	main(int ac, char **av)
 	info = init_info(av[1]);
 	ft_parser(info);
 	init_mlx(info);
-	raytrace(info);
+	put_pixels(info);
 	mlx_loop(info->mlx_s.mlx);
 	return (0);
 }

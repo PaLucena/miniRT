@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/27 16:07:34 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:28:20 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	shadow_search(t_info *info, t_point q)
 		if (d2 != -1 && shape->type == SP)
 			d2 = (d2 * -1) + 2;
 		if (d2 > 0 && d2 < d)
-			return (printf("%d %f %f\n", shape->type, d, d2), true);
+			return (/* printf("%d %f %f\n", shape->type, d, d2),  */true);
 		shape = shape->next;
 	}
 	return (false);
