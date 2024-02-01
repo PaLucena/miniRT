@@ -6,12 +6,15 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/19 12:48:51 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:30:46 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# define WIDTH 1400
+# define HEIGHT 1000
 
 # include <stdio.h>
 # include <stdbool.h>

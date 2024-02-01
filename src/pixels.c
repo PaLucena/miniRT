@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/31 15:52:42 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:47:03 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-t_inter	*get_closest_collision(t_pixel px, t_info *info)
+t_inter	*get_closest_collision(t_pixel px, t_info *info, bool a)
 {
 	t_inter	*tmp_inter;
 	t_inter	*new_inter;
@@ -27,7 +27,7 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info)
 		else if (tmp_shape->type == PL)
 			new_inter = inter_pl(info, tmp_shape, px);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, tmp_shape, px);
+			new_inter = inter_sp(info, tmp_shape, px, a);
 		if (new_inter)
 		{
 			if (!tmp_inter)
@@ -47,14 +47,14 @@ void	put_pixels(t_info *info)
 
 	px.j = 0;
 	set_camera(info->cset);
-	while (px.j < info->height)
+	while (px.j < info->w_height)
 	{
 		px.i = 0;
-		while (px.i < info->width)
+		while (px.i < info->w_width)
 		{
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = camera_ray_direction(info, px);
-			inter_tmp = get_closest_collision(px, info);
+			inter_tmp = get_closest_collision(px, info, false);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px);
 			else

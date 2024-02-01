@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:53:46 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/25 12:32:15 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:47:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_resizehook(int32_t new_w, int32_t new_h, void *param)
 	t_info	*info;
 
 	info = (t_info *)param;
-	info->width = new_w;
-	info->height = new_h;
+	info->w_width = new_w;
+	info->w_height = new_h;
 	mlx_resize_image(info->mlx_s.win, new_w, new_h);
 	put_pixels(info);
 }

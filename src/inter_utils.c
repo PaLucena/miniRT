@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/31 16:34:59 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:53:48 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ double	quadratic_equation(double a, double b, double c)
 
 	dis = (b * b) - 4 * a * c;
 	//printf("%f", dis);
-/* 	if (dis < 0)
-		return (-1); */
+	if (dis < 0)
+		return (-1);
 	a1 = ((b * -1) + sqrt(dis)) / (2 * a);
 	a2 = ((b * -1) - sqrt(dis)) / (2 * a);
 	if ((a1 >= 0 && a2 >= 0 && a1 < a2) || (a1 >= 0 && a2 < 0))
@@ -35,10 +35,12 @@ t_point	plane_point_coords(t_info *in, double i, double j)
 	double	fov;
 	double	a_ratio;
 
-	a_ratio = in->width / in->height;
+	a_ratio = in->width / (double)in->height;
 	fov = tan((in->cset->fov * (M_PI / 180)) / 2);
-	p.x = (2 * (((i + 0.5) / in->width) - 1)) * fov * a_ratio;
-	p.y = (1 - 2 * (((j + 0.5) / in->height))) * fov;
+	p.x = (2 * ((i + 0.5) / (double)in->width) - 1) * a_ratio * fov;
+	p.y = (1 - 2 * ((j + 0.5) / (double)in->height)) * fov;
+//	p.x = (2 * (((i + 0.5) / in->width) - 1)) * fov * a_ratio;
+//	p.y = (1 - 2 * (((j + 0.5) / in->height))) * fov;
 	p.z = 1;
 	return (p);
 }

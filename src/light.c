@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/31 17:44:45 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:47:40 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	shadow_search(t_info *info, t_point q)
 		else if (shape->type == PL)
 			d2 = -1 * distance_pl(info, shape, ray);
 		else if (shape->type == SP)
-			d2 = distance_sp(info, shape, ray);
+			d2 = distance_sp(info, shape, ray, false);
 		if (d2 != -1 && shape->type == SP)
 			d2 = (d2 * -1) + 2;
 		if (d2 > 0 && d2 < d)

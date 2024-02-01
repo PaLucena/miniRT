@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:18:39 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/26 12:54:38 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:14:55 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void	khook_debug(struct mlx_key_data keydata, void *param)
 		printf("\n\nXY: %d %d\n", x, y);
 		px.i = x;
 		px.j = y;
+		printf("1\n");
 		px.p = plane_point_coords(info, px.i, px.j);
-		px.d = v_norm(v_get_from2(info->cset->point, px.p));
-		t_inter	*inter = get_closest_collision(px, info);
+		px.d = camera_ray_direction(info, px);
+		t_inter	*inter = get_closest_collision(px, info, true);
 		t_shape	*sh = info->shapes_list;
-		while (sh && sh->index != inter->index)
+		while (sh && inter && sh->index != inter->index)
 			sh = sh->next;
+		printf("2\n");
 		t_color	color = diffuse_light(info, inter, sh);
 		if (sh->type == SP)
 			printf("Sphere (%d)", sh->index);
@@ -38,6 +40,7 @@ void	khook_debug(struct mlx_key_data keydata, void *param)
 			printf("Plane (%d)", sh->index);
 		else if (sh->type == CY)
 			printf("Cylinder (%d)", sh->index);
+		printf("3\n");
 		printf(" type: %d RGB: %d %d %d\n", sh->type, color.r, color.g, color.b);
 		printf("Inter -> d: %f\n", inter->d);
 		printf("Direction -> %f %f %f\n", px.d.i, px.d.j, px.d.k);
