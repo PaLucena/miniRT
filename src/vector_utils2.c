@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:19:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 16:09:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:40:40 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ double	v_dot_product(t_vector v1, t_vector v2)
 	return (v1.i * v2.i + v1.j * v2.j + v1.k * v2.k);
 }
 
-t_vector	v_esc_mult(t_vector orig, double escalar)
+t_vector	v_cross_product(t_vector v1, t_vector v2)
 {
-	t_vector	new;
+	t_vector	result;
 
-	if (orig.i != 0)
-		new.i = orig.i * escalar;
-	else
-		new.i = orig.i;
-	if (orig.j != 0)
-		new.j = orig.j * escalar;
-	else
-		new.j = orig.j;
-	if (orig.k != 0)
-		new.k = orig.k * escalar;
-	else
-		new.k = orig.k;
+	result.i = v1.j * v2.k - v1.k * v2.j;
+	result.j = v1.k * v2.i - v1.i * v2.k;
+	result.k = v1.i * v2.j - v1.j * v2.i;
+	return (result);
+}
 
-	return (new);
+t_vector	v_matrix_product(t_point p, t_matrix m)
+{
+	t_vector	result;
+
+	result.i = p.x * m.m[0][0] + p.y * m.m[0][1] + p.z * m.m[0][2] + m.m[0][3];
+	result.j = p.x * m.m[1][0] + p.y * m.m[1][1] + p.z * m.m[1][2] + m.m[1][3];
+	result.k = p.x * m.m[2][0] + p.y * m.m[2][1] + p.z * m.m[2][2] + m.m[2][3];
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:21:38 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:06 by palucena         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:04:59 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,15 @@ t_vector	v_get_from2(t_point from, t_point to)
 	new.i = to.x - from.x;
 	new.j = to.y - from.y;
 	new.k = to.z - from.z;
+	return (new);
+}
+
+t_vector	v_esc_mult(t_vector orig, double escalar)
+{
+	t_vector	new;
+
+	new.i = orig.i * escalar;
+	new.j = orig.j * escalar;
+	new.k = orig.k * escalar;
 	return (new);
 }

@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_hooks2.c                                       :+:      :+:    :+:   */
+/*   vector_point.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 11:53:46 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 17:47:23 by palucena         ###   ########.fr       */
+/*   Created: 2024/01/31 13:44:05 by palucena          #+#    #+#             */
+/*   Updated: 2024/01/31 14:05:50 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	ft_resizehook(int32_t new_w, int32_t new_h, void *param)
+t_point	v_to_p(t_vector v)
 {
-	t_info	*info;
+	t_point	p;
 
-	info = (t_info *)param;
-	info->w_width = new_w;
-	info->w_height = new_h;
-	mlx_resize_image(info->mlx_s.win, new_w, new_h);
-	put_pixels(info);
+	p.x = v.i;
+	p.y = v.j;
+	p.z = v.k;
+	return (p);
 }
+
+/* t_vector	p_to_v(t_point p)
+{
+	t_vector	v;
+
+	v.i = p.x;
+	v.j = p.y;
+	v.k = p.z;
+	return (v);
+} */

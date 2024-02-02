@@ -6,41 +6,37 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/22 11:01:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:23:52 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_point	calculate_abc(t_info *in, t_shape *sp, t_vector d, t_vector cc)
+double	distance_sp(t_info *info, t_shape *sp, t_vector ray, bool a)
 {
-	t_point	abc;
-	double	tmp;
-
-	tmp = v_mod(v_get_from2(in->cset->point, sp->prop.c));
-	abc.x = pow(v_mod(d), 2);
-	abc.y = 2 * v_dot_product(d, cc);
-	abc.z = pow(tmp, 2) - pow(sp->prop.rad, 2);
-	return (abc);
-}
-
-t_inter	*inter_sp(t_info *in, t_shape *sp, t_pixel px)
-{
-	t_inter		*inter;
 	t_vector	cc;
 	t_point		abc;
+	double	tmp;
+
+	cc = v_get_from2(sp->prop.c, info->cset->point);
+	abc.x = v_dot_product(ray, ray);
+	abc.y = 2 * v_dot_product(ray, cc);
+	tmp = v_mod(v_get_from2(info->cset->point, sp->prop.c));
+	abc.z = v_dot_product(cc, cc) - pow(sp->prop.rad, 2);
+	if (a)
+		return (quadratic_equation(abc.x, abc.y, abc.z, true));
+	return (quadratic_equation(abc.x, abc.y, abc.z, false));
+}
+
+t_inter	*inter_sp(t_info *in, t_shape *sp, t_pixel px, bool a)
+{
+	t_inter		*inter;
 
 	inter = malloc(sizeof(t_inter));
 	inter->index = sp->index;
-	cc = v_get_from2(in->cset->point, sp->prop.c);
-	abc = calculate_abc(in, sp, px.d, cc);
-	inter->d = quadratic_equation(abc.x, abc.y, abc.z);
+	inter->d = distance_sp(in, sp, px.d, a);
 	if (inter->d < 0)
-	{
-		free (inter);
-		return (NULL);
-	}
-	cc = v_norm(cc);
-	inter->q = inter_point_coords(in, inter, cc);
+		return (free(inter), NULL);
+	inter->q = inter_point_coords(in, inter, px.d, sp->type);
 	return (inter);
 }

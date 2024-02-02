@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 11:53:33 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:31:28 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void	init_mlx(t_info	*info)
 {
-	info->mlx_s.mlx = mlx_init(info->width, info->height, "miniRT", true);
-	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, info->width, info->height);
+	info->mlx_s.mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
+	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, WIDTH, HEIGHT);
+	mlx_get_monitor_size(0, &info->width, &info->height);
+	if (!info->width || !info->height)
+	{
+		ft_printf("No monitor\n");
+		info->width = WIDTH;
+		info->height = HEIGHT;
+	}
 	mlx_close_hook(info->mlx_s.mlx, &ft_exit_program, (void *)info);
 	mlx_loop_hook(info->mlx_s.mlx, &ft_keyhook, (void *)info);
+	mlx_key_hook(info->mlx_s.mlx, &khook_debug, info);
 	mlx_resize_hook(info->mlx_s.mlx, &ft_resizehook, (void *)info);
 }
 
@@ -31,8 +39,7 @@ t_info	*init_info(char *filename)
 	new->lset = NULL;
 	new->cset = NULL;
 	new->shapes_list = NULL;
-//	new->pl = malloc(sizeof(t_iplane));
-	new->width = 1400;
-	new->height = 1000;
+	new->w_width = WIDTH;
+	new->w_height = HEIGHT;
 	return (new);
 }
