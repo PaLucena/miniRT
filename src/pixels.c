@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/02 14:40:30 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:40:50 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	put_pixels(t_info *info)
 			bool a = false;
 			if (px.i == 700 && px.j == 500)
 				a = true;
-			//	printf("HELLO %f %F %f\n", inter_tmp->q.x, inter_tmp->q.y, inter_tmp->q.z);
 			inter_tmp = get_closest_collision(px, info, a);
 			a = false;
 			if (inter_tmp)
