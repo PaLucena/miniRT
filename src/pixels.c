@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 17:09:45 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:31:31 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	put_pixels(t_info *info)
 		{
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = v_norm(v_get_from2(info->cset->point, px.p));
+			if (px.i == 700 && px.j == 500)
+				printf("RAY DIRECTION: %f %f %f\n", px.d.i, px.d.j, px.d.k);
 			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px.i, px.j);
