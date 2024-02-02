@@ -6,21 +6,21 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 14:23:39 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:24:09 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	quadratic_equation(double a, double b, double c, bool d)
+double	quadratic_equation(double a, double b, double c)
 {
 	double		dis;
 	double		a1;
 	double		a2;
 
 	dis = (b * b) - 4 * a * c;
-	if (d)
-		printf("%f\n", dis);
+//	if (test)
+//		printf("%f %f %f\n", a, b, c);
 	if (dis < 0)
 		return (-1);
 	a1 = ((b * -1) + sqrt(dis)) / (2 * a);
@@ -40,8 +40,6 @@ t_point	plane_point_coords(t_info *in, double i, double j)
 	fov = tan((in->cset->fov * (M_PI / 180)) / 2);
 	p.x = (2 * ((i + 0.5) / (double)in->width) - 1) * a_ratio * fov;
 	p.y = (1 - 2 * ((j + 0.5) / (double)in->height)) * fov;
-//	p.x = (2 * (((i + 0.5) / in->width) - 1)) * fov * a_ratio;
-//	p.y = (1 - 2 * (((j + 0.5) / in->height))) * fov;
 	p.z = 1;
 	return (p);
 }

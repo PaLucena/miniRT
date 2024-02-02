@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/01 16:30:46 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:44:15 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "miniRT_structs.h"
 # include "miniRT_functions.h"
+
+bool	test;
 
 #endif

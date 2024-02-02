@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 14:20:45 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:39:17 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
-double		distance_sp(t_info *info, t_shape *sp, t_vector ray, bool a);
-t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px, bool a);
+double		distance_sp(t_info *info, t_shape *sp, t_vector ray);
+t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
 
 //inter_plane.c
 double		distance_pl(t_info *info, t_shape *pl, t_vector ray);
@@ -75,12 +75,12 @@ double		distance_cy(t_info *info, t_shape *cy, t_vector ray);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
-double		quadratic_equation(double a, double b, double c, bool d);
+double		quadratic_equation(double a, double b, double c);
 t_point		plane_point_coords(t_info *in, double i, double j);
 t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
 
 //	pixels.c
-t_inter		*get_closest_collision(t_pixel px, t_info *info, bool a);
+t_inter		*get_closest_collision(t_pixel px, t_info *info);
 void		put_pixels(t_info *info);
 
 //	light.c
