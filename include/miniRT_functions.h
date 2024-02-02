@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/01 11:19:24 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:20:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ double		distance_cy(t_info *info, t_shape *cy, t_vector ray);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
-double		quadratic_equation(double a, double b, double c);
+double		quadratic_equation(double a, double b, double c, bool d);
 t_point		plane_point_coords(t_info *in, double i, double j);
 t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
 

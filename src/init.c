@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 17:46:35 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:31:28 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	init_mlx(t_info	*info)
 	info->mlx_s.mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
 	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, WIDTH, HEIGHT);
 	mlx_get_monitor_size(0, &info->width, &info->height);
-	printf("AAAAA %d\n", info->width);
 	if (!info->width || !info->height)
 	{
 		ft_printf("No monitor\n");

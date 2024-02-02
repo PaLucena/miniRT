@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 17:47:03 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:17:30 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ void	put_pixels(t_info *info)
 		{
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = camera_ray_direction(info, px);
-			inter_tmp = get_closest_collision(px, info, false);
+			bool a = false;
+			if (px.i == 700 && px.j == 500)
+				a = true;
+			//	printf("HELLO %f %F %f\n", inter_tmp->q.x, inter_tmp->q.y, inter_tmp->q.z);
+			inter_tmp = get_closest_collision(px, info, a);
+			a = false;
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px);
 			else

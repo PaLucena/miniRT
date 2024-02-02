@@ -6,20 +6,21 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/01 15:53:48 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:23:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	quadratic_equation(double a, double b, double c)
+double	quadratic_equation(double a, double b, double c, bool d)
 {
 	double		dis;
 	double		a1;
 	double		a2;
 
 	dis = (b * b) - 4 * a * c;
-	//printf("%f", dis);
+	if (d)
+		printf("%f\n", dis);
 	if (dis < 0)
 		return (-1);
 	a1 = ((b * -1) + sqrt(dis)) / (2 * a);

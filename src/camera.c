@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:55:10 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/01 15:54:56 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:40:21 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ t_vector	camera_ray_direction(t_info *in, t_pixel px)
 {
 	t_vector	dir;
 
-	if (px.i == 700 && px.j == 500)
-		printf("%f\n", (in->width / (double)in->height));
-		//printf("HELLO %f %f %f\n", px.p.x, px.p.y, px.p.z);
 	dir = v_matrix_product(px.p, in->cset->m);
 	dir = v_norm(v_get_from2(in->cset->point, v_to_p(dir)));
 	return (dir);
