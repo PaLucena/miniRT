@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 18:53:02 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:30:27 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@
 # include "miniRT_structs.h"
 # include "miniRT_functions.h"
 
-bool	test;
+extern bool	test;
 
 #endif

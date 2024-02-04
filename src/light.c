@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 16:49:27 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:38:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 uint32_t	get_rgba(t_color color)
 {
 	return (color.r << 24 | color.g << 16 | color.b << 8 | 255);
-}
-
-int	ft_cl_clamp(double unclamped)
-{
-	int	runcl;
-
-	runcl = round(unclamped);
-	if (0 > runcl)
-		return (0);
-	if (255 < runcl)
-		return (255);
-	return (runcl);
 }
 
 /*  static t_color	ph_iamb(t_info *info, t_color color_obj)

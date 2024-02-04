@@ -1,7 +1,7 @@
 NAME = miniRT
 
 CC = gcc -g
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 SRC_PATH = src/
 SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera.c save_light.c\
@@ -33,12 +33,12 @@ RESET   := \033[0m
 all: libft mlx $(NAME)
 
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) -o $(NAME)
+	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) -o $(NAME) -lm
 	@ echo "$(GREEN)$(BOLD)$(NAME) compiled\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)
-	@ $(CC) $(FLAGS) -c $< -o $@ $(INC) 
+	@ $(CC) $(FLAGS) -c $< -o $@ $(INC) -lm
 
 libft:
 	@ make -C include/libft

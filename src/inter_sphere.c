@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 17:44:03 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:05:54 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ double	distance_sp(t_info *info, t_shape *sp, t_vector ray)
 {
 	t_vector	cc;
 	t_point		abc;
-	double	tmp;
+	// double	tmp;
 
 	cc = v_get_from2(sp->prop.c, info->cset->point);
 	abc.x = v_dot_product(ray, ray);
 	abc.y = 2 * v_dot_product(ray, cc);
-	tmp = v_mod(v_get_from2(info->cset->point, sp->prop.c));
+	// tmp = v_mod(v_get_from2(info->cset->point, sp->prop.c));
 	abc.z = v_dot_product(cc, cc) - pow(sp->prop.rad, 2);
 	return (quadratic_equation(abc.x, abc.y, abc.z));
 }
