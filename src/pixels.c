@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/02 18:51:21 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 15:58:33 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	put_pixels(t_info *info)
 			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true) : (test = false); //TODO: esto fuera
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = camera_ray_direction(info, px);
-			if (test)
-				printf("%f %f %f\n", px.d.i, px.d.j, px.d.k);
 			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px);

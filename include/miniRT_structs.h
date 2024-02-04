@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 18:38:55 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 15:14:08 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_inter
 {
 	int		index;
 	double	d;
-	t_point q;
+	t_point	q;
 }	t_inter;
 
 /**

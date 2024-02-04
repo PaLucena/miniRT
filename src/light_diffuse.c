@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 09:00:51 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:47:04 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ t_color	diffuse_light(t_info *in, t_inter *inter, t_shape *sh)
 	else /* if (sh->type == PL) */
 		n = sh->prop.n_vec;
 	facing_ratio = v_dot_product(v, n);
-	if (sh->type == PL)
-		facing_ratio *= -1;
+/* 	if (sh->type == PL)
+		facing_ratio *= -1; */
 	facing_ratio = (facing_ratio + in->lset->brightness + in->aset->ratio) / 3;
-	return (sh->prop.color); // TODO: quitar esto
 	return (c_add_diff(sh, facing_ratio));
 }
 

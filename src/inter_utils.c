@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 18:24:09 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:49:22 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ double	quadratic_equation(double a, double b, double c)
 	double		a2;
 
 	dis = (b * b) - 4 * a * c;
-//	if (test)
-//		printf("%f %f %f\n", a, b, c);
 	if (dis < 0)
 		return (-1);
 	a1 = ((b * -1) + sqrt(dis)) / (2 * a);
