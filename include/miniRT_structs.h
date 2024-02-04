@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 19:55:56 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:45:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ typedef struct s_vector
 	double	k;
 }	t_vector;
 
-typedef struct s_circle
-{
-	t_point		p;
-	t_vector	v;
-	double		diam;
-}	t_circle;
 
 /**
  * @brief struct to save the properties of the shapes
@@ -89,6 +83,15 @@ typedef struct s_inter
 	double	d;
 	t_point	q;
 }	t_inter;
+
+typedef struct s_circle
+{
+	t_point		p;
+	t_vector	v;
+	double		diam;
+	t_inter		*coll;
+	t_shape		*plane;
+}	t_circle;
 
 /**
  * @brief Info about a single pixel in the screen

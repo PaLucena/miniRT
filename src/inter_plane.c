@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 20:31:53 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:47:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ t_inter	*inter_pl(t_info *in, t_shape *pl, t_pixel px)
 	if (!inter->d)
 		return (free(inter), NULL);
 	inter->q = inter_point_coords(in, inter, px.d, pl->type);
-	if (test)
-		printf("%f\n", inter->d);
 	return (inter);
 }
