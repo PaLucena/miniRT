@@ -6,13 +6,13 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/02 14:40:50 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:53:22 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-t_inter	*get_closest_collision(t_pixel px, t_info *info, bool a)
+t_inter	*get_closest_collision(t_pixel px, t_info *info)
 {
 	t_inter	*tmp_inter;
 	t_inter	*new_inter;
@@ -27,7 +27,7 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info, bool a)
 		else if (tmp_shape->type == PL)
 			new_inter = inter_pl(info, tmp_shape, px);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, tmp_shape, px, a);
+			new_inter = inter_sp(info, tmp_shape, px);
 		if (new_inter)
 		{
 			if (!tmp_inter)
@@ -47,18 +47,15 @@ void	put_pixels(t_info *info)
 
 	px.j = 0;
 	set_camera(info->cset);
-	while (px.j < info->w_height)
+	while (px.j < info->height)
 	{
 		px.i = 0;
-		while (px.i < info->w_width)
+		while (px.i < info->width)
 		{
+			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true) : (test = false); //TODO: esto fuera
 			px.p = plane_point_coords(info, px.i, px.j);
 			px.d = camera_ray_direction(info, px);
-			bool a = false;
-			if (px.i == 700 && px.j == 500)
-				a = true;
-			inter_tmp = get_closest_collision(px, info, a);
-			a = false;
+			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px);
 			else

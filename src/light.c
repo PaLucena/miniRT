@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 17:47:40 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:49:27 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ bool	shadow_search(t_info *info, t_point q)
 		else if (shape->type == PL)
 			d2 = -1 * distance_pl(info, shape, ray);
 		else if (shape->type == SP)
-			d2 = distance_sp(info, shape, ray, false);
+			d2 = distance_sp(info, shape, ray);
 		if (d2 != -1 && shape->type == SP)
 			d2 = (d2 * -1) + 2;
 		if (d2 > 0 && d2 < d)
-			return (/* printf("%d %f %f\n", shape->type, d, d2),  */true);
+			return (true);
 		shape = shape->next;
 	}
 	return (false);
@@ -74,19 +74,12 @@ void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 	t_color	diff; */
 
 	shape = info->shapes_list;
-	//printf("KLK: %d %d %d %d \n", shape->index, shape->prop.color.r, shape->prop.color.g, shape->prop.color.b);
 	while (shape->index != inter->index)
 		shape = shape->next;
 	result = diffuse_light(info, inter, shape);
-	if (shadow_search(info, inter->q))
-	{
-		result.r = 0;
-		result.g = 0;
-		result.b = 0;
-	}
+	shadow_search(info, inter->q);
 		//printf("%f ", diff);
 /* 	amb = ph_iamb(info, shape->prop.color);
-	//printf("(AMB) R:%i, G:%i, B:%i\n", amb.r, amb.g, amb.b);
 	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien */
 	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
 }

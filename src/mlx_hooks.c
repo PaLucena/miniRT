@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:18:39 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/01 11:14:55 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 15:18:52 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	khook_debug(struct mlx_key_data keydata, void *param)
 		printf("1\n");
 		px.p = plane_point_coords(info, px.i, px.j);
 		px.d = camera_ray_direction(info, px);
-		t_inter	*inter = get_closest_collision(px, info, true);
+		t_inter	*inter = get_closest_collision(px, info);
 		t_shape	*sh = info->shapes_list;
 		while (sh && inter && sh->index != inter->index)
 			sh = sh->next;
