@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 15:58:33 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:33:32 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	put_pixels(t_info *info)
 		px.i = 0;
 		while (px.i < info->width)
 		{
-			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true) : (test = false); //TODO: esto fuera
-			px.p = plane_point_coords(info, px.i, px.j);
+			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true) : (test = false); //FIXME: esto fuera
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px, info);
 			if (inter_tmp)

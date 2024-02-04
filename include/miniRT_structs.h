@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 15:14:08 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:33:20 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ typedef struct s_pixel
 {
 	double		i;
 	double		j;
-	t_point		p;
 	t_vector	d;
 }	t_pixel;
 

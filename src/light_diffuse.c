@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 20:28:42 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:51:41 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_color	c_add_diff(t_shape *sh, double diff)
+t_color	c_add_diff(t_color color, double diff)
 {
 	t_color	result;
 
@@ -21,9 +21,9 @@ t_color	c_add_diff(t_shape *sh, double diff)
 	result.b = 0;
 	if (diff >= 0)
 	{
-		result.r = sh->prop.color.r * diff;
-		result.g = sh->prop.color.g * diff;
-		result.b = sh->prop.color.b * diff;
+		result.r = color.r * diff;
+		result.g = color.g * diff;
+		result.b = color.b * diff;
 	}
 	return (result);
 }
@@ -40,11 +40,9 @@ t_color	diffuse_light(t_info *in, t_inter *inter, t_shape *sh)
 	else /* if (sh->type == PL) */
 		n = sh->prop.n_vec;
 	facing_ratio = v_dot_product(v, n);
-/* 	if (sh->type == PL)
-		facing_ratio *= -1; */
 	facing_ratio = (facing_ratio + in->lset->brightness + in->aset->ratio) / 3;
-//	return (c_add_diff(sh, facing_ratio));//FIXME: esto fuera
-	return (sh->prop.color);
+//	return (c_add_diff(sh->prop.color, facing_ratio));
+	return (sh->prop.color);//FIXME: esto fuera
 }
 
 /* t_color	ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c)
