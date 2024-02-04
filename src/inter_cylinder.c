@@ -6,92 +6,80 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 18:50:35 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:30:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static t_inter	*cy_topcover_inter(t_info *info, t_shape *cy, t_pixel px)
+static t_point	cy_cap_center(t_point cy_c, t_vector v, double d)
 {
-	t_shape	*cover_c;
-	t_inter	*plane_inter;
+	t_point	cir_c;
 
-	cover_c = malloc(sizeof(t_shape));
-	cover_c->prop.c.x = (cy->prop.c.x + (cy->prop.n_vec.i
-				* cy->prop.height / 2));
-	cover_c->prop.c.y = (cy->prop.c.y + (cy->prop.n_vec.j
-				* cy->prop.height / 2));
-	cover_c->prop.c.z = (cy->prop.c.z + (cy->prop.n_vec.k
-				* cy->prop.height / 2));
-	cover_c->index = 0;
-	cover_c->prop.n_vec = v_norm(cy->prop.n_vec);
-	plane_inter = inter_pl(info, cover_c, px);
-	if (px.i == info->width / 2 && px.j == info->height / 2)
-	{
-		printf("CIRCLE CENTER: %f %f %f\n", cover_c->prop.c.x, cover_c->prop.c.y, cover_c->prop.c.z);
-		printf("CIRCLE VECTOR: %f %f %f\n", cover_c->prop.n_vec.i, cover_c->prop.n_vec.j, cover_c->prop.n_vec.k);
-		if (plane_inter)
-			printf("dist: %f\n", plane_inter->d);
-	}
-	if (plane_inter && v_mod(v_get_from2(info->cset->point, plane_inter->q)) > 0 && v_mod(v_get_from2(info->cset->point, plane_inter->q)) < cy->prop.rad)
-	{
-		free (cover_c);
-		return (plane_inter);
-	}
-	free (plane_inter);
-	free (cover_c);
-	return (NULL);
+	cir_c.x = cy_c.x + (v.i * d);
+	cir_c.y = cy_c.y + (v.j * d);
+	cir_c.z = cy_c.z + (v.k * d);
+	return (cir_c);
 }
 
-static t_inter	*cy_botcover_inter(t_info *info, t_shape *cy, t_pixel px)
+t_shape	*cy_circle_to_plane(t_circle	c, int id)
 {
-	t_shape	*cover_c;
-	t_inter	*plane_inter;
-	t_vector	inv_v;
+	t_shape	*shp;
 
-	cover_c = malloc(sizeof(t_shape));
-	inv_v = v_norm(v_esc_mult(cy->prop.n_vec, -1));
-	cover_c->prop.c.x = (cy->prop.c.x + (inv_v.i * cy->prop.height / 2));
-	cover_c->prop.c.y = (cy->prop.c.y + (inv_v.j * cy->prop.height / 2));
-	cover_c->prop.c.z = (cy->prop.c.z + (inv_v.k * cy->prop.height / 2));
-	cover_c->index = 0;
-	cover_c->prop.n_vec = inv_v;
-	plane_inter = inter_pl(info, cover_c, px);
-	/* if (plane_inter)
-		printf("%f ", round(v_mod(v_get_from2(info->cset->point, plane_inter->q)))); */
-	if (plane_inter && v_mod(v_get_from2(info->cset->point, plane_inter->q)) > 0 && v_mod(v_get_from2(info->cset->point, plane_inter->q)) < cy->prop.rad)
+	shp = malloc(sizeof(t_shape));
+	shp->index = id;
+	shp->next = NULL;
+	shp->prop.c = c.p;
+	shp->prop.n_vec = c.v;
+	return (shp);
+}
+
+t_inter	*cy_cap_coll(t_circle top, t_circle bot, t_info *in, t_pixel px, int id)
+{
+	t_inter	*top_coll;
+	t_inter	*bot_coll;
+
+	top_coll = inter_pl(in, cy_circle_to_plane(top, id), px);
+	bot_coll = inter_pl(in, cy_circle_to_plane(bot, id), px);
+	if (top_coll && bot_coll)
 	{
-		free (cover_c);
-		return (plane_inter);
+		if (top_coll->d < bot_coll->d)
+			return (top_coll);
+		return (bot_coll);
 	}
-	free (plane_inter);
-	free (cover_c);
+	else if (top_coll)
+		return (top_coll);
+	else if (bot_coll)
+		return (bot_coll);
 	return (NULL);
 }
 
 t_inter	*inter_cy(t_info *in, t_shape *cy, t_pixel px)
 {
-	// t_inter		*inter_body;
-	t_inter		*inter_top;
-	t_inter		*inter_bot;
+	t_circle	top_cap;
+	t_circle	bot_cap;
+	t_inter		*caps_coll;
 
-	// inter_body = cy_body_inter();
-	inter_top = cy_topcover_inter(in, cy, px);
-	inter_bot = cy_botcover_inter(in, cy, px);
-	if (!inter_top && !inter_bot)
-		return (NULL);
-	printf("algo\n");
-	if (inter_top && !inter_bot)
-		return (inter_top);
-	if (!inter_top && inter_bot)
-		return (inter_bot);
-	if (inter_top->d < inter_bot->d)
-		return (inter_top);
-	return (inter_bot);
+	(void)in;
+	(void)px;
+	top_cap.v = cy->prop.n_vec;
+	top_cap.p = cy_cap_center(cy->prop.c, cy->prop.n_vec, cy->prop.height / 2);
+	top_cap.diam = cy->prop.rad * 2;
+	bot_cap.v = v_opposite_vec(cy->prop.n_vec);
+	bot_cap.p = cy_cap_center(cy->prop.c, v_opposite_vec(cy->prop.n_vec), cy->prop.height / 2);
+	bot_cap.diam = cy->prop.rad * 2;
+	caps_coll = cy_cap_coll(top_cap, bot_cap, in, px, cy->index);
+	if (test)
+	{
+		printf("top cap center: %f %f %f\n", top_cap.p.x, top_cap.p.y, top_cap.p.z);
+		printf("bot cap center: %f %f %f\n", bot_cap.p.x, bot_cap.p.y, bot_cap.p.z);
+		if (caps_coll)
+			printf("COLL: (%f, %f, %f), dist: %f\n", caps_coll->q.x, caps_coll->q.y, caps_coll->q.z, caps_coll->d);
+	}
+	return (caps_coll);
 }
 
-double		distance_cy(t_info *info, t_shape *cy, t_vector ray)
+double	distance_cy(t_info *info, t_shape *cy, t_vector ray)
 {
 	(void) info;
 	(void) cy;

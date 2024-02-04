@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 17:39:17 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 19:56:23 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ double		v_mod(t_vector v);
 double		v_dot_product(t_vector v1, t_vector v2);
 t_vector	v_cross_product(t_vector v1, t_vector v2);
 t_vector	v_matrix_product(t_point v, t_matrix m);
+
+//	vector_utils3.c
+t_vector	v_opposite_vec(t_vector orig);
 
 //	camera.c
 void		set_camera(t_cset *c);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 15:14:08 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 19:55:56 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct s_vector
 	double	j;
 	double	k;
 }	t_vector;
+
+typedef struct s_circle
+{
+	t_point		p;
+	t_vector	v;
+	double		diam;
+}	t_circle;
 
 /**
  * @brief struct to save the properties of the shapes
