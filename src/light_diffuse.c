@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 16:47:04 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:28:42 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_color	diffuse_light(t_info *in, t_inter *inter, t_shape *sh)
 /* 	if (sh->type == PL)
 		facing_ratio *= -1; */
 	facing_ratio = (facing_ratio + in->lset->brightness + in->aset->ratio) / 3;
-	return (c_add_diff(sh, facing_ratio));
+//	return (c_add_diff(sh, facing_ratio));//FIXME: esto fuera
+	return (sh->prop.color);
 }
 
 /* t_color	ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c)
