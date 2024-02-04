@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/02 14:39:47 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:50:35 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,12 @@ t_inter	*inter_cy(t_info *in, t_shape *cy, t_pixel px)
 	if (inter_top->d < inter_bot->d)
 		return (inter_top);
 	return (inter_bot);
+}
+
+double		distance_cy(t_info *info, t_shape *cy, t_vector ray)
+{
+	(void) info;
+	(void) cy;
+	(void) ray;
+	return (0.0);
 }
