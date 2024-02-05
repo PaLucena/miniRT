@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 12:29:06 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:51:29 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	put_pixels(t_info *info)
 
 	px.j = 0;
 	set_camera(info->cset);
-	while (px.j < info->height)
+	while (px.j < info->w_height)
 	{
 		px.i = 0;
-		while (px.i < info->width)
+		while (px.i < info->w_width)
 		{
 			(px.i == info->width / 2 && px.j == info->height / 2)?(test = true) : (test = false);
 			px.d = camera_ray_direction(info, px);

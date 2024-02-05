@@ -6,15 +6,15 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 23:30:27 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:51:26 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WIDTH 1400
-# define HEIGHT 1000
+# define WIDTH 2560
+# define HEIGHT 1440
 
 # include <stdio.h>
 # include <stdbool.h>
