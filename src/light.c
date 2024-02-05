@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 18:32:15 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:17:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,19 @@ bool	shadow_search(t_info *info, t_point q)
 void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
 	t_shape	*shape;
-	t_color	result;
+	//t_color	result;
 	/* t_color	amb;
 	t_color	diff; */
 
 	shape = info->shapes_list;
 	while (shape->index != inter->index)
 		shape = shape->next;
-	result = diffuse_light(info, inter, shape);
-	shadow_search(info, inter->q);
+	/* result = diffuse_light(info, inter, shape);
+	shadow_search(info, inter->q); */
 		//printf("%f ", diff);
 /* 	amb = ph_iamb(info, shape->prop.color);
-	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien */
-	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
+	diff = ph_idiffuse(amb, info, shape, *inter); no va bien */
+	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(shape->prop.color));
 }
 
 void	ft_darkness(t_info *info, double x, double y)
