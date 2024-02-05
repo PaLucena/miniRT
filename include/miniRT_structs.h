@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 20:45:33 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:08:47 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ typedef struct s_pixel
 {
 	double		i;
 	double		j;
-	t_point		p;
 	t_vector	d;
 }	t_pixel;
 

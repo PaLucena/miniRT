@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:55:10 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 23:34:14 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:09:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_vector	camera_ray_direction(t_info *in, t_pixel px)
 {
 	t_vector	dir;
 
-	dir = v_matrix_product(px.p, in->cset->m);
+	dir = p_to_v(plane_point_coords(in, px.i, px.j));
+	dir = v_matrix_product(dir, in->cset->m);
 	dir = v_norm(v_get_from2(in->cset->point, v_to_p(dir)));
 	return (dir);
 }

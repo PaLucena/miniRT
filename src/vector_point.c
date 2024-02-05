@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:44:05 by palucena          #+#    #+#             */
-/*   Updated: 2024/01/31 14:05:50 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:34:01 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_point	v_to_p(t_vector v)
 	return (p);
 }
 
-/* t_vector	p_to_v(t_point p)
+t_vector	p_to_v(t_point p)
 {
 	t_vector	v;
 
@@ -30,4 +30,4 @@ t_point	v_to_p(t_vector v)
 	v.j = p.y;
 	v.k = p.z;
 	return (v);
-} */
+}
