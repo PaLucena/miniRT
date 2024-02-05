@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 16:49:27 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:26:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,6 @@ int	ft_cl_clamp(double unclamped)
 	return (runcl);
 }
 
-/*  static t_color	ph_iamb(t_info *info, t_color color_obj)
-{
-	t_color	amb_color;
-
-	amb_color.r = ft_cl_clamp(color_obj.r + ft_cl_clamp(info->aset->color.r * info->aset->ratio));
-	amb_color.g = ft_cl_clamp(color_obj.g + ft_cl_clamp(info->aset->color.g * info->aset->ratio));
-	amb_color.b = ft_cl_clamp(color_obj.b + ft_cl_clamp(info->aset->color.b * info->aset->ratio));
-	return (amb_color);
-} */
-
 bool	shadow_search(t_info *info, t_point q)
 {
 	t_shape		*shape;
@@ -52,13 +42,11 @@ bool	shadow_search(t_info *info, t_point q)
 	while (shape)
 	{
 		if (shape->type == CY)
-			d2 = distance_cy(info, shape, ray);
+			d2 = distance_cy(info->lset->point, shape, ray);
 		else if (shape->type == PL)
-			d2 = -1 * distance_pl(info, shape, ray);
+			d2 = distance_pl(info->lset->point, shape, ray);
 		else if (shape->type == SP)
-			d2 = distance_sp(info, shape, ray);
-		if (d2 != -1 && shape->type == SP)
-			d2 = (d2 * -1) + 2;
+			d2 = distance_sp(info->lset->point, shape, ray);
 		if (d2 > 0 && d2 < d)
 			return (true);
 		shape = shape->next;
@@ -66,21 +54,45 @@ bool	shadow_search(t_info *info, t_point q)
 	return (false);
 }
 
+t_color	add_color(t_color c1, t_color c2)
+{
+	t_color	result;
+
+	result.r = ft_cl_clamp(c1.r + c2.r);
+	result.g = ft_cl_clamp(c1.g + c2.g);
+	result.b = ft_cl_clamp(c1.b + c2.b);
+	return (result);
+}
+
+t_color	ambient_light(t_color sh, t_aset *aset)
+{
+	t_color	result;
+
+	result.r = ft_cl_clamp(sh.r * (aset->color.r * aset->ratio / 255));
+	result.g = ft_cl_clamp(sh.g * (aset->color.g * aset->ratio / 255));
+	result.b = ft_cl_clamp(sh.b * (aset->color.b * aset->ratio / 255));
+	return (result);
+}
+
 void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
 	t_shape	*shape;
 	t_color	result;
-	/* t_color	amb;
-	t_color	diff; */
 
 	shape = info->shapes_list;
 	while (shape->index != inter->index)
 		shape = shape->next;
-	result = diffuse_light(info, inter, shape);
-	shadow_search(info, inter->q);
-		//printf("%f ", diff);
-/* 	amb = ph_iamb(info, shape->prop.color);
-	diff = ph_idiffuse(amb, info, shape, *inter); // FIXME: no va bien */
+//	result = shape->prop.color;
+	result = ambient_light(shape->prop.color, info->aset);
+	result = add_color(result, diffuse_light(info, inter, shape, result));
+/* 	if (shadow_search(info, inter->q))
+	{
+		result.r *= 0.5;
+		result.g *= 0.5;
+		result.b *= 0.5;
+	} */
+	if (test)
+		printf("Resultado: %d %d %d\n", result.r, result.g, result.b);
 	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
 }
 

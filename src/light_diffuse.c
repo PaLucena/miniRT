@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 11:48:02 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:41:58 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,23 @@ t_color	c_add_diff(t_color color, double diff)
 	return (result);
 }
 
-t_color	diffuse_light(t_info *in, t_inter *inter, t_shape *sh)
+t_color	diffuse_light(t_info *in, t_inter *inter, t_shape *sh, t_color color)
 {
 	double		facing_ratio;
 	t_vector	v;
 	t_vector	n;
+	t_color		result;
 
-	v = v_norm(v_get_from2(inter->q, in->lset->point));
-//	if (sh->type == SP)
+	v = v_norm(v_get_from2(in->lset->point, inter->q));
+	if (sh->type == PL)
+		n = v_norm(sh->prop.n_vec);
+	else
 		n = v_norm(v_get_from2(sh->prop.c, inter->q));
-//	else /* if (sh->type == PL) */
-//		n = sh->prop.n_vec;
 	facing_ratio = v_dot_product(v, n);
-	facing_ratio = (facing_ratio + in->lset->brightness + in->aset->ratio) / 3;
-	return (c_add_diff(sh->prop.color, facing_ratio));
-//	return (sh->prop.color);//FIXME: esto fuera
+	result.r = ft_cl_clamp(color.r * (in->lset->color.r * in->lset->brightness / 255) * facing_ratio); 
+	result.g = ft_cl_clamp(color.g * (in->lset->color.g * in->lset->brightness / 255) * facing_ratio); 
+	result.b = ft_cl_clamp(color.b * (in->lset->color.b * in->lset->brightness / 255) * facing_ratio); 
+	return (result);
 }
 
 /* t_color	ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c)

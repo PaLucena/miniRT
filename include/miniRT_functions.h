@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 20:35:18 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:41:29 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
-double		distance_sp(t_info *info, t_shape *sp, t_vector ray);
+double		distance_sp(t_point point, t_shape *sp, t_vector ray);
 t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
 
 //inter_plane.c
-double		distance_pl(t_info *info, t_shape *pl, t_vector ray);
+double		distance_pl(t_point point, t_shape *pl, t_vector ray);
 t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
 
 //inter_cylinder.c
-double		distance_cy(t_info *info, t_shape *cy, t_vector ray);
+double		distance_cy(t_point point, t_shape *cy, t_vector ray);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
@@ -84,12 +84,13 @@ t_inter		*get_closest_collision(t_pixel px, t_info *info);
 void		put_pixels(t_info *info);
 
 //	light.c
+bool		shadow_search(t_info *info, t_point q);
 void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
 void		ft_darkness(t_info *info, double x, double y);
 int			ft_cl_clamp(double unclamped);
 
 //	light_diffuse.c
-t_color		diffuse_light(t_info *in, t_inter *inter, t_shape *sh);
+t_color		diffuse_light(t_info *in, t_inter *inter, t_shape *sh, t_color color);
 //t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
 
 //	vector_utils.c
@@ -110,8 +111,10 @@ t_vector	v_matrix_product(t_vector v, t_matrix m);
 void		set_camera(t_cset *c);
 t_vector	camera_ray_direction(t_info *in, t_pixel px);
 
-//	vector_point.c
+//	vector_point_color.c
 t_point		v_to_p(t_vector v);
 t_vector	p_to_v(t_point p);
+t_vector	c_to_v(t_color c);
+t_color		v_to_c(t_vector v);
 
 #endif

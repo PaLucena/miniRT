@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_point.c                                     :+:      :+:    :+:   */
+/*   vector_point_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:44:05 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 20:34:01 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:23:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,24 @@ t_vector	p_to_v(t_point p)
 	v.j = p.y;
 	v.k = p.z;
 	return (v);
+}
+
+t_vector	c_to_v(t_color c)
+{
+	t_vector	v;
+
+	v.i = (double)c.r;
+	v.j = (double)c.g;
+	v.k = (double)c.b;
+	return (v);
+}
+
+t_color	v_to_c(t_vector v)
+{
+	t_color	c;
+	
+	c.r = (int)v.i;
+	c.g = (int)v.j;
+	c.b = (int)v.k;
+	return (c);
 }
