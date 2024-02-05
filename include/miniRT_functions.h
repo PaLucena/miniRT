@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 18:32:51 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:31:21 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void		init_mlx(t_info	*info);
 
 //	parser.c
 void		ft_parser(t_info *info);
+
+//	parser_utils.c
+char		*par_clean_id(char *line);
 
 //	save_amb.c
 void		par_save_amb(char *line, t_info *info);
@@ -73,6 +76,9 @@ t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
 //inter_cylinder.c
 double		distance_cy(t_point orig, t_point coll);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
+
+//	inter_cylinder2.c
+t_inter		*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px);
 
 //inter_utils.c
 double		quadratic_equation(t_quad *quad);

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_utils3.c                                    :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 19:54:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 22:15:12 by ealgar-c         ###   ########.fr       */
+/*   Created: 2024/02/05 22:30:04 by ealgar-c          #+#    #+#             */
+/*   Updated: 2024/02/05 22:34:44 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector	v_opposite_vec(t_vector orig)
+char	*par_clean_id(char *line)
 {
-	t_vector	new;
+	int		i;
+	int		j;
+	char	*str;
 
-	new.i = orig.i * (-1);
-	new.j = orig.j * (-1);
-	new.k = orig.k * (-1);
-	return (new);
-}
-
-t_point	v_get_endpoint(t_vector vector, double d, t_point orig)
-{
-	t_point	endp;
-
-	endp.x = orig.x + vector.i * d;
-	endp.y = orig.y + vector.j * d;
-	endp.z = orig.z + vector.k * d;
-	return (endp);
+	i = 0;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	j = 0;
+	while (line[i + j] && !ft_isspace(line[i + j]))
+		j++;
+	str = ft_substr(line, i + j, ft_strlen(line) - i + j);
+	free (line);
+	return (str);
 }
