@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 13:29:44 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:53:08 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ typedef struct s_vector
 	double	k;
 }	t_vector;
 
+typedef struct s_quad
+{
+	double		a;
+	double		b;
+	double		c;
+	double		t1;
+	double		t2;
+	t_vector	cc;
+}	t_quad;
 
 /**
  * @brief struct to save the properties of the shapes

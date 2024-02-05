@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 16:38:21 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:44:00 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,52 @@ t_inter	*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px, int i
 	return (cy_valid_coll(top, bot));
 }
 
+double	cy_useful_dist(t_quad quad, t_vector ray, t_info *in, t_shape *cy)
+{
+	t_point	coll_t1;
+	t_point	coll_t2;
+	double	q1;
+	double	q2;
+	double	half;
+
+	half = cy->prop.height / 2;
+
+	coll_t1 = v_get_endpoint(ray, quad.t1, in->cset->point);
+	coll_t2 = v_get_endpoint(ray, quad.t2, in->cset->point);
+	q1 = v_dot_product(v_get_from2(cy->prop.c, coll_t1), cy->prop.n_vec);
+	q2 = v_dot_product(v_get_from2(cy->prop.c, coll_t2), cy->prop.n_vec);
+	if ((q1 >= -half && q1 <= half) && (q2 >= -half && q2 <= half))
+	{
+		if (quad.t1 < quad.t2)
+			return (quad.t1);
+		return (quad.t2);
+	}
+	if (q1 >= -half && q1 <= half)
+		return (quad.t1);
+	if (q2 >= -half && q2 <= half)
+		return (quad.t2);
+	return (-1.0);
+}
+
 t_inter	*cy_body_coll(t_vector ray, t_shape *cy, t_info *in)
 {
 	t_inter		*coll;
-	t_point		abc;
+	t_quad		quad;
 	t_vector	cross_cc;
 
 	coll = malloc(sizeof(t_inter));
-	abc.x = v_dot_product(v_cross_product(cy->prop.n_vec, ray), v_cross_product(cy->prop.n_vec, ray));
-	cross_cc = v_cross_product(cy->prop.n_vec, v_get_from2(cy->prop.c, in->cset->point));
-	abc.y = 2 * (v_dot_product(cross_cc, v_cross_product(cy->prop.n_vec, ray)));
-	abc.z = v_dot_product(cross_cc, cross_cc) - pow(cy->prop.rad, 2);
-	if (test)
-		printf("a: %f b: %f c: %f\n", abc.x, abc.y, abc.z);
-	coll->d = quadratic_equation(abc.x, abc.y, abc.z);
+	quad.cc = v_get_from2(cy->prop.c, in->cset->point);
+	quad.a = v_dot_product(v_cross_product(cy->prop.n_vec, ray), v_cross_product(cy->prop.n_vec, ray));
+	cross_cc = v_cross_product(cy->prop.n_vec, quad.cc);
+	quad.b = 2 * (v_dot_product(cross_cc, v_cross_product(cy->prop.n_vec, ray)));
+	quad.c = v_dot_product(cross_cc, cross_cc) - pow(cy->prop.rad, 2);
+	coll->d = quadratic_equation(&quad);
+	if (coll->d < 0)
+		return (free(coll), NULL);
+	coll->d = cy_useful_dist(quad, ray, in, cy);
 	if (coll->d < 0)
 		return (free(coll), NULL);
 	coll->q = inter_point_coords(in, coll, ray, cy->type);
-	if (test)
-		printf("pt %f %f %f\n", coll->q.x, coll->q.y, coll->q.z);
 	return (coll);
 }
 
@@ -124,10 +151,7 @@ t_inter	*inter_cy(t_info *in, t_shape *cy, t_pixel px)
 	return (cy_check_closest(caps_coll, body_coll));
 }
 
-double	distance_cy(t_info *info, t_shape *cy, t_vector ray)
+double	distance_cy(t_point orig, t_point coll)
 {
-	(void) info;
-	(void) cy;
-	(void) ray;
-	return (0.0);
+	return (v_mod(v_get_from2(orig, coll)));
 }

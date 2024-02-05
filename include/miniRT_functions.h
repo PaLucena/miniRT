@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 12:08:41 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:32:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ double		distance_pl(t_info *info, t_shape *pl, t_vector ray);
 t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
 
 //inter_cylinder.c
-double		distance_cy(t_info *info, t_shape *cy, t_vector ray);
+double		distance_cy(t_point orig, t_point coll);
 t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
 
 //inter_utils.c
-double		quadratic_equation(double a, double b, double c);
+double		quadratic_equation(t_quad *quad);
 t_point		plane_point_coords(t_info *in, double i, double j);
 t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
 
@@ -108,6 +108,7 @@ t_vector	v_matrix_product(t_vector v, t_matrix m);
 
 //	vector_utils3.c
 t_vector	v_opposite_vec(t_vector orig);
+t_point		v_get_endpoint(t_vector vector, double d, t_point orig);
 
 //	camera.c
 void		set_camera(t_cset *c);

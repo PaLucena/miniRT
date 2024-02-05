@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/04 23:38:51 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:32:15 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	shadow_search(t_info *info, t_point q)
 	while (shape)
 	{
 		if (shape->type == CY)
-			d2 = distance_cy(info, shape, ray);
+			d2 = distance_cy(info->lset->point, q);
 		else if (shape->type == PL)
 			d2 = -1 * distance_pl(info, shape, ray);
 		else if (shape->type == SP)
