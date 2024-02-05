@@ -33,12 +33,12 @@ RESET   := \033[0m
 all: libft mlx $(NAME)
 
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) -o $(NAME) -lm
+	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) -o $(NAME)
 	@ echo "$(GREEN)$(BOLD)$(NAME) compiled\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)
-	@ $(CC) $(FLAGS) -c $< -o $@ $(INC) -lm
+	@ $(CC) $(FLAGS) -c $< -o $@ $(INC)
 
 libft:
 	@ make -C include/libft
