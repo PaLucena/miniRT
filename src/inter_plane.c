@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 12:09:13 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:28:28 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	distance_pl(t_info *info, t_shape *pl, t_vector ray)
 	bot = v_dot_product(ray, pl->prop.n_vec);
 	if (bot == 0)
 		return (-1.0);
-	top = v_dot_product(v_get_from2(info->lset->point, pl->prop.c),
+	top = v_dot_product(v_get_from2(info->cset->point, pl->prop.c),
 			pl->prop.n_vec);
 	return (top / bot);
 }
