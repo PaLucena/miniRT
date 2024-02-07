@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 15:09:34 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:21:19 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
-t_inter	*get_closest_collision(t_pixel px, t_info *info)
+t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 {
 	t_inter	*tmp_inter;
 	t_inter	*new_inter;
@@ -23,16 +23,16 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info)
 	while (tmp_shape)
 	{
 		if (tmp_shape->type == CY)
-			new_inter = inter_cy(info, tmp_shape, px);
+			new_inter = inter_cy(info, tmp_shape, ray, origin);
 		else if (tmp_shape->type == PL)
-			new_inter = inter_pl(info, tmp_shape, px);
+			new_inter = inter_pl(tmp_shape, ray, origin);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, tmp_shape, px);
+			new_inter = inter_sp(tmp_shape, ray, origin);
 		if (new_inter)
 		{
 			if (!tmp_inter)
 				tmp_inter = new_inter;
-			else if (new_inter->d < tmp_inter->d)
+			else if (new_inter && new_inter->d > 0.000001 && new_inter->d < tmp_inter->d)
 				tmp_inter = new_inter;
 		}
 		tmp_shape = tmp_shape->next;
@@ -54,7 +54,7 @@ void	put_pixels(t_info *info)
 		{
 			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true) : (test = false); //FIXME: esto fuera
 			px.d = camera_ray_direction(info, px);
-			inter_tmp = get_closest_collision(px, info);
+			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
 			if (inter_tmp)
 				ft_phong(inter_tmp, info, px);
 			else

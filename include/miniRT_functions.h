@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 18:41:29 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:10:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,40 +58,38 @@ void		par_save_cylinder(char *line, t_info *info);
 void		ft_exit_program(void *param);
 
 //	mlx_hooks.c
-void		khook_debug(struct mlx_key_data keydata, void *param);
 void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
 double		distance_sp(t_point point, t_shape *sp, t_vector ray);
-t_inter		*inter_sp(t_info *in, t_shape *sp, t_pixel px);
+t_inter		*inter_sp(t_shape *sp, t_vector ray, t_point origin);
 
 //inter_plane.c
 double		distance_pl(t_point point, t_shape *pl, t_vector ray);
-t_inter		*inter_pl(t_info *in, t_shape *pl, t_pixel px);
+t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
 double		distance_cy(t_point point, t_shape *cy, t_vector ray);
-t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
+t_inter		*inter_cy(t_info *in, t_shape *cy, t_vector ray, t_point origin);
 
 //inter_utils.c
 double		quadratic_equation(double a, double b, double c);
 t_point		plane_point_coords(t_info *in, double i, double j);
-t_point		inter_point_coords(t_info *in, t_inter *inter, t_vector cc, int type);
+t_point		inter_point_coords(t_point origin, t_inter *inter, t_vector cc);
 
 //	pixels.c
-t_inter		*get_closest_collision(t_pixel px, t_info *info);
+t_inter		*get_closest_collision(t_vector ray, t_point origin, t_info *info);
 void		put_pixels(t_info *info);
 
 //	light.c
-bool		shadow_search(t_info *info, t_point q);
 void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
-void		ft_darkness(t_info *info, double x, double y);
-int			ft_cl_clamp(double unclamped);
 
-//	light_diffuse.c
-t_color		diffuse_light(t_info *in, t_inter *inter, t_shape *sh, t_color color);
-//t_color		ph_idiffuse(t_color a_c, t_info *info, t_shape *sh, t_inter c);
+//	light_utils.c
+uint32_t	get_rgba(t_color color);
+int			ft_cl_clamp(double unclamped);
+t_color		add_color(t_color c1, t_color c2);
+void		ft_darkness(t_info *info, double x, double y);
 
 //	vector_utils.c
 t_vector	v_mult(t_vector a, t_vector b);
