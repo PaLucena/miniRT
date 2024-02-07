@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 23:17:39 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:38:17 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	shadow_search(t_info *info, t_point q)
 void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 {
 	t_shape	*shape;
-	//t_color	result;
+	// t_color	result;
 	/* t_color	amb;
 	t_color	diff; */
 

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:17:24 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 22:27:53 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:23:42 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_inter	*cy_valid_coll(t_circle *top, t_circle *bot)
 		return (free(top->coll), bot->coll);
 	}
 	if (top_valid)
-		return (top->coll);
+		return (free(bot->coll), top->coll);
 	else if (bot_valid)
-		return (bot->coll);
-	return (NULL);
+		return (free(top->coll), bot->coll);
+	return (free(bot->coll), free(top->coll), NULL);
 }
 
 t_inter	*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px)
@@ -56,5 +56,5 @@ t_inter	*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px)
 	bot->plane = cy_circle_to_plane(bot);
 	top->coll = inter_pl(in, top->plane, px);
 	bot->coll = inter_pl(in, bot->plane, px);
-	return (cy_valid_coll(top, bot));
+	return (free(top->plane), free(bot->plane), cy_valid_coll(top, bot));
 }
