@@ -6,11 +6,28 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/05 22:16:17 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:00:52 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
+
+static t_inter	*px_pick_closest(t_inter *old, t_inter *new)
+{
+	if (new)
+	{
+		if (!old)
+			old = new;
+		else if (new->d < old->d)
+		{
+			free (old);
+			old = new;
+		}
+		else
+			free(new);
+	}
+	return (old);
+}
 
 t_inter	*get_closest_collision(t_pixel px, t_info *info)
 {
@@ -28,13 +45,7 @@ t_inter	*get_closest_collision(t_pixel px, t_info *info)
 			new_inter = inter_pl(info, tmp_shape, px);
 		else if (tmp_shape->type == SP)
 			new_inter = inter_sp(info, tmp_shape, px);
-		if (new_inter)
-		{
-			if (!tmp_inter)
-				tmp_inter = new_inter;
-			else if (new_inter->d < tmp_inter->d)
-				tmp_inter = new_inter;
-		}
+		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 		tmp_shape = tmp_shape->next;
 	}
 	return (tmp_inter);
