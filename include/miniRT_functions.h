@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:11:16 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:51:19 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void		par_save_amb(char *line, t_info *info);
 void		ft_save_rgb(t_color *color, char *str, t_info *info);
 void		ft_save_point(t_point *point, char *str, t_info *info);
 void		ft_save_vector(t_vector *vector, char *str, t_info *info);
-int			cy_save_hei(char *line, int start, t_properties *prop, t_info *info);
+int			cy_save_hei(char *line, int start, t_properties *prop,
+				t_info *info);
 
 //	save_camera.c
 void		par_save_camera(char *line, t_info *info);
@@ -74,10 +75,10 @@ t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
 double		distance_cy(t_point orig, t_point coll);
-t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
+t_inter		*inter_cy(t_shape *pl, t_vector ray, t_point origin);
 
 //	inter_cylinder2.c
-t_inter		*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px);
+t_inter		*cy_cap_coll(t_circle *top, t_circle *bot, t_vector ray, t_point orig);
 
 //inter_utils.c
 double		quadratic_equation(t_quad *quad);

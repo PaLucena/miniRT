@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/08 15:29:04 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:59:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_inter	*px_pick_closest(t_inter *old, t_inter *new)
 	{
 		if (!old)
 			old = new;
-		else if (new->d < old->d)
+		else if (new && new->d > 0.000001 && new->d < old->d)
 		{
 			free (old);
 			old = new;
@@ -40,20 +40,12 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 	while (tmp_shape)
 	{
 		if (tmp_shape->type == CY)
-			new_inter = inter_cy(info, tmp_shape, ray, origin);
+			new_inter = inter_cy(tmp_shape, ray, origin);
 		else if (tmp_shape->type == PL)
 			new_inter = inter_pl(tmp_shape, ray, origin);
 		else if (tmp_shape->type == SP)
-			new_inter = inter_sp(info, tmp_shape, px);
-		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 			new_inter = inter_sp(tmp_shape, ray, origin);
-		if (new_inter)
-		{
-			if (!tmp_inter)
-				tmp_inter = new_inter;
-			else if (new_inter && new_inter->d > 0.000001 && new_inter->d < tmp_inter->d)
-				tmp_inter = new_inter;
-		}
+		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 		tmp_shape = tmp_shape->next;
 	}
 	return (tmp_inter);
@@ -66,6 +58,7 @@ void	put_pixels(t_info *info)
 
 	px.j = 0;
 	set_camera(info->cset);
+	//printf("test 1\n");
 	while (px.j < info->w_height)
 	{
 		px.i = 0;
@@ -74,13 +67,20 @@ void	put_pixels(t_info *info)
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
 			if (inter_tmp)
+			{
 				ft_phong(inter_tmp, info, px);
+				//printf(" something \n");
+			}
 			else
+			{
 				ft_darkness(info, px.i, px.j);
+				//printf(" darkness \n");
+			}
 			free(inter_tmp);
 			px.i++;
 		}
 		px.j++;
 	}
 	mlx_image_to_window(info->mlx_s.mlx, info->mlx_s.win, 0, 0);
+	//printf("test 3\n");
 }
