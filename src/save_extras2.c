@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_extras2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/22 13:46:45 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:15:48 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_save_vector(t_vector *vector, char *str, t_info *info)
 		ft_print_error("Wrong vector input", info);
 	vec_save(ft_substr(str, i + j, k), &vector->k, info);
 }
-
 
 int	cy_save_hei(char *line, int start, t_properties *prop, t_info *info)
 {

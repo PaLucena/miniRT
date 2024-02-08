@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/06 16:33:05 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:11:27 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@
 # include "miniRT_structs.h"
 # include "miniRT_functions.h"
 
-bool	test;
+extern bool	test;
 
 #endif

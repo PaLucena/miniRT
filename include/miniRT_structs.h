@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/04 20:33:20 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:27:26 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct s_vector
 	double	j;
 	double	k;
 }	t_vector;
+
+typedef struct s_quad
+{
+	double		a;
+	double		b;
+	double		c;
+	double		t1;
+	double		t2;
+	t_vector	cc;
+}	t_quad;
 
 /**
  * @brief struct to save the properties of the shapes
@@ -82,6 +92,16 @@ typedef struct s_inter
 	double	d;
 	t_point	q;
 }	t_inter;
+
+typedef struct s_circle
+{
+	t_point		p;
+	t_vector	v;
+	double		diam;
+	t_inter		*coll;
+	t_shape		*plane;
+	int			shape_id;
+}	t_circle;
 
 /**
  * @brief Info about a single pixel in the screen

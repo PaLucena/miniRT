@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/07 15:39:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:13:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 double	distance_sp(t_point origin, t_shape *sp, t_vector ray)
 {
-	t_vector	cc;
-	t_point		abc;
+	t_quad	quad;
 
-	cc = v_get_from2(sp->prop.c, origin);
-	abc.x = v_dot_product(ray, ray);
-	abc.y = 2 * v_dot_product(ray, cc);
-	abc.z = v_dot_product(cc, cc) - pow(sp->prop.rad, 2);
-	return (quadratic_equation(abc.x, abc.y, abc.z));
+	quad.cc = v_get_from2(sp->prop.c, origin);
+	quad.a = v_dot_product(ray, ray);
+	quad.b = 2 * v_dot_product(ray, quad.cc);
+	quad.c = v_dot_product(quad.cc, quad.cc) - pow(sp->prop.rad, 2);
+	return (quadratic_equation(&quad));
 }
 
 t_inter	*inter_sp(t_shape *sp, t_vector ray, t_point origin)

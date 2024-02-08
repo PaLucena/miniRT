@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:44 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/19 11:50:51 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:34:32 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@ static char	*par_get_ident(char *line)
 	return (ft_substr(line, i, j));
 }
 
-static char	*par_clean_id(char *line)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	while (line[i] && ft_isspace(line[i]))
-		i++;
-	j = 0;
-	while (line[i + j] && !ft_isspace(line[i + j]))
-		j++;
-	str = ft_substr(line, i + j, ft_strlen(line) - i + j);
-	free (line);
-	return (str);
-}
-
 static void	par_save_line(char *line, t_info *info)
 {
 	char	*id;
@@ -51,7 +34,7 @@ static void	par_save_line(char *line, t_info *info)
 	line = par_clean_id(line);
 	if (ft_strcmp(id, "A") == 0)
 		par_save_amb(line, info);
- 	else if (ft_strcmp(id, "C") == 0)
+	else if (ft_strcmp(id, "C") == 0)
 		par_save_camera(line, info);
 	else if (ft_strcmp(id, "L") == 0)
 		par_save_light(line, info);
@@ -102,7 +85,7 @@ static void	par_extract_file(t_info *info, int fd)
 
 void	ft_parser(t_info *info)
 {
-	int	fd;
+	int		fd;
 	char	*ext;
 
 	fd = open(info->filename, O_RDONLY);

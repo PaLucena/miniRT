@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/07 13:10:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:11:16 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void		init_mlx(t_info	*info);
 
 //	parser.c
 void		ft_parser(t_info *info);
+
+//	parser_utils.c
+char		*par_clean_id(char *line);
 
 //	save_amb.c
 void		par_save_amb(char *line, t_info *info);
@@ -70,11 +73,14 @@ double		distance_pl(t_point point, t_shape *pl, t_vector ray);
 t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
-double		distance_cy(t_point point, t_shape *cy, t_vector ray);
-t_inter		*inter_cy(t_info *in, t_shape *cy, t_vector ray, t_point origin);
+double		distance_cy(t_point orig, t_point coll);
+t_inter		*inter_cy(t_info *in, t_shape *cy, t_pixel px);
+
+//	inter_cylinder2.c
+t_inter		*cy_cap_coll(t_circle *top, t_circle *bot, t_info *in, t_pixel px);
 
 //inter_utils.c
-double		quadratic_equation(double a, double b, double c);
+double		quadratic_equation(t_quad *quad);
 t_point		plane_point_coords(t_info *in, double i, double j);
 t_point		inter_point_coords(t_point origin, t_inter *inter, t_vector cc);
 
@@ -104,6 +110,10 @@ double		v_mod(t_vector v);
 double		v_dot_product(t_vector v1, t_vector v2);
 t_vector	v_cross_product(t_vector v1, t_vector v2);
 t_vector	v_matrix_product(t_vector v, t_matrix m);
+
+//	vector_utils3.c
+t_vector	v_opposite_vec(t_vector orig);
+t_point		v_get_endpoint(t_vector vector, double d, t_point orig);
 
 //	camera.c
 void		set_camera(t_cset *c);
