@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:12:00 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:23:31 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_inter	*cy_body_coll(t_vector ray, t_shape *cy, t_info *in)
 	t_vector	cross_cc;
 
 	coll = malloc(sizeof(t_inter));
+	coll->index = cy->index;
 	quad.cc = v_get_from2(cy->prop.c, in->cset->point);
 	quad.a = v_dot_product(v_cross_product(cy->prop.n_vec, ray),
 			v_cross_product(cy->prop.n_vec, ray));

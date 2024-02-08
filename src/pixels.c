@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/08 14:09:28 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:29:04 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
+
+static t_inter	*px_pick_closest(t_inter *old, t_inter *new)
+{
+	if (new)
+	{
+		if (!old)
+			old = new;
+		else if (new->d < old->d)
+		{
+			free (old);
+			old = new;
+		}
+		else
+			free(new);
+	}
+	return (old);
+}
 
 t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 {
@@ -27,6 +44,8 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 		else if (tmp_shape->type == PL)
 			new_inter = inter_pl(tmp_shape, ray, origin);
 		else if (tmp_shape->type == SP)
+			new_inter = inter_sp(info, tmp_shape, px);
+		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 			new_inter = inter_sp(tmp_shape, ray, origin);
 		if (new_inter)
 		{
