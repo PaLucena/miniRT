@@ -3,87 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 15:00:04 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:00:43 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/miniRT_bonus.h"
-
-void	ft_print_shapes(t_shape *root)
-{
-	t_shape	*tmp;
-
-	tmp = root;
-	while (tmp)
-	{
-		printf("INDEX: %i:", tmp->index);
-		if (tmp->type == CY)
-		{
-			printf("CYLINDER:\n");
-			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
-			printf("\theight: %f\n\tdiam: %f\n",
-				tmp->prop.height, tmp->prop.rad * 2.0);
-			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
-				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
-			printf("\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
-				tmp->prop.n_vec.i, tmp->prop.n_vec.j,
-				tmp->prop.n_vec.k);
-		}
-		else if (tmp->type == SP)
-		{
-			printf("SPHERE:\n");
-			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
-			printf("\tdiam: %f\n", tmp->prop.rad * 2.0);
-			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
-				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
-		}
-		else if (tmp->type == PL)
-		{
-			printf("PLANE:\n");
-			printf("\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n",
-				tmp->prop.c.x, tmp->prop.c.y, tmp->prop.c.z);
-			printf("\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
-				tmp->prop.color.r, tmp->prop.color.g, tmp->prop.color.b);
-			printf("\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
-				tmp->prop.n_vec.i, tmp->prop.n_vec.j,
-				tmp->prop.n_vec.k);
-		}
-		tmp = tmp->next;
-	}
-}
-
-void	ft_print_lights(t_lset *root)
-{
-	t_lset	*tmp;
-
-	tmp = root;
-	while (tmp)
-	{
-		printf("LSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n\tbrightness: %f\n",
-		tmp->point.x, tmp->point.y, tmp->point.z,
-		tmp->color.r, tmp->color.g,
-		tmp->color.b, tmp->brightness);
-		tmp = tmp->next;
-	}
-}
-
-void	ft_printparser(t_info *info)
-{
-	printf("ASET: \n\tratio: %f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
-		info->aset->ratio, info->aset->color.r, info->aset->color.g,
-		info->aset->color.b);
-	printf("CSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tFOV: %i\n\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
-		info->cset->point.x, info->cset->point.y, info->cset->point.z,
-		info->cset->fov, info->cset->n_vec.i,
-		info->cset->n_vec.j, info->cset->n_vec.k);
-	ft_print_lights(info->lset);
-	ft_print_shapes(info->shapes_list);
-}
 
 void	ft_print_error(char *str, t_info *info)
 {
@@ -121,8 +48,6 @@ int	main(int ac, char **av)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
-	ft_printparser(info);
-	exit(0);
 	ft_check_parsed(info);
 	init_mlx(info);
 	put_pixels(info);
