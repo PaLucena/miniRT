@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   miniRT_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 13:54:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:53:53 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <math.h>
 # include "libft/libft.h"
 # include "MLX42/include/MLX42/MLX42.h"
-# include "miniRT_structs.h"
-# include "miniRT_functions.h"
+# include "miniRT_structs_bonus.h"
+# include "miniRT_functions_bonus.h"
 
 #endif
