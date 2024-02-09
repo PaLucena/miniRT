@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 14:14:32 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:12:06 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/miniRT_bonus.h"
+#include "miniRT_bonus.h"
 
 double	cy_useful_dist(t_quad quad, t_vector ray, t_point origin, t_shape *cy)
 {
@@ -68,19 +68,19 @@ t_inter	*cy_check_closest(t_inter *caps, t_inter *body)
 	if (caps && body)
 	{
 		if (caps->d < body->d && caps->d > EPS)
-			return (free(body), caps);
+			return (center?printf("tapa, %f\n", caps->d):printf(""), free(body), caps);
 		else if (body->d > EPS)
-			return (free(caps), body);
+			return (center?printf("body, %f\n", body->d):printf(""), free(caps), body);
 	}
 	else if (caps && caps->d > EPS)
-		return (caps);
+		return (center?printf("tapa, %f\n", caps->d):printf(""), caps);
 	else if (body && body->d > EPS)
-		return (body);
+		return (center?printf("body, %f\n", body->d):printf(""),body);
 	if (body)
 		free(body);
 	if (caps)
 		free(caps);
-	return (NULL);
+	return (center?printf("nada\n"):printf(""), NULL);
 }
 
 t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
@@ -90,6 +90,8 @@ t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
 	t_inter		*caps_coll;
 	t_inter		*body_coll;
 
+	if (center)
+				printf("\npixels: \n");
 	top_cap.v = cy->prop.n_vec;
 	top_cap.p = v_get_endpoint(top_cap.v, cy->prop.height / 2, cy->prop.c);
 	top_cap.diam = cy->prop.rad * 2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 13:53:53 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:48:26 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "miniRT_structs_bonus.h"
 # include "miniRT_functions_bonus.h"
+
+bool	center;
 
 #endif
