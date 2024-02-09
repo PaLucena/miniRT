@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/08 15:53:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:11:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	shadow_search(t_info *info, t_point q)
 	ray = v_norm(v_get_from2(q, info->lset->point));
 	inter = get_closest_collision(ray, q, info);
 	d = v_mod(v_get_from2(info->lset->point, q));
-	if (inter && inter->d > 0.000001 && inter->d < d)
+	if (inter && inter->d > EPS && inter->d < d)
 		return (free(inter), true);
 	return (free(inter), false);
 }

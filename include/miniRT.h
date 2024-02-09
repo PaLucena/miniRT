@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:11:27 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:11:45 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 2560
 # define HEIGHT 1440
+# define EPS 0.000001
 //# define WIDTH 1400
 //# define HEIGHT 1000
 
