@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:13:17 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:13:14 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:08:08 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	distance_sp(t_point origin, t_shape *sp, t_vector ray)
+static double	distance_sp(t_point origin, t_shape *sp, t_vector ray)
 {
 	t_quad	quad;
 

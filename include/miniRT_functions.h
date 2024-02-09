@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 15:51:19 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:07:44 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,12 @@ void		ft_keyhook(void *param);
 void		ft_resizehook(int32_t new_w, int32_t new_h, void *param);
 
 //inter_sphere.c
-double		distance_sp(t_point point, t_shape *sp, t_vector ray);
 t_inter		*inter_sp(t_shape *sp, t_vector ray, t_point origin);
 
 //inter_plane.c
-double		distance_pl(t_point point, t_shape *pl, t_vector ray);
 t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
-double		distance_cy(t_point orig, t_point coll);
 t_inter		*inter_cy(t_shape *pl, t_vector ray, t_point origin);
 
 //	inter_cylinder2.c

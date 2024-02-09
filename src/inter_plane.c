@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:12:45 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:07:57 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	distance_pl(t_point origin, t_shape *pl, t_vector ray)
+static double	distance_pl(t_point origin, t_shape *pl, t_vector ray)
 {
 	double	top;
 	double	bot;
