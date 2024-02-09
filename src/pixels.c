@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 12:43:19 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:53:25 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	put_pixels(t_info *info)
 		px.i = 0;
 		while (px.i < info->w_width)
 		{
-			(px.i == 1725 && px.j == 861)?(test = true):(test = false);
+			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(test = true):(test = false);
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
 			if (inter_tmp && inter_tmp->d > EPS)

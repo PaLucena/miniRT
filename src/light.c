@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 12:41:43 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:44:48 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,24 +85,24 @@ static t_color	diffuse_light(t_lset *light, t_inter *inter, t_shape *sh)
 
 static t_color	specular_ref(t_info *in, t_lset *l, t_inter *inter, t_shape *sh)
 {
-	t_vector	n;
-	double		tmp;
-	t_vector	v_refr;
 	double		refr;
+	t_vector	v_refr;
+	t_vector	n;
 	t_color		result;
 
 	if (sh->type == PL)
 		n = v_norm(sh->prop.n_vec);
 	else
 		n = v_norm(v_get_from2(sh->prop.c, inter->q));
-	refr = 2 * v_dot_product(n, v_norm(v_get_from2(inter->q, l->point)));
-	v_refr = v_get_from2(v_to_p(v_get_from2(inter->q, l->point)), v_to_p(v_esc_mult(n, refr)));
-	tmp = v_dot_product(v_refr, v_esc_mult(in->cset->n_vec, -1.0));
-	if (tmp > 0)
+ 	refr = v_dot_product(n, v_norm(v_opposite_vec(v_get_from2(inter->q, l->point))));
+ 	v_refr = v_get_from2(v_to_p(v_esc_mult(n, (2 * refr))), v_to_p(v_norm(v_opposite_vec(v_get_from2(inter->q, l->point)))));
+	refr = v_dot_product(v_refr, v_norm(v_get_from2(in->cset->point, inter->q)));
+	if (refr > 0)
 		return ((t_color){0,0,0});
-	result.r = ft_cl_clamp(sh->prop.color.r * (l->color.r * l->brightness / 255) * pow(tmp, BRIGHTNESS));
-	result.g = ft_cl_clamp(sh->prop.color.g * (l->color.g * l->brightness / 255) * pow(tmp, BRIGHTNESS));
-	result.b = ft_cl_clamp(sh->prop.color.b * (l->color.b * l->brightness / 255) * pow(tmp, BRIGHTNESS));
+	refr = pow(refr, BRIGHTNESS);
+	result.r = ft_cl_clamp(l->color.r * refr);
+	result.g = ft_cl_clamp(l->color.g * refr);
+	result.b = ft_cl_clamp(l->color.b * refr);
 	return (result);
 }   
 

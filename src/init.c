@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 10:40:13 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:00:54 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	khook_debug(struct mlx_key_data keydata, void *param) //FIXME: esto fuera
 	if (keydata.action == MLX_RELEASE && keydata.key == MLX_KEY_D)
 	{
 		mlx_get_mouse_pos(info->mlx_s.mlx, &x, &y);
-		printf("\n\nXY: %d %d\n", x, y);
 		printf("Posición: %d %d\n", x, y);
 	}
 }
