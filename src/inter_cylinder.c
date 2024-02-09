@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 12:40:17 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:44:11 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 	if (coll->d < EPS)
 		return (free(coll), NULL);
 	coll->d = cy_useful_dist(quad, ray, origin, cy);
-	if (coll->d < 0)
+	if (coll->d < EPS)
 		return (free(coll), NULL);
 	coll->q = inter_point_coords(origin, coll, ray);
 	return (coll);
@@ -102,3 +102,4 @@ t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
 	body_coll = cy_body_coll(cy, ray, origin);
 	return (cy_check_closest(caps_coll, body_coll));
 }
+
