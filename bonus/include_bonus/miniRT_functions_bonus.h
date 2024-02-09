@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 14:05:53 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:53:28 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void		par_save_camera(char *line, t_info *info);
 
 //	save_light.c
 void		par_save_light(char *line, t_info *info);
+
+//	save_light_utils_bonus.c
+void		lset_add_node(t_info *info, t_lset *new);
+t_lset		*lset_new_node(void);
 
 //	scene_list_tools.c
 t_shape		*shapes_newnode(t_type type, int last_idx);

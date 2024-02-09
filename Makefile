@@ -18,7 +18,7 @@ SRC_B = main_bonus.c init_bonus.c parser_bonus.c save_amb_bonus.c save_extras_bo
 		inter_sphere_bonus.c inter_plane_bonus.c inter_cylinder_bonus.c inter_utils_bonus.c\
 		vector_utils_bonus.c vector_utils2_bonus.c\
 		light_bonus.c light_utils_bonus.c camera_bonus.c vector_point_color_bonus.c vector_utils3_bonus.c\
-		inter_cylinder2_bonus.c parser_utils_bonus.c\
+		inter_cylinder2_bonus.c parser_utils_bonus.c save_light_utils_bonus.c\
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
@@ -83,25 +83,27 @@ mlxb:
 	@make -C bonus/include_bonus/MLX42/
 clean:
 	@ rm -rf $(OBJ_PATH) $(OBJ_PATH_B)
-	@ make -C include/libft clean
-	@ make -C include/MLX42 clean
-	@ make -C include_bonus/libft clean
-	@ make -C include_bonus/MLX42 clean
+	@ make -C mandatory/include/libft/ clean
+	@ make -C mandatory/include/MLX42/ clean
+	@ make -C bonus/include_bonus/libft/ clean
+	@ make -C bonus/include_bonus/MLX42/ clean
 	@ echo "\n$(RED)$(BOLD)$(NAME) deleted\n$(RESET)"
 
 fclean: clean
 	@ rm -rf $(NAME) $(NAME_B)
-	@ make -C include/libft fclean
-	@ make -C include/MLX42/ fclean
-	@ make -C include_bonus/libft fclean
-	@ make -C include_bonus/MLX42/ fclean
+	@ make -C mandatory/include/libft/ fclean
+	@ make -C mandatory/include/MLX42/ fclean
+	@ make -C bonus/include_bonus/libft/ fclean
+	@ make -C bonus/include_bonus/MLX42/ fclean
 
 re: fclean all
 
 norme:
-	@ norminette src/
-	@ norminette src_bonus/
-	@ norminette include/libft/
-	@ norminette include/*.h
+	@ norminette mandatory/src/
+	@ norminette bonus/src_bonus/
+	@ norminette mandatory/include/libft/
+	@ norminette mandatory/include/*.h
+	@ norminette bonus/include/libft/
+	@ norminette bonus/include/*.h
 
 .PHONY: all libft mlx clean fclean re norme bonus libftb mlxb

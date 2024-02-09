@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:43:10 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:05:24 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:53:42 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ void	par_save_light(char *line, t_info *info)
 	int		i;
 	t_lset	*new;
 
-	new = malloc(sizeof(t_lset));
-	if (info->lset != NULL)
-		ft_print_error("Light info redeclared", info);
-	info->lset = new;
+	new = lset_new_node();
+	lset_add_node(info, new);
 	i = lset_save_point(line, 0, new, info);
 	i = lset_save_ratio(line, i, new, info);
 	i = lset_save_rgb(line, i, new, info);

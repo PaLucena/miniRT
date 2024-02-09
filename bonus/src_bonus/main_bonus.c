@@ -6,13 +6,13 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 14:15:04 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:04 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/miniRT_bonus.h"
 
-/* void	ft_print_shapes(t_shape *root)
+void	ft_print_shapes(t_shape *root)
 {
 	t_shape	*tmp;
 
@@ -57,23 +57,33 @@
 	}
 }
 
+void	ft_print_lights(t_lset *root)
+{
+	t_lset	*tmp;
+
+	tmp = root;
+	while (tmp)
+	{
+		printf("LSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n\tbrightness: %f\n",
+		tmp->point.x, tmp->point.y, tmp->point.z,
+		tmp->color.r, tmp->color.g,
+		tmp->color.b, tmp->brightness);
+		tmp = tmp->next;
+	}
+}
+
 void	ft_printparser(t_info *info)
 {
 	printf("ASET: \n\tratio: %f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n",
 		info->aset->ratio, info->aset->color.r, info->aset->color.g,
 		info->aset->color.b);
-	printf("CSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: 
-		%f\n\tFOV: %i\n\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
+	printf("CSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ: %f\n\tFOV: %i\n\tvector:\n\t\tI: %f\n\t\tJ: %f\n\t\tK: %f\n",
 		info->cset->point.x, info->cset->point.y, info->cset->point.z,
 		info->cset->fov, info->cset->n_vec.i,
 		info->cset->n_vec.j, info->cset->n_vec.k);
-	printf("LSET: \n\tpoint:\n\t\tX: %f\n\t\tY: %f\n\t\tZ:
-	%f\n\tcolor:\n\t\tR: %i\n\t\tG: %i\n\t\tB: %i\n\tbrightness: %f\n",
-		info->lset->point.x, info->lset->point.y, info->lset->point.z,
-		info->lset->color.r, info->lset->color.g,
-		info->lset->color.b, info->lset->brightness);
+	ft_print_lights(info->lset);
 	ft_print_shapes(info->shapes_list);
-} */
+}
 
 void	ft_print_error(char *str, t_info *info)
 {
@@ -111,6 +121,8 @@ int	main(int ac, char **av)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
 	ft_parser(info);
+	ft_printparser(info);
+	exit(0);
 	ft_check_parsed(info);
 	init_mlx(info);
 	put_pixels(info);

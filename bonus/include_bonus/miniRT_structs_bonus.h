@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_structs.h                                   :+:      :+:    :+:   */
+/*   miniRT_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/05 22:27:26 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:43:20 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,9 +145,10 @@ typedef struct s_cset
 
 typedef struct s_lset
 {
-	t_point	point;
-	t_color	color;
-	float	brightness;
+	t_point			point;
+	t_color			color;
+	float			brightness;
+	struct s_lset	*next;
 }	t_lset;
 
 typedef struct s_info
