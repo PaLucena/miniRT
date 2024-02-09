@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 10:52:26 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:43:19 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_inter	*px_pick_closest(t_inter *old, t_inter *new)
 	{
 		if (!old)
 			old = new;
-		else if (new && new->d > 0.000001 && new->d < old->d)
+		else if (new && new->d > EPS && new->d < old->d)
 		{
 			free (old);
 			old = new;
@@ -66,7 +66,7 @@ void	put_pixels(t_info *info)
 			(px.i == 1725 && px.j == 861)?(test = true):(test = false);
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
-			if (inter_tmp && inter_tmp->d > 0.000001)
+			if (inter_tmp && inter_tmp->d > EPS)
 				ft_phong(inter_tmp, info, px);
 			else
 				ft_darkness(info, px.i, px.j);

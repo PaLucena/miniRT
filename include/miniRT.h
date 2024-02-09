@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 12:08:19 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:39:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 2560
 # define HEIGHT 1440
+# define EPS 0.000001
 
 # define BRIGHTNESS 50.0
 

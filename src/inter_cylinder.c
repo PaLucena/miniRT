@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 20:07:31 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:40:17 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 				v_cross_product(cy->prop.n_vec, ray)));
 	quad.c = v_dot_product(cross_cc, cross_cc) - pow(cy->prop.rad, 2);
 	coll->d = quadratic_equation(&quad);
-	if (coll->d < 0.000001)
+	if (coll->d < EPS)
 		return (free(coll), NULL);
 	coll->d = cy_useful_dist(quad, ray, origin, cy);
-	if (coll->d < 0.000001)
+	if (coll->d < 0)
 		return (free(coll), NULL);
 	coll->q = inter_point_coords(origin, coll, ray);
 	return (coll);
@@ -67,14 +67,19 @@ t_inter	*cy_check_closest(t_inter *caps, t_inter *body)
 {
 	if (caps && body)
 	{
-		if (caps->d < body->d)
+		if (caps->d < body->d && caps->d > EPS)
 			return (free(body), caps);
-		return (free(caps), body);
+		else if (body->d > EPS)
+			return (free(caps), body);
 	}
-	else if (caps)
+	else if (caps && caps->d > EPS)
 		return (caps);
-	else if (body)
+	else if (body && body->d > EPS)
 		return (body);
+	if (body)
+		free(body);
+	if (caps)
+		free(caps);
 	return (NULL);
 }
 
