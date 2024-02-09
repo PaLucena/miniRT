@@ -6,11 +6,11 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:24:50 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/07 12:49:55 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:11:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 void	free_shapes(t_shape *root)
 {

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/08 13:49:07 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:13:21 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_save_vector(t_vector *vector, char *str, t_info *info)
 	if (str[i + j + k] && str[i + j + k] != ',')
 		ft_print_error("Wrong vector input", info);
 	vec_save(ft_substr(str, i + j, k), &vector->k, info);
-//	vec_check_unitary(vector, info);
 }
 
 int	cy_save_hei(char *line, int start, t_properties *prop, t_info *info)

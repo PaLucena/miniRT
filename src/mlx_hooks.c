@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:18:39 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 10:41:25 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:11:22 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static bool	ft_keyhook2(t_info *info)
 {

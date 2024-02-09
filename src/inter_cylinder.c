@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 12:44:11 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:12:33 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,3 @@ t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
 	body_coll = cy_body_coll(cy, ray, origin);
 	return (cy_check_closest(caps_coll, body_coll));
 }
-

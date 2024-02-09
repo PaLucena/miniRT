@@ -6,25 +6,11 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:05:24 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:14:21 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/miniRT_bonus.h"
-
-void	khook_debug(struct mlx_key_data keydata, void *param) //FIXME: esto fuera
-{
-	t_info	*info = (t_info *)param;
-	int32_t	x;
-	int32_t	y;
-
-	if (keydata.action == MLX_RELEASE && keydata.key == MLX_KEY_D)
-	{
-		mlx_get_mouse_pos(info->mlx_s.mlx, &x, &y);
-		printf("\n\nXY: %d %d\n", x, y);
-		printf("Posición: %d %d\n", x, y);
-	}
-}
 
 void	init_mlx(t_info	*info)
 {
@@ -39,7 +25,6 @@ void	init_mlx(t_info	*info)
 	}
 	mlx_close_hook(info->mlx_s.mlx, &ft_exit_program, (void *)info);
 	mlx_loop_hook(info->mlx_s.mlx, &ft_keyhook, (void *)info);
-	mlx_key_hook(info->mlx_s.mlx, &khook_debug, info); //FIXME: esto fuera
 	mlx_resize_hook(info->mlx_s.mlx, &ft_resizehook, (void *)info);
 }
 
