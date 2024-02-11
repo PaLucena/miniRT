@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 15:47:59 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:40:18 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	test;
+bool center;
 
 /* void	ft_print_shapes(t_shape *root)
 {
@@ -85,11 +85,12 @@ void	ft_print_error(char *str, t_info *info)
 	exit(1);
 }
 
-void	ft_leaks(void)
+/* void	ft_leaks(void)
 {
 	system("leaks -q miniRT");
+	atexit(ft_leaks);
 }
-
+ */
 void	ft_check_parsed(t_info *info)
 {
 	if (!info->cset)
@@ -106,7 +107,6 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-	atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
