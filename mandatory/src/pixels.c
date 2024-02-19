@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/11 19:31:20 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:20:00 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 		tmp_shape = tmp_shape->next;
 	}
-	if (center)
+	if (center && tmp_inter)
 		printf("inter d: %f, (%f, %f, %f)\n", tmp_inter->d, tmp_inter->q.x, tmp_inter->q.y, tmp_inter->q.z);
 	return (tmp_inter);
 }
@@ -67,12 +67,16 @@ void	put_pixels(t_info *info)
 		{
 			(px.j == info->w_height / 2 && px.i == info->w_width / 2)?(center = true):(center = false);
 			px.d = camera_ray_direction(info, px);
+			if (center)
+				printf("collision\n");
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
-			center = false;
+			if (center)
+				printf("light\n");
 			if (inter_tmp && inter_tmp->d > EPS)
 				ft_phong(inter_tmp, info, px);
 			else
 				ft_darkness(info, px.i, px.j);
+			center = false;
 			free(inter_tmp);
 			px.i++;
 		}

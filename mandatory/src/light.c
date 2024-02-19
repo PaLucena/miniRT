@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 12:52:37 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:57:46 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 	result = ambient_light(shape->prop.color, info->aset);
 	if (!shadow_search(info, info->lset, inter->q))
 		result = add_color(result, diffuse_light(info->lset, inter, shape));
+	if (center)
+		printf("color: %i %i %i\n", result.r, result.g, result.b);
 	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
 }
