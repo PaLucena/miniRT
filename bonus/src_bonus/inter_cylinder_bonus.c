@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cylinder_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/19 14:22:33 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:43:26 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ double	cy_useful_dist(t_quad quad, t_vector ray, t_point origin, t_shape *cy)
 	return (-1.0);
 }
 
+static t_vector	cy_get_body_norm(t_shape *cy, t_inter *coll)
+{
+	t_vector	base_coll;
+	double		projection;
+	t_vector	surf;
+	t_vector	result;
+
+	base_coll = v_get_from2(cy->prop.c, coll->q);
+	projection = v_dot_product(base_coll, cy->prop.n_vec);
+	surf = v_sum((t_vector){cy->prop.c.x, cy->prop.c.y, cy->prop.c.z},
+			v_esc_mult(cy->prop.n_vec, projection));
+	result = v_norm(v_get_from2((t_point){surf.i, surf.j, surf.k}, coll->q));
+	return (result);
+}
+
 t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 {
 	t_inter		*coll;
@@ -60,6 +75,7 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 	if (coll->d < EPS)
 		return (free(coll), NULL);
 	coll->q = inter_point_coords(origin, coll, ray);
+	coll->norm = cy_get_body_norm(cy, coll);
 	return (coll);
 }
 
@@ -68,19 +84,19 @@ t_inter	*cy_check_closest(t_inter *caps, t_inter *body)
 	if (caps && body)
 	{
 		if (caps->d < body->d && caps->d > EPS)
-			return (center?printf("tapa, %f\n", caps->d):printf(""), free(body), caps);
+			return (free(body), caps);
 		else if (body->d > EPS)
-			return (center?printf("body, %f\n", body->d):printf(""), free(caps), body);
+			return (free(caps), body);
 	}
 	else if (caps && caps->d > EPS)
-		return (center?printf("tapa, %f\n", caps->d):printf(""), caps);
+		return (caps);
 	else if (body && body->d > EPS)
-		return (center?printf("body, %f\n", body->d):printf(""),body);
+		return (body);
 	if (body)
 		free(body);
 	if (caps)
 		free(caps);
-	return (center?printf("nada\n"):printf(""), NULL);
+	return (NULL);
 }
 
 t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
@@ -90,8 +106,6 @@ t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
 	t_inter		*caps_coll;
 	t_inter		*body_coll;
 
-	if (center)
-				printf("\npixels: \n");
 	top_cap.v = cy->prop.n_vec;
 	top_cap.p = v_get_endpoint(top_cap.v, cy->prop.height / 2, cy->prop.c);
 	top_cap.diam = cy->prop.rad * 2;

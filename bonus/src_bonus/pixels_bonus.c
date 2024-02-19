@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixels_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 18:11:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:53:56 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	put_pixels(t_info *info)
 		px.i = 0;
 		while (px.i < info->w_width)
 		{
-			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(center = true):(center = false);
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
 			if (inter_tmp && inter_tmp->d > EPS)
