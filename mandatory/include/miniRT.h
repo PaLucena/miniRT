@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/11 19:20:08 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:39:09 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "miniRT_structs.h"
 # include "miniRT_functions.h"
-
-extern bool	center;
 
 #endif

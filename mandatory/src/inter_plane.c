@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 20:07:57 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:13:40 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_inter	*inter_pl(t_shape *pl, t_vector ray, t_point origin)
 	if (inter->d == -1.0)
 		return (free(inter), NULL);
 	inter->q = inter_point_coords(origin, inter, ray);
+	inter->norm = v_norm(pl->prop.n_vec);
 	return (inter);
 }

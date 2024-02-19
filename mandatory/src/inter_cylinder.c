@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/16 15:41:03 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:29:10 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ double	cy_useful_dist(t_quad quad, t_vector ray, t_point origin, t_shape *cy)
 	return (-1.0);
 }
 
+static t_vector	cy_get_body_norm(t_shape *cy, t_inter *coll)
+{
+	t_vector	base_coll;
+	double		projection;
+	t_vector	surf;
+	t_vector	result;
+
+	base_coll = v_get_from2(cy->prop.c, coll->q);
+	projection = v_dot_product(base_coll, cy->prop.n_vec);
+	surf = v_sum((t_vector){cy->prop.c.x, cy->prop.c.y, cy->prop.c.z},
+			v_esc_mult(cy->prop.n_vec, projection));
+	result = v_norm(v_get_from2((t_point){surf.i, surf.j, surf.k}, coll->q));
+	return (result);
+}
+
 t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 {
 	t_inter		*coll;
@@ -53,8 +68,6 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 	quad.b = 2 * (v_dot_product(cross_cc,
 				v_cross_product(cy->prop.n_vec, ray)));
 	quad.c = v_dot_product(cross_cc, cross_cc) - pow(cy->prop.rad, 2);
-	if (center)
-		printf("a: %f, b: %f, c: %f\n",quad.a, quad.b, quad.c);
 	coll->d = quadratic_equation(&quad);
 	if (coll->d < EPS)
 		return (free(coll), NULL);
@@ -62,6 +75,7 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 	if (coll->d < EPS)
 		return (free(coll), NULL);
 	coll->q = inter_point_coords(origin, coll, ray);
+	coll->norm = cy_get_body_norm(cy, coll);
 	return (coll);
 }
 

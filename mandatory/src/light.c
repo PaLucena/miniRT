@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/19 13:57:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:37:06 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,11 @@ static t_color	ambient_light(t_color sh, t_aset *aset)
 
 static t_color	diffuse_light(t_lset *light, t_inter *inter, t_shape *sh)
 {
-	t_vector	v;
-	t_vector	n;
 	double		vn;
 	t_color		result;
 
-	v = v_norm(v_get_from2(inter->q, light->point));
-	if (sh->type == PL)
-		n = v_norm(sh->prop.n_vec);
-	else
-		n = v_norm(v_get_from2(sh->prop.c, inter->q));
-	vn = v_dot_product(v, n);
+	vn = v_dot_product(v_norm(v_get_from2(inter->q,
+					light->point)), inter->norm);
 	result.r = ft_cl_clamp(sh->prop.color.r * vn);
 	result.g = ft_cl_clamp(sh->prop.color.g * vn);
 	result.b = ft_cl_clamp(sh->prop.color.b * vn);
