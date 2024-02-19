@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pixels_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:06:18 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:11:57 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/miniRT_bonus.h"
+#include "miniRT_bonus.h"
 
 static t_inter	*px_pick_closest(t_inter *old, t_inter *new)
 {
@@ -63,6 +63,7 @@ void	put_pixels(t_info *info)
 		px.i = 0;
 		while (px.i < info->w_width)
 		{
+			(px.i == info->w_width / 2 && px.j == info->w_height / 2)?(center = true):(center = false);
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
 			if (inter_tmp && inter_tmp->d > EPS)
