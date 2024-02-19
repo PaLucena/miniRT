@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/19 13:57:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:51:35 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,14 @@ static t_color	diffuse_light(t_lset *light, t_inter *inter, t_shape *sh)
 		n = v_norm(sh->prop.n_vec);
 	else
 		n = v_norm(v_get_from2(sh->prop.c, inter->q));
+	if (center)
+		printf("Normal: %f %f %f\n", n.i, n.j, n.k);
 	vn = v_dot_product(v, n);
 	result.r = ft_cl_clamp(sh->prop.color.r * vn);
 	result.g = ft_cl_clamp(sh->prop.color.g * vn);
 	result.b = ft_cl_clamp(sh->prop.color.b * vn);
+	if (center)
+		printf("alo: %i %i %i %f \n", result.r, result.g, result.b, vn);
 	return (result);
 }
 
@@ -67,7 +71,5 @@ void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
 	result = ambient_light(shape->prop.color, info->aset);
 	if (!shadow_search(info, info->lset, inter->q))
 		result = add_color(result, diffuse_light(info->lset, inter, shape));
-	if (center)
-		printf("color: %i %i %i\n", result.r, result.g, result.b);
 	mlx_put_pixel(info->mlx_s.win, px.i, px.j, get_rgba(result));
 }

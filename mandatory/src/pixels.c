@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/16 12:20:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:28:57 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 		tmp_shape = tmp_shape->next;
 	}
+	
 	if (center && tmp_inter)
 		printf("inter d: %f, (%f, %f, %f)\n", tmp_inter->d, tmp_inter->q.x, tmp_inter->q.y, tmp_inter->q.z);
 	return (tmp_inter);
