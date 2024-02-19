@@ -70,7 +70,7 @@ bonus: libftb mlxb $(NAME_B)
 
 $(NAME_B): $(OBJ_B)
 	@ gcc $(FLAGS) $(OBJ_B) $(LIB_B) $(MLX_B) $(BREW) $(INC_B) -o $(NAME_B)
-	@ echo "$(GREEN)$(BOLD)$(NAME) compiled\n$(RESET)"
+	@ echo "$(GREEN)$(BOLD)$(NAME_B) compiled\n$(RESET)"
 
 $(OBJ_PATH_B)%.o: $(SRC_PATH_B)%.c
 	@ mkdir -p  $(OBJ_PATH_B)
@@ -82,21 +82,28 @@ libftb:
 mlxb:
 	@make -C bonus/include_bonus/MLX42/
 clean:
-	@ rm -rf $(OBJ_PATH) $(OBJ_PATH_B)
+	@ rm -rf $(OBJ_PATH)
 	@ make -C mandatory/include/libft/ clean
 	@ make -C mandatory/include/MLX42/ clean
-	@ make -C bonus/include_bonus/libft/ clean
-	@ make -C bonus/include_bonus/MLX42/ clean
 	@ echo "\n$(RED)$(BOLD)$(NAME) deleted\n$(RESET)"
 
-fclean: clean
-	@ rm -rf $(NAME) $(NAME_B)
+clean_bonus:
+	@ rm -rf $(OBJ_PATH_B)
+	@ make -C bonus/include_bonus/libft/ clean
+	@ make -C bonus/include_bonus/MLX42/ clean
+	@ echo "\n$(RED)$(BOLD)$(NAME_B) deleted\n$(RESET)"
+
+fclean: clean clean_bonus
+	@ rm -rf $(NAME)
 	@ make -C mandatory/include/libft/ fclean
 	@ make -C mandatory/include/MLX42/ fclean
+	@ rm -rf $(NAME_B)
 	@ make -C bonus/include_bonus/libft/ fclean
 	@ make -C bonus/include_bonus/MLX42/ fclean
 
 re: fclean all
+
+re_bonus: fclean bonus
 
 norme:
 	@ norminette mandatory/src/
@@ -106,4 +113,4 @@ norme:
 	@ norminette bonus/include/libft/
 	@ norminette bonus/include/*.h
 
-.PHONY: all libft mlx clean fclean re norme bonus libftb mlxb
+.PHONY: all libft mlx clean fclean re norme bonus libftb mlxb clean_bonus fclean_bonus re_bonus
