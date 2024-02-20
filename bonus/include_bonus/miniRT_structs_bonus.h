@@ -6,12 +6,12 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/19 20:44:06 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:21:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_STRUCTS_H
-# define MINIRT_STRUCTS_H
+#ifndef MINIRT_STRUCTS_BONUS_H
+# define MINIRT_STRUCTS_BONUS_H
 
 # include "MLX42/include/MLX42/MLX42.h"
 
@@ -69,6 +69,7 @@ typedef enum e_type
 	CY = 0,
 	PL,
 	SP,
+	CO,
 }	t_type;
 
 typedef struct s_shape

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:15:15 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:19:56 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,29 @@ void	ft_save_vector(t_vector *vector, char *str, t_info *info)
 }
 
 int	cy_save_hei(char *line, int start, t_properties *prop, t_info *info)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = start;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	j = 0;
+	while (line[i + j] && !ft_isspace(line[i + j]))
+		j++;
+	str = ft_substr(line, i, j);
+	if (!ft_check_atod(str))
+	{
+		free(str);
+		ft_print_error("", info);
+	}
+	prop->height = ft_atod(str);
+	free(str);
+	return (i + j);
+}
+
+int	co_save_hei(char *line, int start, t_properties *prop, t_info *info)
 {
 	int		i;
 	int		j;

@@ -6,12 +6,12 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/09 14:53:28 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:26:53 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINRT_FUNCTIONS_H
-# define MINRT_FUNCTIONS_H
+#ifndef MINRT_FUNCTIONS_BONUS_H
+# define MINRT_FUNCTIONS_BONUS_H
 
 # include "miniRT_structs_bonus.h"
 
@@ -27,6 +27,7 @@ void		ft_parser(t_info *info);
 
 //	parser_utils.c
 char		*par_clean_id(char *line);
+void		par_options(char *id, char *line, t_info *info);
 
 //	save_amb.c
 void		par_save_amb(char *line, t_info *info);
@@ -36,6 +37,8 @@ void		ft_save_rgb(t_color *color, char *str, t_info *info);
 void		ft_save_point(t_point *point, char *str, t_info *info);
 void		ft_save_vector(t_vector *vector, char *str, t_info *info);
 int			cy_save_hei(char *line, int start, t_properties *prop,
+				t_info *info);
+int			co_save_hei(char *line, int start, t_properties *prop,
 				t_info *info);
 
 //	save_camera.c
@@ -79,7 +82,8 @@ t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 t_inter		*inter_cy(t_shape *pl, t_vector ray, t_point origin);
 
 //	inter_cylinder2.c
-t_inter		*cy_cap_coll(t_circle *top, t_circle *bot, t_vector ray, t_point orig);
+t_inter		*cy_cap_coll(t_circle *top, t_circle *bot,
+				t_vector ray, t_point orig);
 
 //inter_utils.c
 double		quadratic_equation(t_quad *quad);
@@ -126,5 +130,8 @@ t_point		v_to_p(t_vector v);
 t_vector	p_to_v(t_point p);
 t_vector	c_to_v(t_color c);
 t_color		v_to_c(t_vector v);
+
+//	save_cone_bonus.c
+void		par_save_cone(char *line, t_info *info);
 
 #endif

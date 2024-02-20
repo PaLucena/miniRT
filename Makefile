@@ -11,14 +11,14 @@ SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera
 	light.c light_utils.c camera.c vector_point_color.c vector_utils3.c inter_cylinder2.c parser_utils.c\
 
 SRC_PATH_B = bonus/src_bonus/
-SRC_B = main_bonus.c init_bonus.c parser_bonus.c save_amb_bonus.c save_extras_bonus.c\
+SRC_B = main.c init_bonus.c parser_bonus.c save_amb_bonus.c save_extras_bonus.c\
 		save_extras2_bonus.c save_camera_bonus.c save_light_bonus.c\
 		scene_list_tools_bonus.c save_sphere_bonus.c save_cylinder_bonus.c\
 		save_plane_bonus.c exit_bonus.c mlx_hooks_bonus.c pixels_bonus.c \
 		inter_sphere_bonus.c inter_plane_bonus.c inter_cylinder_bonus.c inter_utils_bonus.c\
 		vector_utils_bonus.c vector_utils2_bonus.c\
 		light_bonus.c light_utils_bonus.c camera_bonus.c vector_point_color_bonus.c vector_utils3_bonus.c\
-		inter_cylinder2_bonus.c parser_utils_bonus.c save_light_utils_bonus.c\
+		inter_cylinder2_bonus.c parser_utils_bonus.c save_light_utils_bonus.c save_cone_bonus.c\
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
@@ -66,7 +66,7 @@ libft:
 mlx:
 	@make -C mandatory/include/MLX42/
 
-bonus: libftb mlxb $(NAME_B)
+bonus: blibft bmlx $(NAME_B)
 
 $(NAME_B): $(OBJ_B)
 	@ gcc $(FLAGS) $(OBJ_B) $(LIB_B) $(MLX_B) $(BREW) $(INC_B) -o $(NAME_B)
@@ -76,10 +76,10 @@ $(OBJ_PATH_B)%.o: $(SRC_PATH_B)%.c
 	@ mkdir -p  $(OBJ_PATH_B)
 	@ $(CC) $(FLAGS) -c $< -o $@ $(INC_B)
 
-libftb:
+blibft:
 	@ make -C bonus/include_bonus/libft
 
-mlxb:
+bmlx:
 	@make -C bonus/include_bonus/MLX42/
 clean:
 	@ rm -rf $(OBJ_PATH)
@@ -87,13 +87,13 @@ clean:
 	@ make -C mandatory/include/MLX42/ clean
 	@ echo "\n$(RED)$(BOLD)$(NAME) deleted\n$(RESET)"
 
-clean_bonus:
+bclean:
 	@ rm -rf $(OBJ_PATH_B)
 	@ make -C bonus/include_bonus/libft/ clean
 	@ make -C bonus/include_bonus/MLX42/ clean
 	@ echo "\n$(RED)$(BOLD)$(NAME_B) deleted\n$(RESET)"
 
-fclean: clean clean_bonus
+fclean: clean bclean
 	@ rm -rf $(NAME)
 	@ make -C mandatory/include/libft/ fclean
 	@ make -C mandatory/include/MLX42/ fclean
@@ -103,14 +103,16 @@ fclean: clean clean_bonus
 
 re: fclean all
 
-re_bonus: fclean bonus
+bre: fclean bonus
 
 norme:
 	@ norminette mandatory/src/
-	@ norminette bonus/src_bonus/
 	@ norminette mandatory/include/libft/
 	@ norminette mandatory/include/*.h
-	@ norminette bonus/include/libft/
-	@ norminette bonus/include/*.h
 
-.PHONY: all libft mlx clean fclean re norme bonus libftb mlxb clean_bonus fclean_bonus re_bonus
+bnorme:
+	@ norminette bonus/src_bonus/
+	@ norminette bonus/include_bonus/libft/
+	@ norminette bonus/include_bonus/*.h
+
+.PHONY: all libft mlx clean fclean re norme bonus blibft bmlx bclean bre bnorme
