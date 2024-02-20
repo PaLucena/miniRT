@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 10:24:55 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:16:20 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_print_error(char *str, t_info *info)
 
 void	ft_leaks(void)
 {
-	system("leaks -q miniRT");
+	system("leaks -q miniRT_bonus");
 }
 
 void	ft_check_parsed(t_info *info)

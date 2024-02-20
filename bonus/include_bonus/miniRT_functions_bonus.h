@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 10:26:53 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:47:52 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
 t_inter		*inter_cy(t_shape *pl, t_vector ray, t_point origin);
+t_inter		*cy_co_check_closest(t_inter *caps, t_inter *body);
 
 //	inter_cylinder2.c
 t_inter		*cy_cap_coll(t_circle *top, t_circle *bot,
 				t_vector ray, t_point orig);
+t_shape		*cy_circle_to_plane(t_circle *c);
 
 //inter_utils.c
 double		quadratic_equation(t_quad *quad);
@@ -133,5 +135,8 @@ t_color		v_to_c(t_vector v);
 
 //	save_cone_bonus.c
 void		par_save_cone(char *line, t_info *info);
+
+//	inter_cone_bonus.c
+t_inter		*inter_co(t_shape *cy, t_vector ray, t_point origin);
 
 #endif

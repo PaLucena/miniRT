@@ -6,13 +6,13 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:17:24 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:05:24 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:08:21 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/miniRT_bonus.h"
 
-static t_shape	*cy_circle_to_plane(t_circle *c)
+t_shape	*cy_circle_to_plane(t_circle *c)
 {
 	t_shape	*shp;
 

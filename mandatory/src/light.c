@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/19 20:40:54 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:28:25 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	shadow_search(t_info *info, t_lset *light, t_point q)
 	ray = v_norm(v_get_from2(q, light->point));
 	inter = get_closest_collision(ray, q, info);
 	d = v_mod(v_get_from2(info->lset->point, q));
-	if (inter && inter->d > EPS && inter->d < d)
+	if (inter && inter->d > EPS && inter->d < d + EPS)
 		return (free(inter), true);
 	return (free(inter), false);
 }
@@ -30,9 +30,9 @@ static t_color	ambient_light(t_color sh, t_aset *aset)
 {
 	t_color	result;
 
-	result.r = ft_cl_clamp(sh.r * (aset->color.r * aset->ratio / 255));
-	result.g = ft_cl_clamp(sh.g * (aset->color.g * aset->ratio / 255));
-	result.b = ft_cl_clamp(sh.b * (aset->color.b * aset->ratio / 255));
+	result.r = ft_cl_clamp(sh.r * (aset->color.r * aset->ratio / MAXCOL));
+	result.g = ft_cl_clamp(sh.g * (aset->color.g * aset->ratio / MAXCOL));
+	result.b = ft_cl_clamp(sh.b * (aset->color.b * aset->ratio / MAXCOL));
 	return (result);
 }
 

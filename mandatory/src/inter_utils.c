@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:47:34 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/08 14:13:51 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:26:22 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static double	quad_closest_t(t_quad quad)
 {
-	if (quad.t1 >= 0 && quad.t2 >= 0)
+	if (quad.t1 >= EPS && quad.t2 >= EPS)
 	{
 		if (quad.t1 < quad.t2)
 			return (quad.t1);
 		return (quad.t2);
 	}
-	if (quad.t1 >= 0 && quad.t2 < 0)
+	if (quad.t1 >= EPS && quad.t2 < EPS)
 		return (quad.t1);
 	return (quad.t2);
 }

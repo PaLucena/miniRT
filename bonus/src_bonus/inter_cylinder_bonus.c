@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:14:03 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/19 20:43:26 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:49:18 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_inter	*cy_body_coll(t_shape *cy, t_vector ray, t_point origin)
 	return (coll);
 }
 
-t_inter	*cy_check_closest(t_inter *caps, t_inter *body)
+t_inter	*cy_co_check_closest(t_inter *caps, t_inter *body)
 {
 	if (caps && body)
 	{
@@ -116,5 +116,5 @@ t_inter	*inter_cy(t_shape *cy, t_vector ray, t_point origin)
 	bot_cap.shape_id = cy->index;
 	caps_coll = cy_cap_coll(&top_cap, &bot_cap, ray, origin);
 	body_coll = cy_body_coll(cy, ray, origin);
-	return (cy_check_closest(caps_coll, body_coll));
+	return (cy_co_check_closest(caps_coll, body_coll));
 }

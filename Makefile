@@ -19,6 +19,7 @@ SRC_B = main.c init_bonus.c parser_bonus.c save_amb_bonus.c save_extras_bonus.c\
 		vector_utils_bonus.c vector_utils2_bonus.c\
 		light_bonus.c light_utils_bonus.c camera_bonus.c vector_point_color_bonus.c vector_utils3_bonus.c\
 		inter_cylinder2_bonus.c parser_utils_bonus.c save_light_utils_bonus.c save_cone_bonus.c\
+		inter_cone_bonus.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))

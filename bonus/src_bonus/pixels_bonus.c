@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/19 20:53:56 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:29:47 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 			new_inter = inter_pl(tmp_shape, ray, origin);
 		else if (tmp_shape->type == SP)
 			new_inter = inter_sp(tmp_shape, ray, origin);
+		else if (tmp_shape->type == CO)
+			new_inter = inter_co(tmp_shape, ray, origin);
 		tmp_inter = px_pick_closest(tmp_inter, new_inter);
 		tmp_shape = tmp_shape->next;
 	}

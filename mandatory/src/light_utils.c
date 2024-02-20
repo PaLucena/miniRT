@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/06 15:32:15 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:29:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_cl_clamp(double unclamped)
 	int	runcl;
 
 	runcl = round(unclamped);
-	if (0 > runcl)
+	if (EPS > runcl)
 		return (0);
-	if (255 < runcl)
+	if (MAXCOL < runcl)
 		return (255);
 	return (runcl);
 }
