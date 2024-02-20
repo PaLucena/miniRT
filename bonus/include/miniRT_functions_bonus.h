@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_functions.h                                 :+:      :+:    :+:   */
+/*   miniRT_functions_bonus.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 14:32:32 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:36:25 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_FUNCTIONS_H
-# define MINIRT_FUNCTIONS_H
+#ifndef MINIRT_FUNCTIONS_BONUS_H
+# define MINIRT_FUNCTIONS_BONUS_H
 
-# include "miniRT_structs.h"
+# include "miniRT_structs_bonus.h"
 
 //	main.c
 void		ft_print_error(char *str, t_info *info);
@@ -27,6 +27,7 @@ void		ft_parser(t_info *info);
 
 //	parser_utils.c
 char		*par_clean_id(char *line);
+void		par_options(char *id, char *line, t_info *info);
 
 //	save_amb.c
 void		par_save_amb(char *line, t_info *info);
@@ -37,12 +38,18 @@ void		ft_save_point(t_point *point, char *str, t_info *info);
 void		ft_save_vector(t_vector *vector, char *str, t_info *info);
 int			cy_save_hei(char *line, int start, t_properties *prop,
 				t_info *info);
+int			co_save_hei(char *line, int start, t_properties *prop,
+				t_info *info);
 
 //	save_camera.c
 void		par_save_camera(char *line, t_info *info);
 
 //	save_light.c
 void		par_save_light(char *line, t_info *info);
+
+//	save_light_utils_bonus.c
+void		lset_add_node(t_info *info, t_lset *new);
+t_lset		*lset_new_node(void);
 
 //	scene_list_tools.c
 t_shape		*shapes_newnode(t_type type, int last_idx);
@@ -73,10 +80,12 @@ t_inter		*inter_pl(t_shape *pl, t_vector ray, t_point origin);
 
 //inter_cylinder.c
 t_inter		*inter_cy(t_shape *pl, t_vector ray, t_point origin);
+t_inter		*cy_co_check_closest(t_inter *caps, t_inter *body);
 
 //	inter_cylinder2.c
 t_inter		*cy_cap_coll(t_circle *top, t_circle *bot,
 				t_vector ray, t_point orig);
+t_shape		*cy_circle_to_plane(t_circle *c);
 
 //inter_utils.c
 double		quadratic_equation(t_quad *quad);
@@ -123,5 +132,14 @@ t_point		v_to_p(t_vector v);
 t_vector	p_to_v(t_point p);
 t_vector	c_to_v(t_color c);
 t_color		v_to_c(t_vector v);
+
+//	save_cone_bonus.c
+void		par_save_cone(char *line, t_info *info);
+
+//	inter_cone_bonus.c
+t_inter		*inter_co(t_shape *cy, t_vector ray, t_point origin);
+
+//	inter_cone2_bonus.c
+bool		co_outside_lims(t_shape *co, t_inter *inter, double radians);
 
 #endif

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_structs.h                                   :+:      :+:    :+:   */
+/*   miniRT_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 14:45:47 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:45:40 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_STRUCTS_H
-# define MINIRT_STRUCTS_H
+#ifndef MINIRT_STRUCTS_BONUS_H
+# define MINIRT_STRUCTS_BONUS_H
 
 # include "../../libs/MLX42/include/MLX42/MLX42.h"
 
@@ -69,6 +69,7 @@ typedef enum e_type
 	CY = 0,
 	PL,
 	SP,
+	CO,
 }	t_type;
 
 typedef struct s_shape
@@ -146,9 +147,10 @@ typedef struct s_cset
 
 typedef struct s_lset
 {
-	t_point	point;
-	t_color	color;
-	float	brightness;
+	t_point			point;
+	t_color			color;
+	float			brightness;
+	struct s_lset	*next;
 }	t_lset;
 
 typedef struct s_info
