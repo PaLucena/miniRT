@@ -8,29 +8,35 @@ FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 #//= Mandatory src files =//#
 SRC_PATH = mandatory/src/
-SRC = main.c init.c parser.c save_amb.c save_extras.c save_extras2.c save_camera.c save_light.c\
-	scene_list_tools.c save_sphere.c save_cylinder.c save_plane.c exit.c mlx_hooks.c pixels.c \
-	inter_sphere.c inter_plane.c inter_cylinder.c inter_utils.c vector_utils.c vector_utils2.c\
-	light.c light_utils.c camera.c vector_point_color.c vector_utils3.c inter_cylinder2.c parser_utils.c\
+SRC = mandatory/src/main.c mandatory/src/utils/init.c mandatory/src/parser/parser.c mandatory/src/parser/savers/save_amb.c mandatory/src/parser/savers/save_extras.c\
+	mandatory/src/parser/savers/save_extras2.c mandatory/src/parser/savers/save_camera.c mandatory/src/parser/savers/save_light.c\
+	mandatory/src/parser/savers/scene_list_tools.c mandatory/src/parser/savers/save_sphere.c mandatory/src/parser/savers/save_cylinder.c\
+	mandatory/src/parser/savers/save_plane.c mandatory/src/utils/exit.c mandatory/src/utils/mlx_hooks.c mandatory/src/collider/pixels.c\
+	mandatory/src/collider/inters/inter_sphere.c mandatory/src/collider/inters/inter_plane.c mandatory/src/collider/inters/inter_cylinder.c\
+	mandatory/src/collider/inters/inter_utils.c mandatory/src/utils/vector/vector_utils.c mandatory/src/utils/vector/vector_utils2.c\
+	mandatory/src/light/light.c mandatory/src/light/light_utils.c mandatory/src/collider/camera/camera.c mandatory/src/utils/vector/vector_point_color.c\
+	mandatory/src/utils/vector/vector_utils3.c mandatory/src/collider/inters/inter_cylinder2.c mandatory/src/parser/parser_utils.c\
 
 #//= Bonus src files =//#
 SRC_PATH_B = bonus/src/
-SRC_B = main.c init_bonus.c parser_bonus.c save_amb_bonus.c save_extras_bonus.c\
-		save_extras2_bonus.c save_camera_bonus.c save_light_bonus.c\
-		scene_list_tools_bonus.c save_sphere_bonus.c save_cylinder_bonus.c\
-		save_plane_bonus.c exit_bonus.c mlx_hooks_bonus.c pixels_bonus.c \
-		inter_sphere_bonus.c inter_plane_bonus.c inter_cylinder_bonus.c inter_utils_bonus.c\
-		vector_utils_bonus.c vector_utils2_bonus.c\
-		light_bonus.c light_utils_bonus.c camera_bonus.c vector_point_color_bonus.c vector_utils3_bonus.c\
-		inter_cylinder2_bonus.c parser_utils_bonus.c save_light_utils_bonus.c save_cone_bonus.c\
-		inter_cone_bonus.c inter_cone2_bonus.c
+SRC_B = bonus/src/main.c bonus/src/utils/init_bonus.c bonus/src/parser/parser_bonus.c bonus/src/parser/savers/save_amb_bonus.c bonus/src/parser/savers/save_extras_bonus.c\
+		bonus/src/parser/savers/save_extras2_bonus.c bonus/src/parser/savers/save_camera_bonus.c bonus/src/parser/savers/save_light_bonus.c\
+		bonus/src/parser/savers/scene_list_tools_bonus.c bonus/src/parser/savers/save_sphere_bonus.c bonus/src/parser/savers/save_cylinder_bonus.c\
+		bonus/src/parser/savers/save_plane_bonus.c bonus/src/utils/exit_bonus.c bonus/src/utils/mlx_hooks_bonus.c bonus/src/collider/pixels_bonus.c \
+		bonus/src/collider/inters/inter_sphere_bonus.c bonus/src/collider/inters/inter_plane_bonus.c bonus/src/collider/inters/inter_cylinder_bonus.c bonus/src/collider/inters/inter_utils_bonus.c\
+		bonus/src/utils/vector/vector_utils_bonus.c bonus/src/utils/vector/vector_utils2_bonus.c\
+		bonus/src/light/light_bonus.c bonus/src/light/light_utils_bonus.c bonus/src/collider/camera/camera_bonus.c bonus/src/utils/vector/vector_point_color_bonus.c bonus/src/utils/vector/vector_utils3_bonus.c\
+		bonus/src/collider/inters/inter_cylinder2_bonus.c bonus/src/parser/parser_utils_bonus.c bonus/src/parser/savers/save_light_utils_bonus.c bonus/src/parser/savers/save_cone_bonus.c\
+		bonus/src/collider/inters/inter_cone_bonus.c bonus/src/collider/inters/inter_cone2_bonus.c
 
 
 #//= Objects =//#
 OBJ_PATH = objs/
 
-OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
-OBJ_B = $(addprefix $(OBJ_PATH), $(SRC_B:.c=.o))
+OBJ = $(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRC))
+# OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
+OBJ_B = $(patsubst $(SRC_PATH_B)/%.c,$(OBJ_PATH)/%.o,$(SRC_B))
+# OBJ_B = $(addprefix $(OBJ_PATH), $(SRC_B:.c=.o))
 
 #//= Included libraries =//#
 LIBS = -I libs/libft -I libs/MLX42/include/MLX42
@@ -59,7 +65,7 @@ RESET   := \033[0m
 #//= Compilation rules =//#
 all: libft mlx $(NAME)
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) $(LIBS) -o $(NAME)
+	@ $(CC) $(FLAGS) $(OBJ) $(LIB) $(MLX) $(BREW) $(INC) $(LIBS) -o $(NAME)
 	@ echo "$(GREEN)$(BOLD)$(NAME) compiled\n$(RESET)"
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)
@@ -67,7 +73,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 bonus: libft mlx $(NAME_B)
 $(NAME_B): $(OBJ_B)
-	@ gcc $(FLAGS) $(OBJ_B) $(LIB) $(MLX) $(BREW) $(INC_B) $(LIBS) -o $(NAME_B)
+	@ $(CC) $(FLAGS) $(OBJ_B) $(LIB) $(MLX) $(BREW) $(INC_B) $(LIBS) -o $(NAME_B)
 	@ echo "$(GREEN)$(BOLD)$(NAME_B) compiled\n$(RESET)"
 $(OBJ_PATH)%.o: $(SRC_PATH_B)%.c
 	@ mkdir -p  $(OBJ_PATH)
