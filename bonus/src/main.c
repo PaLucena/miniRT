@@ -6,11 +6,13 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:06:26 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_bonus.h"
+
+bool ayuda;
 
 void	ft_print_error(char *str, t_info *info)
 {

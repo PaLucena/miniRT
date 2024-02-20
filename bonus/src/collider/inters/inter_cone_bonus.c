@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:30:13 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:40:09 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	co_get_norm_vec(t_shape *co, t_inter *inter)
 	d = v_norm(co->prop.n_vec);
 	hp = v_mod(v_esc_mult(d, v_dot_product(vp, d) / (pow(v_mod(d), 2) + EPS)));
 	rp = (hp / co->prop.height) * co->prop.rad;
-	inter->norm = v_esc_mult(v_norm(vp), rp);
+	inter->norm = v_norm(v_esc_mult(v_norm(vp), rp));
 }
 
 t_inter	*co_body_coll(t_shape *co, t_vector ray, t_point origin)
