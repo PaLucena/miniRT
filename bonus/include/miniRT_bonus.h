@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 16:05:57 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:18:51 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 # define MAXCOL 255.999999
 
 # define BRIGHTNESS 50.0
-
-
-//# define WIDTH 1400
-//# define HEIGHT 1000
-
 # include <stdio.h>
 # include <stdbool.h>
 # include <stdlib.h>
@@ -34,7 +29,5 @@
 # include "../../libs/MLX42/include/MLX42/MLX42.h"
 # include "miniRT_structs_bonus.h"
 # include "miniRT_functions_bonus.h"
-
-extern bool ayuda;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 16:27:38 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:17:17 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,8 @@ void	put_pixels(t_info *info)
 		px.i = 0;
 		while (px.i < info->w_width)
 		{
-			(px.i == info->w_width / 2 && px.j == (info->w_height / 2) - 10)?(ayuda=true):(ayuda=false);
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
-			if (ayuda && !inter_tmp)
-				printf("no matar a pablo\n");
-			else if (ayuda)
-				printf("matar a pablo por: d=%f\n", inter_tmp->d);
 			if (inter_tmp && inter_tmp->d > EPS)
 				ft_phong(inter_tmp, info, px);
 			else
