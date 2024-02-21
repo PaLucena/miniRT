@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:12:49 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:34:12 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,15 @@ void	par_save_cone(char *line, t_info *info)
 	t_shape	*new;
 
 	new = shapes_newnode(CO, shapes_get_last_idx(info->shapes_list));
+	if (info->shapes_list)
+		shapes_addback(info->shapes_list, new);
+	else
+		info->shapes_list = new;
 	i = co_save_pt(line, 0, &new->prop, info);
 	i = co_save_vec(line, i, &new->prop, info);
 	i = co_save_rad(line, i, &new->prop, info);
 	i = co_save_hei(line, i, &new->prop, info);
 	i = co_save_rgb(line, i, &new->prop, info);
-	if (info->shapes_list)
-		shapes_addback(info->shapes_list, new);
-	else
-		info->shapes_list = new;
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	if (line[i])

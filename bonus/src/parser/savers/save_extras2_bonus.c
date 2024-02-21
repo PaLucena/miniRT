@@ -6,11 +6,17 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:31:18 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_bonus.h"
+
+static void	vec_check_unitary(t_vector *vec, t_info *info)
+{
+	if (round(v_mod(*vec)) != 1.0)
+		ft_print_error("Non unitary vector", info);
+}
 
 static void	vec_save(char *str, double *mem, t_info *info)
 {
@@ -64,6 +70,7 @@ void	ft_save_vector(t_vector *vector, char *str, t_info *info)
 	if (str[i + j + k] && str[i + j + k] != ',')
 		ft_print_error("Wrong vector input", info);
 	vec_save(ft_substr(str, i + j, k), &vector->k, info);
+	vec_check_unitary(vector, info);
 }
 
 int	cy_save_hei(char *line, int start, t_properties *prop, t_info *info)

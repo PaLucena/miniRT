@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:14:32 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:33:55 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	par_save_amb(char *line, t_info *info)
 	int		i;
 	t_aset	*new;
 
-	new = malloc(sizeof(t_aset));
 	if (info->aset != NULL)
 		ft_print_error("Ambient Lightning redeclared", info);
+	new = malloc(sizeof(t_aset));
 	info->aset = new;
 	i = aset_save_ratio(line, 0, new, info);
 	i = aset_save_rgb(line, i, new, info);

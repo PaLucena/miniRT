@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:30:27 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:34:53 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void	par_save_sphere(char *line, t_info *info)
 	t_shape	*new;
 
 	new = shapes_newnode(SP, shapes_get_last_idx(info->shapes_list));
-	i = sp_save_pt(line, 0, &new->prop, info);
-	i = sp_save_rad(line, i, &new->prop, info);
-	i = sp_save_rgb(line, i, &new->prop, info);
 	if (info->shapes_list)
 		shapes_addback(info->shapes_list, new);
 	else
 		info->shapes_list = new;
+	i = sp_save_pt(line, 0, &new->prop, info);
+	i = sp_save_rad(line, i, &new->prop, info);
+	i = sp_save_rgb(line, i, &new->prop, info);
 	while (line[i] && ft_isspace(line[i]))
 		i++;
 	if (line[i])

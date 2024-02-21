@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:27:52 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:34:03 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	par_save_camera(char *line, t_info *info)
 	int		i;
 	t_cset	*new;
 
-	new = malloc(sizeof(t_cset));
 	if (info->cset != NULL)
 		ft_print_error("Camera redeclared", info);
+	new = malloc(sizeof(t_cset));
 	info->cset = new;
 	i = cset_save_point(line, 0, new, info);
 	i = cset_save_vector(line, i, new, info);
