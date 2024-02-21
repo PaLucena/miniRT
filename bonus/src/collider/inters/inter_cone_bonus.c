@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:30:13 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 10:26:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:48:12 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,18 @@ static t_inter	*co_cap_coll(t_circle *cap, t_vector ray, t_point orig)
 
 static void	co_get_norm_vec(t_shape *co, t_inter *inter)
 {
-	t_vector	c;
-	t_point		a;
-	double		dis;
+	t_point		ax_proy;
+	double		dist;
+	t_vector	ax_perp;
+	t_vector	tang;
+	t_vector	ip_vec;
 
-	dis = v_mod(v_get_from2(co->prop.c, inter->q));
-	c = v_esc_mult(v_norm(co->prop.n_vec), dis);
-	a = v_get_endpoint(v_cross_product(v_norm(co->prop.n_vec),
-				c), 1, co->prop.c);
-	inter->norm = v_get_from2(a, inter->q);
+	ip_vec = v_norm(v_get_from2(co->prop.c, inter->q));
+	dist = v_dot_product(co->prop.n_vec, ip_vec) / v_dot_product(co->prop.n_vec, co->prop.n_vec);
+	ax_proy = v_get_endpoint(co->prop.n_vec, dist, co->prop.c);
+	ax_perp = v_norm(v_get_from2(ax_proy, inter->q));
+	tang = v_cross_product(ip_vec, ax_perp);
+	inter->norm = v_norm(v_cross_product(tang, ip_vec));
 }
 
 t_inter	*co_body_coll(t_shape *co, t_vector ray, t_point origin)
