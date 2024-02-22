@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:18:22 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 15:33:31 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:18:43 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	cy_save_rad(char *line, int start, t_properties *prop, t_info *info)
 	if (!ft_check_atod(str))
 	{
 		free(str);
-		ft_print_error("", info);
+		ft_print_error("Value not valid", info);
 	}
 	prop->rad = (ft_atod(str) / 2.0);
 	free(str);
@@ -102,7 +102,7 @@ void	par_save_cylinder(char *line, t_info *info)
 	i = cy_save_pt(line, 0, &new->prop, info);
 	i = cy_save_vec(line, i, &new->prop, info);
 	i = cy_save_rad(line, i, &new->prop, info);
-	i = cy_save_hei(line, i, &new->prop, info);
+	i = cy_co_save_hei(line, i, &new->prop, info);
 	i = cy_save_rgb(line, i, &new->prop, info);
 	while (line[i] && ft_isspace(line[i]))
 		i++;

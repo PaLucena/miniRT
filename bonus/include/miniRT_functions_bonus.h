@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 14:55:39 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:47:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void		par_save_amb(char *line, t_info *info);
 void		ft_save_rgb(t_color *color, char *str, t_info *info);
 void		ft_save_point(t_point *point, char *str, t_info *info);
 void		ft_save_vector(t_vector *vector, char *str, t_info *info);
-int			cy_save_hei(char *line, int start, t_properties *prop,
-				t_info *info);
-int			co_save_hei(char *line, int start, t_properties *prop,
+int			cy_co_save_hei(char *line, int start, t_properties *prop,
 				t_info *info);
 
 //	save_camera_bonus.c
