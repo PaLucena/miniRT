@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:38:18 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:31:27 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_shape	*shapes_newnode(t_type type, int last_idx)
 	new->type = type;
 	new->next = NULL;
 	new->index = last_idx + 1;
+	new->prop.checkerboard = false;
 	return (new);
 }
 
@@ -43,4 +44,28 @@ void	shapes_addback(t_shape *root, t_shape *node)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = node;
+}
+
+bool	sp_checkerboard_info(char *line, int i, t_properties *prop)
+{
+	int		j;
+	char	*str;
+
+	j = 0;
+	while (line[i + j] && ft_isspace(line[i + j]))
+		j++;
+	if (!line[i + j])
+		return (true);
+	i = j;
+	j = 0;
+	while (line[i + j] && !ft_isspace(line[i + j]))
+		j++;
+	str = ft_substr(line, i, j);
+	if (ft_strcmp(str, "ch") == 0 && prop->checkerboard == false)
+	{
+		prop->checkerboard = true;
+		return (free(str), true);
+	}
+	free(str);
+	return (false);
 }

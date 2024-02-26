@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/26 16:57:24 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:39:30 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_lset		*lset_new_node(void);
 t_shape		*shapes_newnode(t_type type, int last_idx);
 void		shapes_addback(t_shape *root, t_shape *node);
 int			shapes_get_last_idx(t_shape *root);
+bool		sp_checkerboard_info(char *line, int i, t_properties *prop);
 
 //	save_sphere_bonus.c
 void		par_save_sphere(char *line, t_info *info);
@@ -99,7 +100,7 @@ void		ft_darkness(t_info *info, double x, double y);
 void		ft_color(t_inter *inter, t_info *info, t_pixel px);
 
 //	light_bonus.c
-void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_shape *sh);
+void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_color color);
 
 //	light_utils_bonus.c
 uint32_t	get_rgba(t_color color);

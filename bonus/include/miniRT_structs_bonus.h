@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/25 19:26:02 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:46:47 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_vector
 
 typedef struct s_uv
 {
-	int	u;
-	int	v;
+	double	u;
+	double	v;
 }	t_uv;
 
 typedef struct s_quad
@@ -68,6 +68,7 @@ typedef struct s_properties
 	float		rad;
 	t_color		color;
 	t_vector	n_vec;
+	bool		checkerboard;
 }	t_properties;
 
 typedef enum e_type

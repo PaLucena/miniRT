@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:05:57 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 15:34:40 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:40:23 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ int	pl_save_rgb(char *line, int start, t_properties *prop, t_info *info)
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
 	str = ft_substr(line, i, j);
-	ft_save_rgb(&prop->color, str, info);
+	if (ft_strcmp(str, "ch") == 0)
+	{
+		prop->checkerboard = true;
+		prop->color = (t_color){0, 0, 0};
+	}
+	else
+		ft_save_rgb(&prop->color, str, info);
 	free(str);
 	return (i + j);
 }
@@ -81,6 +87,6 @@ void	par_save_plane(char *line, t_info *info)
 	i = pl_save_rgb(line, i, &new->prop, info);
 	while (line[i] && ft_isspace(line[i]))
 		i++;
-	if (line[i])
+	if (!sp_checkerboard_info(line, i, &new->prop))
 		ft_print_error("Unknown Plane info", info);
 }

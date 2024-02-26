@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/25 18:15:17 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:37:50 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ static t_color	ambient_light(t_color sh, t_aset *aset)
 	return (result);
 }
 
-static t_color	diffuse_light(t_lset *light, t_inter *inter, t_shape *sh)
+static t_color	diffuse_light(t_lset *light, t_inter *inter, t_color color)
 {
 	double		vn;
 	t_color		result;
 
 	vn = v_dot_product(v_norm(v_get_from2(inter->q,
 					light->point)), inter->norm);
-	result.r = sh->prop.color.r * (light->color.r * light->brightness / MAXCOL);
+	result.r = color.r * (light->color.r * light->brightness / MAXCOL);
 	result.r = ft_cl_clamp(result.r * vn);
-	result.g = sh->prop.color.g * (light->color.g * light->brightness / MAXCOL);
+	result.g = color.g * (light->color.g * light->brightness / MAXCOL);
 	result.g = ft_cl_clamp(result.g * vn);
-	result.b = sh->prop.color.b * (light->color.b * light->brightness / MAXCOL);
+	result.b = color.b * (light->color.b * light->brightness / MAXCOL);
 	result.b = ft_cl_clamp(result.b * vn);
 	return (result);
 }
@@ -74,19 +74,19 @@ static t_color	specular_ref(t_info *in, t_lset *l, t_inter *inter)
 	return (result);
 }
 
-void	ft_phong(t_inter *inter, t_info *info, t_pixel px, t_shape *sh)
+void	ft_phong(t_inter *inter, t_info *info, t_pixel px, t_color color)
 {
 	t_lset	*light;
 	t_color	rslt;
 
 	light = info->lset;
-	rslt = sh->prop.color;
-	rslt = ambient_light(sh->prop.color, info->aset);
+	rslt = color;
+	rslt = ambient_light(color, info->aset);
 	while (light)
 	{
 		if (!shadow_search(info, light, inter->q))
 		{
-			rslt = add_color(rslt, diffuse_light(light, inter, sh));
+			rslt = add_color(rslt, diffuse_light(light, inter, color));
 			rslt = add_color(rslt, specular_ref(info, light, inter));
 		}
 		light = light->next;
