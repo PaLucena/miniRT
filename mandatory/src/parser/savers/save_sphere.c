@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:30:27 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/01/14 21:43:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:19:10 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	sp_save_rad(char *line, int start, t_properties *prop, t_info *info)
 	if (!ft_check_atod(str))
 	{
 		free(str);
-		ft_print_error("", info);
+		ft_print_error("Value not valid", info);
 	}
 	prop->rad = (ft_atod(str) / 2.0);
 	free(str);

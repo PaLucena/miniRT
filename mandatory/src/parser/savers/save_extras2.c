@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/09 14:13:21 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:19:05 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	cy_save_hei(char *line, int start, t_properties *prop, t_info *info)
 	if (!ft_check_atod(str))
 	{
 		free(str);
-		ft_print_error("", info);
+		ft_print_error("Value not valid", info);
 	}
 	prop->height = ft_atod(str);
 	free(str);

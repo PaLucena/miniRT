@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:12:56 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/19 20:13:40 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:44:53 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_inter	*inter_pl(t_shape *pl, t_vector ray, t_point origin)
 	inter = malloc(sizeof(t_inter));
 	inter->index = pl->index;
 	inter->d = distance_pl(origin, pl, ray);
-	if (inter->d == -1.0)
+	if (inter->d < EPS)
 		return (free(inter), NULL);
 	inter->q = inter_point_coords(origin, inter, ray);
 	inter->norm = v_norm(pl->prop.n_vec);

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:43:10 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:18:57 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	lset_save_ratio(char *line, int start, t_lset *new, t_info *info)
 	if (!ft_check_atod(str))
 	{
 		free(str);
-		ft_print_error("", info);
+		ft_print_error("Value not valid", info);
 	}
 	new->brightness = ft_atod(str);
 	free(str);
