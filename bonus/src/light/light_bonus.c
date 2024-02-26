@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:17:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:46 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:15:17 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,19 @@ static t_color	specular_ref(t_info *in, t_lset *l, t_inter *inter)
 	return (result);
 }
 
-void	ft_phong(t_inter *inter, t_info *info, t_pixel px)
+void	ft_phong(t_inter *inter, t_info *info, t_pixel px, t_shape *sh)
 {
-	t_shape	*shape;
 	t_lset	*light;
 	t_color	rslt;
 
-	shape = info->shapes_list;
 	light = info->lset;
-	while (shape->index != inter->index)
-		shape = shape->next;
-	rslt = shape->prop.color;
-	rslt = ambient_light(shape->prop.color, info->aset);
+	rslt = sh->prop.color;
+	rslt = ambient_light(sh->prop.color, info->aset);
 	while (light)
 	{
 		if (!shadow_search(info, light, inter->q))
 		{
-			rslt = add_color(rslt, diffuse_light(light, inter, shape));
+			rslt = add_color(rslt, diffuse_light(light, inter, sh));
 			rslt = add_color(rslt, specular_ref(info, light, inter));
 		}
 		light = light->next;

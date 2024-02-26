@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixels_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 15:17:17 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:29:38 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 
 void	put_pixels(t_info *info)
 {
-	t_pixel	px;
+	t_pixel px;
 	t_inter	*inter_tmp;
 
-	px.j = 0;
 	set_camera(info->cset);
+	px.j = 0;
 	while (px.j < info->w_height)
 	{
 		px.i = 0;
@@ -67,10 +67,7 @@ void	put_pixels(t_info *info)
 		{
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);
-			if (inter_tmp && inter_tmp->d > EPS)
-				ft_phong(inter_tmp, info, px);
-			else
-				ft_darkness(info, px.i, px.j);
+			ft_color(inter_tmp, info, px);
 			free(inter_tmp);
 			px.i++;
 		}

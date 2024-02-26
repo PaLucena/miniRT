@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_functions_bonus.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/20 14:55:39 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:17:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,17 @@ t_point		inter_point_coords(t_point origin, t_inter *inter, t_vector cc);
 t_inter		*get_closest_collision(t_vector ray, t_point origin, t_info *info);
 void		put_pixels(t_info *info);
 
+//	color_bonus.c
+void		ft_darkness(t_info *info, double x, double y);
+void		ft_color(t_inter *inter, t_info *info, t_pixel px);
+
 //	light_bonus.c
-void		ft_phong(t_inter *inter, t_info *info, t_pixel px);
+void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_shape *sh);
 
 //	light_utils_bonus.c
 uint32_t	get_rgba(t_color color);
 int			ft_cl_clamp(double unclamped);
 t_color		add_color(t_color c1, t_color c2);
-void		ft_darkness(t_info *info, double x, double y);
 
 //	vector_utils_bonus.c
 t_vector	v_mult(t_vector a, t_vector b);
