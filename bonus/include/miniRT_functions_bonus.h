@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/22 12:17:39 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:18:49 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,12 @@ void		put_pixels(t_info *info);
 void		ft_darkness(t_info *info, double x, double y);
 void		ft_color(t_inter *inter, t_info *info, t_pixel px);
 
+//	checkerboard_bonus.c
+bool		checkerb_sp(t_shape *sh, t_point q);
+bool		checkerb_pl(t_shape *sh, t_point q);
+
 //	light_bonus.c
-void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_shape *sh);
+void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_color color);
 
 //	light_utils_bonus.c
 uint32_t	get_rgba(t_color color);
@@ -125,6 +129,7 @@ t_vector	v_matrix_product(t_vector v, t_matrix m);
 //	vector_utils3_bonus.c
 t_vector	v_opposite_vec(t_vector orig);
 t_point		v_get_endpoint(t_vector vector, double d, t_point orig);
+double		v_magnitude(t_vector v);
 
 //	camera_bonus.c
 void		set_camera(t_cset *c);

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:35:29 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/25 19:26:02 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:04:25 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_vector
 
 typedef struct s_uv
 {
-	int	u;
-	int	v;
+	double	u;
+	double	v;
 }	t_uv;
 
 typedef struct s_quad
