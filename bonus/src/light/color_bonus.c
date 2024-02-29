@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:07:25 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/27 13:59:23 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:53:59 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	ft_darkness(t_info *info, double x, double y)
 	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(black));
 }
 
-bool	uv_checkers(t_shape *sh, t_point q)
+bool	uv_checkers(t_info * info, t_shape *sh, t_point q)
 {
 	if (sh->type == SP)
 		return (checkerb_sp(sh, q));
 	else if (sh->type == PL)
-		return (checkerb_pl(sh, q));
+		return (checkerb_pl(sh, q, info));
 	return (false);
 }
 
@@ -40,7 +40,7 @@ void	ft_color(t_inter *inter, t_info *info, t_pixel px)
 		shape = info->shapes_list;
 		while (shape && shape->index != inter->index)
 			shape = shape->next;
-		if (uv_checkers(shape, inter->q))
+		if (uv_checkers(info, shape, inter->q))
 			ft_phong(inter, info, px, (t_color){255,255,255});
 		else
 			ft_phong(inter, info, px, shape->prop.color);

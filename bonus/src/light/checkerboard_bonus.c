@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:21:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/27 16:25:47 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:15:55 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,18 @@ bool	checkerb_sp(t_shape *sh, t_point q)
 	return (false);
 }
 
-bool	checkerb_pl(t_shape *sh, t_point q)
+bool	checkerb_pl(t_shape *sh, t_point q, t_info *info)
 {
 	t_uv	uv;
-	t_point	p;
 
-	p.x = q.x - v_dot_product(sh->prop.n_vec, (t_vector){0, 1, 0});
-	p.y = q.y - v_dot_product(sh->prop.n_vec, (t_vector){1, 0, 0});
-	p.z = q.z - v_dot_product(sh->prop.n_vec, (t_vector){0, 0, 1});
-	if (((int)(p.x) + (int)p.y + (int)(p.z)) %  2 == 0)
-		return (true);
-	return (false);
+	sh->prop.n_vec = v_unitary(sh->prop.n_vec);
+	uv.u = fmod(q.x + info->w_width / 2, 1);
+	uv.v = (q.y * sh->prop.n_vec.k) + (q.z * sh->prop.n_vec.j);
+	uv.v = fmod(uv.v - info->w_height / 2, 1);
 
-//	uv.u = fmod(q.x, 1);
-//	uv.v = fmod(q.z, 1);
-
-//	printf("XZ: %f %f\n", q.x, q.z);
-//	printf("UV: %f %f\n\n", uv.u, uv.v);
-//	if ((int)((q.x + q.y + q.z)) % 2 == 0)
-	if (((int)(uv.u) + (int)(uv.v)) % 2 == 0)
+	if (((int)(uv.u * 2) + (int)(uv.v * 2)) % 2 == 0)
 		return (true);
 	return (false);
 }
+
+//TODO:  La puta matriz de transformación

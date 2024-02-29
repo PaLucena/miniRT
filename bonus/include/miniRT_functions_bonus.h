@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/27 12:18:49 by palucena         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:51:03 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void		ft_color(t_inter *inter, t_info *info, t_pixel px);
 
 //	checkerboard_bonus.c
 bool		checkerb_sp(t_shape *sh, t_point q);
-bool		checkerb_pl(t_shape *sh, t_point q);
+bool		checkerb_pl(t_shape *sh, t_point q, t_info *info);
 
 //	light_bonus.c
 void		ft_phong(t_inter *inter, t_info *info, t_pixel px, t_color color);
