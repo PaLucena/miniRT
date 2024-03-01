@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:07:25 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/26 17:55:02 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:15:32 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,21 @@ void	ft_darkness(t_info *info, double x, double y)
 bool	uv_checkers(t_shape *sh, t_point q)
 {
 	t_uv	uv = (t_uv){0,0};
+	double	azimut;
+	double	phi;
 
 	if (sh->type == SP)
 	{
-		double		azimut = atan2(q.x, q.z);
-		double		phi = asin(q.y / sh->prop.rad);
+		azimut = atan2(q.x, q.z);
+		phi = asin(q.y / sh->prop.rad);
 		uv.u = (int)(1 - (azimut / (2 * M_PI)) + 0.5);
 		uv.v = 1 - phi / M_PI;
+	}
+	else if (sh->type == CY)
+	{
+		azimut = atan2(q.x, q.z);
+		uv.u = (int)(1 - (azimut / (2 * M_PI)) + 0.5);
+		uv.v = fmod(q.y, 1);
 	}
 //	uv.u = q.x;
 //	uv.v = q.y + q.z;
