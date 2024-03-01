@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/25 17:29:38 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:50:43 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_inter	*get_closest_collision(t_vector ray, t_point origin, t_info *info)
 
 void	put_pixels(t_info *info)
 {
-	t_pixel px;
+	t_pixel	px;
 	t_inter	*inter_tmp;
 
 	set_camera(info->cset);

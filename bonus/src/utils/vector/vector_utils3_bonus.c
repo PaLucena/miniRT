@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils3_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:54:47 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 10:22:48 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:14:03 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ t_point	v_get_endpoint(t_vector vector, double d, t_point orig)
 	endp.y = orig.y + vector.j * d;
 	endp.z = orig.z + vector.k * d;
 	return (endp);
+}
+
+double	v_magnitude(t_vector v)
+{
+	return (sqrt(pow(v.i, 2) + pow(v.j, 2) + pow(v.k, 2)));
 }
