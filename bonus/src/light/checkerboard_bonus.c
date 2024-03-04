@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkerboard_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:21:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/01 13:48:53 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:41:09 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ bool	checkerb_pl(t_shape *sh, t_point q, t_info *info)
 		uv.v = fmod(q.y - info->w_height, 1);
 	}
 	if (((int)(uv.u * 2) + (int)(uv.v * 2)) % 2 == 0)
+		return (true);
+	return (false);
+}
+
+bool	checkerb_cy(t_shape *sh, t_point q, t_info *info)
+{
+	t_uv	uv;
+	double	azimut;
+
+	(void)info;
+	(void)sh;
+	azimut = atan2(q.x, q.z);
+	uv.u = azimut / (2 * M_PI);
+	uv.u = (1 - (uv.u + 0.5));
+	uv.v = fmod(q.y, 1);
+	if (((int)(uv.u * 32) + (int)(uv.v * 2)) % 2 == 0)
 		return (true);
 	return (false);
 }
