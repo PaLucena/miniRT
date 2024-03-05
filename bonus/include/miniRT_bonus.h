@@ -6,15 +6,15 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:21:20 by palucena          #+#    #+#             */
-/*   Updated: 2024/02/25 17:23:39 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:37:54 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_BONUS_H
 # define MINIRT_BONUS_H
 
-# define WIDTH 2560
-# define HEIGHT 1440
+# define WIDTH 1400
+# define HEIGHT 1000
 # define EPS 0.000001
 # define MAXCOL 255.999999
 # define THREAD_COUNT 1

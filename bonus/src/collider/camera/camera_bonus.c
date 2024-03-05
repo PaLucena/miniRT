@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:55:10 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/01 10:57:50 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:34:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_vector	camera_ray_direction(t_info *in, t_pixel px)
 	t_vector	dir;
 
 	dir = p_to_v(plane_point_coords(in, px.i, px.j));
-	dir = m_product(dir, in->cset->m);
+	dir = v_matrix_product(dir, in->cset->m);
 	dir = v_norm(v_get_from2(in->cset->point, v_to_p(dir)));
 	return (dir);
 }

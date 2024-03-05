@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:19:30 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/20 14:29:05 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:00:13 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_darkness(t_info *info, double x, double y)
 {
 	t_color	black;
 
-	black.r = 0;
-	black.g = 0;
-	black.b = 0;
+	black.r = 80;
+	black.g = 80;
+	black.b = 80;
 	mlx_put_pixel(info->mlx_s.win, x, y, get_rgba(black));
 }

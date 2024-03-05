@@ -24,7 +24,7 @@ SRC_B = bonus/src/main.c bonus/src/utils/init_bonus.c bonus/src/parser/parser_bo
 		bonus/src/parser/savers/scene_list_tools_bonus.c bonus/src/parser/savers/save_sphere_bonus.c bonus/src/parser/savers/save_cylinder_bonus.c\
 		bonus/src/parser/savers/save_plane_bonus.c bonus/src/utils/exit_bonus.c bonus/src/utils/mlx_hooks_bonus.c bonus/src/collider/pixels_bonus.c \
 		bonus/src/collider/inters/inter_sphere_bonus.c bonus/src/collider/inters/inter_plane_bonus.c bonus/src/collider/inters/inter_cylinder_bonus.c bonus/src/collider/inters/inter_utils_bonus.c\
-		bonus/src/utils/vector/vector_utils_bonus.c bonus/src/utils/vector/vector_utils2_bonus.c bonus/src/utils/matrix_utils_bonus.c\
+		bonus/src/utils/vector/vector_utils_bonus.c bonus/src/utils/vector/vector_utils2_bonus.c\
 		bonus/src/light/light_bonus.c bonus/src/light/color_bonus.c bonus/src/light/light_utils_bonus.c bonus/src/light/checkerboard_bonus.c\
 		bonus/src/collider/camera/camera_bonus.c bonus/src/utils/vector/vector_point_color_bonus.c bonus/src/utils/vector/vector_utils3_bonus.c\
 		bonus/src/collider/inters/inter_cylinder2_bonus.c bonus/src/parser/parser_utils_bonus.c bonus/src/parser/savers/save_light_utils_bonus.c bonus/src/parser/savers/save_cone_bonus.c\

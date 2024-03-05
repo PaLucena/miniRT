@@ -1,34 +1,34 @@
 THIS SCENE IS NOT DISPLAYABLE
 
 Ambient light: 
-A 	0.0-1.0		     R,G,B
-	|INTENS|		|COLOR|
+A 	0.0<->1.0		     R,G,B
+   |INTENSITY|			|COLOR|
 
 Light:
-L 		X,Y,Z	0.0-1.0		R,G,B
-		|POS|	|INTENS|	|COLOR|
+L 		X,Y,Z	0.0<->1.0		R,G,B
+	   | POS |  |INTENSITY|	   |COLOR|
 
 Camera:
-C		X,Y,Z		I,J,K		0.0-180.0
-		|POS|		|VEC|		|	FOV |
+C		X,Y,Z		I,J,K		0.0<->180.0
+	   | POS |		|VEC|		|	FOV	  |
 
 Sphere:
 sp		X,Y,Z		number		 R,G,B
-		|POS|		| diam|		|COLOR|
+	   | POS |	    |DIAM|		|COLOR|
 
 Plane:
 pl		X,Y,Z	 I,J,K  	R,G,B
-		|POS|	 |VEC|	 	|COLOR|
+	   | POS |   |VEC|	   |COLOR|
 
 Cylinder:
 cy		X,Y,Z 	I,J,K  number	 number 	 R,G,B
-		|POS| 	|VEC| |diam|	|height|	|COLOR|
+	   | POS |  |VEC|  |DIAM|	|HEIGHT|	|COLOR|
 
 THIS PART IS EXCLUSIVELY OR THE BONUS PART
 
 Cone:
 co		X,Y,Z 	I,J,K  number	 number 	 R,G,B	
-		|POS| 	|VEC| |diam|	|height|	|COLOR|
+	   | POS | 	|VEC|  |DIAM|	|HEIGHT|	|COLOR|
 
 Checkerboard:
 COLOR ch -> Checkerboard with the color saved

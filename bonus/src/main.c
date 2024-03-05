@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/05 14:24:00 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:26:26 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_print_error(char *str, t_info *info)
 	ft_exit_program((void *)info);
 }
 
-/* void	ft_leaks(void)
+void	ft_leaks(void)
 {
 	system("leaks -q miniRT_bonus");
 	atexit(ft_leaks);
-} */
+}
 
 void	ft_check_parsed(t_info *info)
 {
@@ -50,5 +50,6 @@ int	main(int ac, char **av)
 	ft_check_parsed(info);
 	put_pixels(info);
 	mlx_loop(info->mlx_s.mlx);
+	atexit(ft_leaks);
 	return (0);
 }

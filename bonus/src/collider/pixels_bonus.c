@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:46:05 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/03/01 13:50:43 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:27:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	put_pixels(t_info *info)
 
 	set_camera(info->cset);
 	px.j = 0;
-	while (px.j < info->w_height)
+	while (px.j < info->height)
 	{
 		px.i = 0;
-		while (px.i < info->w_width)
+		while (px.i < info->width)
 		{
 			px.d = camera_ray_direction(info, px);
 			inter_tmp = get_closest_collision(px.d, info->cset->point, info);

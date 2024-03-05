@@ -885,7 +885,7 @@ static BPMNode* bpmnode_create(BPMLists* lists, int weight, unsigned index, BPMN
   }
 
   result = lists->freelist[lists->nextfree++];
-  result->weight = weight;
+  result->eight = weight;
   result->index = index;
   result->tail = tail;
   return result;
@@ -924,7 +924,7 @@ static void boundaryPM(BPMLists* lists, BPMNode* leaves, size_t numpresent, int 
     lists->chains1[c] = bpmnode_create(lists, leaves[lastindex].weight, lastindex + 1, 0);
   } else {
     /*sum of the weights of the head nodes of the previous lookahead chains.*/
-    int sum = lists->chains0[c - 1]->weight + lists->chains1[c - 1]->weight;
+    int sum = lists->chains0[c - 1]->eight + lists->chains1[c - 1]->eight;
     lists->chains0[c] = lists->chains1[c];
     if(lastindex < numpresent && sum > leaves[lastindex].weight) {
       lists->chains1[c] = bpmnode_create(lists, leaves[lastindex].weight, lastindex + 1, lists->chains1[c]->tail);

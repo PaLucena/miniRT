@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:24:50 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/21 14:30:40 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:31:49 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,5 @@ void	ft_exit_program(void *param)
 	free_shapes(info->shapes_list);
 	mlx_terminate(info->mlx_s.mlx);
 	free(info);
-	printf("a little to the outside\n");
 	exit(EXIT_SUCCESS);
 }

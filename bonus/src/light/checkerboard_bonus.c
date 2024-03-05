@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkerboard_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:21:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/05 14:34:09 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:27:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ bool	checkerb_pl(t_shape *sh, t_point q, t_info *info)
 	uv.v = 0.0;
 	if (sh->prop.n_vec.i != 0)
 	{
-		uv.u = fmod(q.z - info->w_width, 1);
-		uv.v = fmod(q.y - info->w_height, 1);
+		uv.u = fmod(q.z - info->width, 1);
+		uv.v = fmod(q.y - info->height, 1);
 	}
 	else if (sh->prop.n_vec.j != 0)
 	{
-		uv.u = fmod(q.x - info->w_width, 1);
-		uv.v = fmod(q.z - info->w_height, 1);
+		uv.u = fmod(q.x - info->width, 1);
+		uv.v = fmod(q.z - info->height, 1);
 	}
 	else if (sh->prop.n_vec.k != 0)
 	{
-		uv.u = fmod(q.x - info->w_width, 1);
-		uv.v = fmod(q.y - info->w_height, 1);
+		uv.u = fmod(q.x - info->width, 1);
+		uv.v = fmod(q.y - info->height, 1);
 	}
 	if (((int)(uv.u * 2) + (int)(uv.v * 2)) % 2 == 0)
 		return (true);
@@ -70,8 +70,8 @@ bool	checkerb_cy(t_shape *sh, t_point q, t_info *info)
 	ratio = sh->prop.height / (sh->prop.rad * 2);
 	azimut = atan2(q.x - sh->prop.c.x, q.z - sh->prop.c.z);
 	uv.u = azimut / (2 * M_PI);
-	uv.u = (1 - (uv.u + 0.5)) - info->w_width;
-	uv.v = fmod(q.y - sh->prop.c.y, 1) - info->w_height;
+	uv.u = (1 - (uv.u + 0.5)) - info->width;
+	uv.v = fmod(q.y - sh->prop.c.y, 1) - info->height;
 	if (checkerb_cy_calc(uv, sh) % 2 == 0)
 		return (true);
 	return (false);
