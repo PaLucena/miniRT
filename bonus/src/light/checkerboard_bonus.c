@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:21:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/05 14:15:54 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:34:09 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ bool	checkerb_pl(t_shape *sh, t_point q, t_info *info)
 	return (false);
 }
 
+static int	checkerb_cy_calc(t_uv uv, t_shape *sh)
+{
+	return (((int)(uv.u * 24 * sh->prop.rad) + (int)(uv.v * sh->prop.height)));
+}
+
 bool	checkerb_cy(t_shape *sh, t_point q, t_info *info)
 {
 	t_uv	uv;
@@ -67,7 +72,7 @@ bool	checkerb_cy(t_shape *sh, t_point q, t_info *info)
 	uv.u = azimut / (2 * M_PI);
 	uv.u = (1 - (uv.u + 0.5)) - info->w_width;
 	uv.v = fmod(q.y - sh->prop.c.y, 1) - info->w_height;
-	if (((int)(uv.u * 12 * sh->prop.rad * 2) + (int)(uv.v * sh->prop.height)) % 2 == 0)
+	if (checkerb_cy_calc(uv, sh) % 2 == 0)
 		return (true);
 	return (false);
 }

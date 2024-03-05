@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:38:18 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/03/04 21:36:41 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:37:52 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	sp_checkerboard_info(char *line, int i, t_properties *prop)
 		j++;
 	if (!line[i + j])
 		return (true);
-	i = j;
+	i += j;
 	j = 0;
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;

@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:07:25 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/05 14:04:35 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:21:48 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,4 @@ void	ft_color(t_inter *inter, t_info *info, t_pixel px)
 		else
 			ft_phong(inter, info, px, shape->prop.color);
 	}
-/* 	else
-		ft_darkness(info, px.i, px.j); */
 }

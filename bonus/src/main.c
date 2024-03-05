@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/01 14:19:59 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:24:00 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_print_error(char *str, t_info *info)
 /* void	ft_leaks(void)
 {
 	system("leaks -q miniRT_bonus");
+	atexit(ft_leaks);
 } */
 
 void	ft_check_parsed(t_info *info)
@@ -41,7 +42,6 @@ int	main(int ac, char **av)
 {
 	t_info	*info;
 
-//	atexit(ft_leaks);
 	if (ac != 2)
 		ft_print_error("Wrong number of arguments", NULL);
 	info = init_info(av[1]);
