@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:07:25 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/04 21:44:05 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:04:35 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_darkness(t_info *info, double x, double y)
 bool	uv_checkers(t_info *info, t_shape *sh, t_point q)
 {
 	if (sh->type == SP)
-		return (checkerb_sp(sh, q));
+		return (checkerb_sp(sh, q, info));
 	else if (sh->type == PL)
 		return (checkerb_pl(sh, q, info));
 	else if (sh->type == CY || sh->type == CO)
@@ -47,6 +47,6 @@ void	ft_color(t_inter *inter, t_info *info, t_pixel px)
 		else
 			ft_phong(inter, info, px, shape->prop.color);
 	}
-	else
-		ft_darkness(info, px.i, px.j);
+/* 	else
+		ft_darkness(info, px.i, px.j); */
 }

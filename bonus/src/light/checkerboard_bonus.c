@@ -6,20 +6,21 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:21:45 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/04 21:41:09 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:15:54 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_bonus.h"
 
-bool	checkerb_sp(t_shape *sh, t_point q)
+bool	checkerb_sp(t_shape *sh, t_point q, t_info *info)
 {
 	t_uv	uv;
 	double	azimut;
 	double	polar;
 
-	azimut = atan2(q.x, q.z);
-	polar = acos(q.y / sh->prop.rad);
+	(void)info;
+	azimut = atan2((q.x - sh->prop.c.x), (q.z - sh->prop.c.z));
+	polar = acos((q.y - sh->prop.c.y) / sh->prop.rad);
 	uv.u = (1 - (azimut / (2 * M_PI) + 0.5));
 	uv.v = 1 - (polar / M_PI);
 	if (((int)(uv.u * 16) + (int)(uv.v * 8)) % 2 == 0)
@@ -57,14 +58,16 @@ bool	checkerb_cy(t_shape *sh, t_point q, t_info *info)
 {
 	t_uv	uv;
 	double	azimut;
+	double	ratio;
 
 	(void)info;
 	(void)sh;
-	azimut = atan2(q.x, q.z);
+	ratio = sh->prop.height / (sh->prop.rad * 2);
+	azimut = atan2(q.x - sh->prop.c.x, q.z - sh->prop.c.z);
 	uv.u = azimut / (2 * M_PI);
-	uv.u = (1 - (uv.u + 0.5));
-	uv.v = fmod(q.y, 1);
-	if (((int)(uv.u * 32) + (int)(uv.v * 2)) % 2 == 0)
+	uv.u = (1 - (uv.u + 0.5)) - info->w_width;
+	uv.v = fmod(q.y - sh->prop.c.y, 1) - info->w_height;
+	if (((int)(uv.u * 12 * sh->prop.rad * 2) + (int)(uv.v * sh->prop.height)) % 2 == 0)
 		return (true);
 	return (false);
 }

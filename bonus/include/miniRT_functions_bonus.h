@@ -6,7 +6,7 @@
 /*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:43:22 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/01 14:22:45 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:08:56 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		ft_darkness(t_info *info, double x, double y);
 void		ft_color(t_inter *inter, t_info *info, t_pixel px);
 
 //	checkerboard_bonus.c
-bool		checkerb_sp(t_shape *sh, t_point q);
+bool		checkerb_sp(t_shape *sh, t_point q, t_info *info);
 bool		checkerb_pl(t_shape *sh, t_point q, t_info *info);
 bool		checkerb_cy(t_shape *sh, t_point q, t_info *info);
 //	light_bonus.c

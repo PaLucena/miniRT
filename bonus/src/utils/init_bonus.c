@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:17:59 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/02/25 17:30:02 by palucena         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:18:39 by ealgar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_mlx(t_info	*info)
 {
-	info->mlx_s.mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
+	info->mlx_s.mlx = mlx_init(WIDTH, HEIGHT, "miniRT", false);
 	info->mlx_s.win = mlx_new_image(info->mlx_s.mlx, WIDTH, HEIGHT);
 	mlx_get_monitor_size(0, &info->width, &info->height);
 	if (!info->width || !info->height)
