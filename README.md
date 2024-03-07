@@ -47,4 +47,4 @@ scene.rt should be a valid scene description file in the provided format.
 Contributions are welcome! If you'd like to contribute to miniRT, feel free to open an issue or submit a pull request with your changes.
 
 ### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/PaLucena/miniRT/blob/master/LICENSE) file for details.
