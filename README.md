@@ -24,7 +24,7 @@ MiniRT is a ray tracing project developed as part of the curriculum at Campus 42
 ### Installation
 Clone the repository to your local machine:
 ```
-git clone https://github.com/yourusername/miniRT.git
+git clone https://github.com/PaLucena/miniRT.git
 ```
 Navigate to the project directory:
 ```
