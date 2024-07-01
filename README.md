@@ -1,4 +1,4 @@
-# miniRT
+<h1 align="center">miniRT</h1>
 MiniRT is a ray tracing project developed as part of the curriculum at Campus 42. The project aims to implement a basic ray tracer capable of rendering simple scenes with basic shapes and lighting effects.
 
 <table align="center">
