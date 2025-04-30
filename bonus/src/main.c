@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: kaladin <kaladin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:11:39 by palucena          #+#    #+#             */
-/*   Updated: 2024/03/05 18:26:26 by palucena         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:09:54 by kaladin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ft_print_error(char *str, t_info *info)
 	ft_putstr_fd("Error:\n\t", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
-	ft_exit_program((void *)info);
+	if (info != NULL)
+		ft_exit_program((void *)info);
+	exit (1);
 }
 
 void	ft_leaks(void)
